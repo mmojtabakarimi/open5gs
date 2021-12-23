@@ -34,17 +34,28 @@ extern "C" {
 #define	ASN1C_ENVIRONMENT_VERSION	923	/* Compile-time version */
 int get_asn1c_environment_version(void);	/* Run-time version */
 
-#if 1 /* modified by acetcom */
+#if 0 /* modified by acetcom */
 #define	CALLOC(nmemb, size)	calloc(nmemb, size)
 #define	MALLOC(size)		malloc(size)
 #define	REALLOC(oldptr, size)	realloc(oldptr, size)
 #define	FREEMEM(ptr)		free(ptr)
 #else
 #include "ogs-core.h"
+#if 0
 #define        CALLOC(nmemb, size)     ogs_calloc_or_assert(nmemb, size)
 #define        MALLOC(size)            ogs_malloc_or_assert(size)
 #define        REALLOC(oldptr, size)   ogs_realloc_or_assert(oldptr, size)
 #define        FREEMEM(ptr)            ogs_free(ptr)
+#else
+#define	CALLOC(nmemb, size)	\
+    talloc_zero_size(__ogs_talloc_asn1c, (nmemb) * (size))
+#define	MALLOC(size) \
+    talloc_size(__ogs_talloc_asn1c, size)
+#define	REALLOC(oldptr, size) \
+    talloc_realloc_size(__ogs_talloc_asn1c, oldptr, size)
+#define	FREEMEM(ptr) \
+    talloc_free(ptr)
+#endif
 #endif
 
 #define	asn_debug_indent	0

@@ -25,6 +25,8 @@ int __ogs_event_domain;
 int __ogs_thread_domain;
 int __ogs_tlv_domain;
 
+void *__ogs_talloc_asn1c;
+
 static ogs_core_context_t self = {
     .log.pool = 8,
     .log.domain_pool = 64,
@@ -43,6 +45,10 @@ void ogs_core_initialize(void)
     ogs_socket_init();
     ogs_tlv_init();
 
+#define TALLOC_ASC1C_MEMSIZE 1
+    __ogs_talloc_asn1c = talloc_named_const(
+            NULL, TALLOC_ASC1C_MEMSIZE, "ASN1-Conctext");
+
     ogs_log_install_domain(&__ogs_mem_domain, "mem", ogs_core()->log.level);
     ogs_log_install_domain(&__ogs_sock_domain, "sock", ogs_core()->log.level);
     ogs_log_install_domain(&__ogs_event_domain, "event", ogs_core()->log.level);
@@ -53,6 +59,9 @@ void ogs_core_initialize(void)
 
 void ogs_core_terminate(void)
 {
+    if (talloc_total_size(__ogs_talloc_asn1c) != TALLOC_ASC1C_MEMSIZE)
+        talloc_report_full(__ogs_talloc_asn1c, stderr);
+
     ogs_tlv_final();
     ogs_socket_final();
     ogs_pkbuf_final();

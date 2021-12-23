@@ -61,6 +61,8 @@
 #include "core/ogs-getopt.h"
 #include "core/ogs-3gpp-types.h"
 
+#include <talloc.h>
+
 #undef OGS_CORE_INSIDE
 
 #ifdef __cplusplus
@@ -72,6 +74,8 @@ extern int __ogs_sock_domain;
 extern int __ogs_event_domain;
 extern int __ogs_thread_domain;
 extern int __ogs_tlv_domain;
+
+extern void *__ogs_talloc_asn1c;
 
 typedef struct {
     struct {
