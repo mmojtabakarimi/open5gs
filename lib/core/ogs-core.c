@@ -62,6 +62,8 @@ void ogs_core_terminate(void)
     if (talloc_total_size(__ogs_talloc_asn1c) != TALLOC_ASC1C_MEMSIZE)
         talloc_report_full(__ogs_talloc_asn1c, stderr);
 
+    talloc_free(__ogs_talloc_asn1c);
+
     ogs_tlv_final();
     ogs_socket_final();
     ogs_pkbuf_final();
