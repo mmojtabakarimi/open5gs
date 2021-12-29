@@ -708,11 +708,9 @@ static void sbi_message_test7(abts_case *tc, void *data)
     OpenAPI_list_free(SubscribedSnssaiInfoList);
 
     r1 = OpenAPI_smf_selection_subscription_data_parseFromJSON(item);
-    ogs_error("--------------");
 #if 1
     cJSON_Delete(item);
 #endif
-    ogs_error("--------------<<<<");
 
     item2 = OpenAPI_smf_selection_subscription_data_convertToJSON(r1);
     content = cJSON_Print(item2);

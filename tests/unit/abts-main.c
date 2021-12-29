@@ -40,13 +40,17 @@ abts_suite *test_crash(abts_suite *suite);
 const struct testlist {
     abts_suite *(*func)(abts_suite *suite);
 } alltests[] = {
+#if 0
     {test_s1ap_message},
     {test_nas_message},
     {test_gtp_message},
     {test_ngap_message},
+#endif
     {test_sbi_message},
+#if 0
     {test_security},
     {test_crash},
+#endif
     {NULL},
 };
 
