@@ -427,8 +427,11 @@ void amf_state_operational(ogs_fsm_t *s, amf_event_t *e)
 
             SWITCH(sbi_message.h.resource.component[2])
             CASE(OGS_SBI_RESOURCE_NAME_MODIFY)
-                amf_nsmf_pdusession_handle_update_sm_context(
+                rv = amf_nsmf_pdusession_handle_update_sm_context(
                         sess, state, &sbi_message);
+                if (rv != OGS_OK) {
+                    AMF_SESS_CLEAR(sess);
+                }
                 break;
 
             CASE(OGS_SBI_RESOURCE_NAME_RELEASE)
@@ -467,9 +470,7 @@ void amf_state_operational(ogs_fsm_t *s, amf_event_t *e)
                      * So, if CreateSMContext is failed,
                      * we'll clear SM_CONTEXT_REF.
                      */
-                    if (SESSION_CONTEXT_IN_SMF(sess)) {
-                        CLEAR_SM_CONTEXT_REF(sess);
-                    }
+                    AMF_SESS_CLEAR(sess);
                 }
             END
             break;
