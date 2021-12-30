@@ -700,21 +700,25 @@ static void sbi_message_test7(abts_case *tc, void *data)
                 }
                 ogs_free(SubscribedSnssaiInfo);
             }
-#if 0
             if (SubscribedSnssaiInfoMap->key)
                 ogs_free(SubscribedSnssaiInfoMap->key);
-#endif
             ogs_free(SubscribedSnssaiInfoMap);
         }
     }
     OpenAPI_list_free(SubscribedSnssaiInfoList);
 
-#if 1
+    r1 = OpenAPI_smf_selection_subscription_data_parseFromJSON(item);
+    cJSON_Delete(item);
+
+    s1 = OpenAPI_smf_selection_subscription_data_copy(s1, r1);
+
+    item = OpenAPI_smf_selection_subscription_data_convertToJSON(s1);
+    ogs_assert(item);
     content = cJSON_Print(item);
+    cJSON_Delete(item);
+    ogs_assert(content);
     ogs_fatal("content = %s", content);
     ogs_free(content);
-#endif
-    cJSON_Delete(item);
 }
 
 abts_suite *test_sbi_message(abts_suite *suite)

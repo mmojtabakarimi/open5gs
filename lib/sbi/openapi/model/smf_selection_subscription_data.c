@@ -73,7 +73,7 @@ cJSON *OpenAPI_smf_selection_subscription_data_convertToJSON(OpenAPI_smf_selecti
             ogs_error("OpenAPI_smf_selection_subscription_data_convertToJSON() failed [subscribed_snssai_infos]");
             goto end;
         }
-        cJSON_AddItemToObjectCS(subscribed_snssai_infos, localKeyValue->key, itemLocal);
+        cJSON_AddItemToObject(subscribed_snssai_infos, localKeyValue->key, itemLocal);
             }
         }
     }
