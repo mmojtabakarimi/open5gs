@@ -35,8 +35,10 @@ void ogs_mem_init(void)
 {
     ogs_thread_mutex_init(&mutex);
 
+#if 0 /* TODO */
     talloc_enable_leak_report_full();
     talloc_enable_null_tracking();
+#endif
 
 #define TALLOC_MEMSIZE 1
     __ogs_talloc_core = talloc_named_const(NULL, TALLOC_MEMSIZE, "core");

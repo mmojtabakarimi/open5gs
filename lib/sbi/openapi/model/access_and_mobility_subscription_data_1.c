@@ -150,6 +150,7 @@ void OpenAPI_access_and_mobility_subscription_data_1_free(OpenAPI_access_and_mob
     OpenAPI_list_free(access_and_mobility_subscription_data_1->internal_group_ids);
     OpenAPI_list_for_each(access_and_mobility_subscription_data_1->shared_vn_group_data_ids, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

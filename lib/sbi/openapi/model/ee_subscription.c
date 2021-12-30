@@ -46,6 +46,7 @@ void OpenAPI_ee_subscription_free(OpenAPI_ee_subscription_t *ee_subscription)
     ogs_free(ee_subscription->callback_reference);
     OpenAPI_list_for_each(ee_subscription->monitoring_configurations, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_monitoring_configuration_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -200,9 +201,9 @@ OpenAPI_ee_subscription_t *OpenAPI_ee_subscription_parseFromJSON(cJSON *ee_subsc
         cJSON *localMapObject = monitoring_configurations_local_map;
         if (cJSON_IsObject(monitoring_configurations_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_monitoring_configuration_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_monitoring_configuration_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(monitoring_configurations_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_ee_subscription_parseFromJSON() failed [monitoring_configurations]");
             goto end;

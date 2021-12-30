@@ -65,6 +65,7 @@ void OpenAPI_policy_data_change_notification_free(OpenAPI_policy_data_change_not
     OpenAPI_operator_specific_data_container_free(policy_data_change_notification->op_spec_data);
     OpenAPI_list_for_each(policy_data_change_notification->op_spec_data_map, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_operator_specific_data_container_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -385,9 +386,9 @@ OpenAPI_policy_data_change_notification_t *OpenAPI_policy_data_change_notificati
         cJSON *localMapObject = op_spec_data_map_local_map;
         if (cJSON_IsObject(op_spec_data_map_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_operator_specific_data_container_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_operator_specific_data_container_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(op_spec_data_map_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_policy_data_change_notification_parseFromJSON() failed [op_spec_data_map]");
             goto end;

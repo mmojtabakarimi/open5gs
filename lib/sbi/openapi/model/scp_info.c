@@ -45,6 +45,7 @@ void OpenAPI_scp_info_free(OpenAPI_scp_info_t *scp_info)
     OpenAPI_lnode_t *node;
     OpenAPI_list_for_each(scp_info->scp_domain_info_list, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -52,6 +53,7 @@ void OpenAPI_scp_info_free(OpenAPI_scp_info_t *scp_info)
     ogs_free(scp_info->scp_prefix);
     OpenAPI_list_for_each(scp_info->scp_ports, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

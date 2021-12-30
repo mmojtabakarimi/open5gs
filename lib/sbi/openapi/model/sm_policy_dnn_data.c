@@ -101,18 +101,21 @@ void OpenAPI_sm_policy_dnn_data_free(OpenAPI_sm_policy_dnn_data_t *sm_policy_dnn
     OpenAPI_charging_information_free(sm_policy_dnn_data->chf_info);
     OpenAPI_list_for_each(sm_policy_dnn_data->ref_um_data_limit_ids, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_limit_id_to_monitoring_key_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
     OpenAPI_list_free(sm_policy_dnn_data->ref_um_data_limit_ids);
     OpenAPI_list_for_each(sm_policy_dnn_data->pra_infos, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_presence_info_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
     OpenAPI_list_free(sm_policy_dnn_data->pra_infos);
     OpenAPI_list_for_each(sm_policy_dnn_data->bdt_ref_ids, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -491,9 +494,9 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_parseFromJSON(cJSON *sm
         cJSON *localMapObject = ref_um_data_limit_ids_local_map;
         if (cJSON_IsObject(ref_um_data_limit_ids_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_limit_id_to_monitoring_key_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_limit_id_to_monitoring_key_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(ref_um_data_limit_ids_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_sm_policy_dnn_data_parseFromJSON() failed [ref_um_data_limit_ids]");
             goto end;
@@ -562,9 +565,9 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_parseFromJSON(cJSON *sm
         cJSON *localMapObject = pra_infos_local_map;
         if (cJSON_IsObject(pra_infos_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_presence_info_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_presence_info_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(pra_infos_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_sm_policy_dnn_data_parseFromJSON() failed [pra_infos]");
             goto end;

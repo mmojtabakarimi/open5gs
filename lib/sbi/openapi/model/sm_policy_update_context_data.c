@@ -177,6 +177,7 @@ void OpenAPI_sm_policy_update_context_data_free(OpenAPI_sm_policy_update_context
     ogs_free(sm_policy_update_context_data->user_location_info_time);
     OpenAPI_list_for_each(sm_policy_update_context_data->rep_pra_infos, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_presence_info_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -1235,9 +1236,9 @@ OpenAPI_sm_policy_update_context_data_t *OpenAPI_sm_policy_update_context_data_p
         cJSON *localMapObject = rep_pra_infos_local_map;
         if (cJSON_IsObject(rep_pra_infos_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_presence_info_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_presence_info_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(rep_pra_infos_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_sm_policy_update_context_data_parseFromJSON() failed [rep_pra_infos]");
             goto end;

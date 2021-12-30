@@ -81,6 +81,7 @@ void OpenAPI_policy_association_update_request_free(OpenAPI_policy_association_u
     OpenAPI_ambr_free(policy_association_update_request->ue_ambr);
     OpenAPI_list_for_each(policy_association_update_request->pra_statuses, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_presence_info_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -546,9 +547,9 @@ OpenAPI_policy_association_update_request_t *OpenAPI_policy_association_update_r
         cJSON *localMapObject = pra_statuses_local_map;
         if (cJSON_IsObject(pra_statuses_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_presence_info_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_presence_info_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(pra_statuses_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_policy_association_update_request_parseFromJSON() failed [pra_statuses]");
             goto end;

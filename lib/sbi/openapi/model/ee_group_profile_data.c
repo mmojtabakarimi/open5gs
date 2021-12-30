@@ -33,6 +33,7 @@ void OpenAPI_ee_group_profile_data_free(OpenAPI_ee_group_profile_data_t *ee_grou
     OpenAPI_list_free(ee_group_profile_data->restricted_event_types);
     OpenAPI_list_for_each(ee_group_profile_data->allowed_mtc_provider, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

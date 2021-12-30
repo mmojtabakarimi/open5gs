@@ -42,6 +42,7 @@ void OpenAPI_ue_authentication_ctx_free(OpenAPI_ue_authentication_ctx_t *ue_auth
     if (ue_authentication_ctx->_links) {
         OpenAPI_list_for_each(ue_authentication_ctx->_links, node) {
             OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+            ogs_free(localKeyValue->key);
             OpenAPI_links_value_schema_free(localKeyValue->value);
             ogs_free(localKeyValue);
         }
@@ -174,7 +175,7 @@ OpenAPI_ue_authentication_ctx_t *OpenAPI_ue_authentication_ctx_parseFromJSON(cJS
             goto end;
         }
         localMapKeyPair = OpenAPI_map_create(
-            localMapObject->string, OpenAPI_links_value_schema_parseFromJSON(localMapObject));
+            ogs_strdup(localMapObject->string), OpenAPI_links_value_schema_parseFromJSON(localMapObject));
         OpenAPI_list_add(_linksList , localMapKeyPair);
     }
 

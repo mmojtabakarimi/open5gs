@@ -35,6 +35,7 @@ void OpenAPI_ue_policy_set_patch_free(OpenAPI_ue_policy_set_patch_t *ue_policy_s
     OpenAPI_lnode_t *node;
     OpenAPI_list_for_each(ue_policy_set_patch->ue_policy_sections, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_ue_policy_section_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -152,9 +153,9 @@ OpenAPI_ue_policy_set_patch_t *OpenAPI_ue_policy_set_patch_parseFromJSON(cJSON *
         cJSON *localMapObject = ue_policy_sections_local_map;
         if (cJSON_IsObject(ue_policy_sections_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_ue_policy_section_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_ue_policy_section_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(ue_policy_sections_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_ue_policy_set_patch_parseFromJSON() failed [ue_policy_sections]");
             goto end;

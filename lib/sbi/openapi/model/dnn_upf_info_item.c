@@ -49,6 +49,7 @@ void OpenAPI_dnn_upf_info_item_free(OpenAPI_dnn_upf_info_item_t *dnn_upf_info_it
     OpenAPI_list_free(dnn_upf_info_item->ipv6_prefix_ranges);
     OpenAPI_list_for_each(dnn_upf_info_item->dnai_nw_instance_list, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

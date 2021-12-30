@@ -28,6 +28,7 @@ void OpenAPI_sm_policy_dnn_data_patch_free(OpenAPI_sm_policy_dnn_data_patch_t *s
     ogs_free(sm_policy_dnn_data_patch->dnn);
     OpenAPI_list_for_each(sm_policy_dnn_data_patch->bdt_ref_ids, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

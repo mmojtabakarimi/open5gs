@@ -29,6 +29,7 @@ void OpenAPI_acceptable_service_info_free(OpenAPI_acceptable_service_info_t *acc
     OpenAPI_lnode_t *node;
     OpenAPI_list_for_each(acceptable_service_info->acc_bw_med_comps, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_media_component_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -107,9 +108,9 @@ OpenAPI_acceptable_service_info_t *OpenAPI_acceptable_service_info_parseFromJSON
         cJSON *localMapObject = acc_bw_med_comps_local_map;
         if (cJSON_IsObject(acc_bw_med_comps_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_media_component_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_media_component_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(acc_bw_med_comps_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_acceptable_service_info_parseFromJSON() failed [acc_bw_med_comps]");
             goto end;

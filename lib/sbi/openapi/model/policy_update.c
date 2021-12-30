@@ -47,6 +47,7 @@ void OpenAPI_policy_update_free(OpenAPI_policy_update_t *policy_update)
     OpenAPI_ambr_free(policy_update->ue_ambr);
     OpenAPI_list_for_each(policy_update->pras, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_presence_info_rm_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -258,9 +259,9 @@ OpenAPI_policy_update_t *OpenAPI_policy_update_parseFromJSON(cJSON *policy_updat
         cJSON *localMapObject = pras_local_map;
         if (cJSON_IsObject(pras_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_presence_info_rm_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_presence_info_rm_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(pras_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_policy_update_parseFromJSON() failed [pras]");
             goto end;

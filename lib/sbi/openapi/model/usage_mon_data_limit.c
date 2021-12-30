@@ -38,6 +38,7 @@ void OpenAPI_usage_mon_data_limit_free(OpenAPI_usage_mon_data_limit_t *usage_mon
     ogs_free(usage_mon_data_limit->limit_id);
     OpenAPI_list_for_each(usage_mon_data_limit->scopes, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_usage_mon_data_scope_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -168,9 +169,9 @@ OpenAPI_usage_mon_data_limit_t *OpenAPI_usage_mon_data_limit_parseFromJSON(cJSON
         cJSON *localMapObject = scopes_local_map;
         if (cJSON_IsObject(scopes_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_usage_mon_data_scope_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_usage_mon_data_scope_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(scopes_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_usage_mon_data_limit_parseFromJSON() failed [scopes]");
             goto end;

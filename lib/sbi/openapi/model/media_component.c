@@ -125,6 +125,7 @@ void OpenAPI_media_component_free(OpenAPI_media_component_t *media_component)
     ogs_free(media_component->max_supp_bw_ul);
     OpenAPI_list_for_each(media_component->med_sub_comps, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_media_sub_component_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -660,9 +661,9 @@ OpenAPI_media_component_t *OpenAPI_media_component_parseFromJSON(cJSON *media_co
         cJSON *localMapObject = med_sub_comps_local_map;
         if (cJSON_IsObject(med_sub_comps_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_media_sub_component_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_media_sub_component_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(med_sub_comps_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_media_component_parseFromJSON() failed [med_sub_comps]");
             goto end;

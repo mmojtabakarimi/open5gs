@@ -68,6 +68,7 @@ void OpenAPI_app_session_context_update_data_free(OpenAPI_app_session_context_up
     ogs_free(app_session_context_update_data->mc_video_id);
     OpenAPI_list_for_each(app_session_context_update_data->med_components, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_media_component_rm_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -368,9 +369,9 @@ OpenAPI_app_session_context_update_data_t *OpenAPI_app_session_context_update_da
         cJSON *localMapObject = med_components_local_map;
         if (cJSON_IsObject(med_components_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_media_component_rm_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_media_component_rm_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(med_components_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_app_session_context_update_data_parseFromJSON() failed [med_components]");
             goto end;

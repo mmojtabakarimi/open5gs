@@ -219,6 +219,7 @@ void OpenAPI_{{classname}}_free(OpenAPI_{{classname}}_t *{{classname}})
             {{#isPrimitiveType}}
     OpenAPI_list_for_each({{classname}}->{{name}}, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -227,6 +228,7 @@ void OpenAPI_{{classname}}_free(OpenAPI_{{classname}}_t *{{classname}})
             {{^isPrimitiveType}}
     OpenAPI_list_for_each({{classname}}->{{name}}, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_{{complexType}}_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -802,9 +804,9 @@ OpenAPI_{{classname}}_t *OpenAPI_{{classname}}_parseFromJSON(cJSON *{{classname}
                 {{^isPrimitiveType}}
         if (cJSON_IsObject({{{name}}}_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_{{complexType}}_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_{{complexType}}_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull({{{name}}}_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_{{classname}}_parseFromJSON() failed [{{{name}}}]");
             goto end;

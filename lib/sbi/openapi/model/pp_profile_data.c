@@ -27,6 +27,7 @@ void OpenAPI_pp_profile_data_free(OpenAPI_pp_profile_data_t *pp_profile_data)
     OpenAPI_lnode_t *node;
     OpenAPI_list_for_each(pp_profile_data->allowed_mtc_providers, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

@@ -34,6 +34,7 @@ void OpenAPI_ee_profile_data_free(OpenAPI_ee_profile_data_t *ee_profile_data)
     ogs_free(ee_profile_data->supported_features);
     OpenAPI_list_for_each(ee_profile_data->allowed_mtc_provider, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         ogs_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }

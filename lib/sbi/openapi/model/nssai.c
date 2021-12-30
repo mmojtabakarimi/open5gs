@@ -43,6 +43,7 @@ void OpenAPI_nssai_free(OpenAPI_nssai_t *nssai)
     ogs_free(nssai->provisioning_time);
     OpenAPI_list_for_each(nssai->additional_snssai_data, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_additional_snssai_data_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -223,9 +224,9 @@ OpenAPI_nssai_t *OpenAPI_nssai_parseFromJSON(cJSON *nssaiJSON)
         cJSON *localMapObject = additional_snssai_data_local_map;
         if (cJSON_IsObject(additional_snssai_data_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_additional_snssai_data_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_additional_snssai_data_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(additional_snssai_data_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_nssai_parseFromJSON() failed [additional_snssai_data]");
             goto end;

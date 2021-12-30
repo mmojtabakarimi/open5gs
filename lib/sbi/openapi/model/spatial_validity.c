@@ -25,6 +25,7 @@ void OpenAPI_spatial_validity_free(OpenAPI_spatial_validity_t *spatial_validity)
     OpenAPI_lnode_t *node;
     OpenAPI_list_for_each(spatial_validity->presence_info_list, node) {
         OpenAPI_map_t *localKeyValue = (OpenAPI_map_t*)node->data;
+        ogs_free(localKeyValue->key);
         OpenAPI_presence_info_free(localKeyValue->value);
         ogs_free(localKeyValue);
     }
@@ -88,9 +89,9 @@ OpenAPI_spatial_validity_t *OpenAPI_spatial_validity_parseFromJSON(cJSON *spatia
         cJSON *localMapObject = presence_info_list_local_map;
         if (cJSON_IsObject(presence_info_list_local_map)) {
             localMapKeyPair = OpenAPI_map_create(
-                localMapObject->string, OpenAPI_presence_info_parseFromJSON(localMapObject));
+                ogs_strdup(localMapObject->string), OpenAPI_presence_info_parseFromJSON(localMapObject));
         } else if (cJSON_IsNull(presence_info_list_local_map)) {
-            localMapKeyPair = OpenAPI_map_create(localMapObject->string, NULL);
+            localMapKeyPair = OpenAPI_map_create(ogs_strdup(localMapObject->string), NULL);
         } else {
             ogs_error("OpenAPI_spatial_validity_parseFromJSON() failed [presence_info_list]");
             goto end;
