@@ -2105,29 +2105,46 @@ static bool build_multipart(
 
 static void http_message_free(ogs_sbi_http_message_t *http)
 {
-    int i;
+    int i, num;
+#define HTTP_MESSAGE_HASH 128
+    char *key[HTTP_MESSAGE_HASH];
+    char *val[HTTP_MESSAGE_HASH];
+
+    ogs_hash_index_t *hi;
+
     ogs_assert(http);
 
     if (http->params) {
-        ogs_hash_index_t *hi;
+        num = 0;
         for (hi = ogs_hash_first(http->params); hi; hi = ogs_hash_next(hi)) {
-            char *key = (char *)ogs_hash_this_key(hi);
-            char *val = ogs_hash_this_val(hi);
-            ogs_free(key);
-            ogs_free(val);
+            ogs_assert(num < HTTP_MESSAGE_HASH);
+            key[num] = (char *)ogs_hash_this_key(hi);
+            val[num] = ogs_hash_this_val(hi);
+            num++;
         }
         ogs_hash_destroy(http->params);
+
+        for (i = 0; i < num; i++) {
+            ogs_free(key[i]);
+            ogs_free(val[i]);
+        }
     }
 
     if (http->headers) {
-        ogs_hash_index_t *hi;
+        num = 0;
         for (hi = ogs_hash_first(http->headers); hi; hi = ogs_hash_next(hi)) {
-            char *key = (char *)ogs_hash_this_key(hi);
-            char *val = ogs_hash_this_val(hi);
-            ogs_free(key);
-            ogs_free(val);
+            ogs_assert(num < HTTP_MESSAGE_HASH);
+            key[num] = (char *)ogs_hash_this_key(hi);
+            val[num] = ogs_hash_this_val(hi);
+            num++;
         }
         ogs_hash_destroy(http->headers);
+
+        for (i = 0; i < num; i++) {
+            ogs_free(key[i]);
+            ogs_free(val[i]);
+        }
+
     }
     if (http->content)
         ogs_free(http->content);
