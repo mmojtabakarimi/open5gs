@@ -194,7 +194,7 @@ OpenAPI_ue_differentiation_info_t *OpenAPI_ue_differentiation_info_parseFromJSON
         stationary_ind ? stationary_indVariable : 0,
         traffic_profile ? traffic_profileVariable : 0,
         battery_ind ? battery_ind_local_nonprim : NULL,
-        validity_time ? ogs_strdup_or_assert(validity_time->valuestring) : NULL
+        validity_time ? ogs_strdup(validity_time->valuestring) : NULL
     );
 
     return ue_differentiation_info_local_var;

@@ -61,7 +61,7 @@ OpenAPI_pcscf_restoration_notification_t *OpenAPI_pcscf_restoration_notification
     }
 
     pcscf_restoration_notification_local_var = OpenAPI_pcscf_restoration_notification_create (
-        ogs_strdup_or_assert(supi->valuestring)
+        ogs_strdup(supi->valuestring)
     );
 
     return pcscf_restoration_notification_local_var;

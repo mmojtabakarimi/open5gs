@@ -126,8 +126,8 @@ OpenAPI_pdu_session_1_t *OpenAPI_pdu_session_1_parseFromJSON(cJSON *pdu_session_
     }
 
     pdu_session_1_local_var = OpenAPI_pdu_session_1_create (
-        ogs_strdup_or_assert(dnn->valuestring),
-        ogs_strdup_or_assert(smf_instance_id->valuestring),
+        ogs_strdup(dnn->valuestring),
+        ogs_strdup(smf_instance_id->valuestring),
         plmn_id_local_nonprim,
         single_nssai ? single_nssai_local_nonprim : NULL
     );

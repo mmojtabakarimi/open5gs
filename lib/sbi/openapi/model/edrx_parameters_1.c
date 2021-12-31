@@ -82,7 +82,7 @@ OpenAPI_edrx_parameters_1_t *OpenAPI_edrx_parameters_1_parseFromJSON(cJSON *edrx
 
     edrx_parameters_1_local_var = OpenAPI_edrx_parameters_1_create (
         rat_typeVariable,
-        ogs_strdup_or_assert(edrx_value->valuestring)
+        ogs_strdup(edrx_value->valuestring)
     );
 
     return edrx_parameters_1_local_var;

@@ -80,8 +80,8 @@ OpenAPI_ambr_1_t *OpenAPI_ambr_1_parseFromJSON(cJSON *ambr_1JSON)
     }
 
     ambr_1_local_var = OpenAPI_ambr_1_create (
-        ogs_strdup_or_assert(uplink->valuestring),
-        ogs_strdup_or_assert(downlink->valuestring)
+        ogs_strdup(uplink->valuestring),
+        ogs_strdup(downlink->valuestring)
     );
 
     return ambr_1_local_var;

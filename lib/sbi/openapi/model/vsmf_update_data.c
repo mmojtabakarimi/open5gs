@@ -707,7 +707,7 @@ OpenAPI_vsmf_update_data_t *OpenAPI_vsmf_update_data_parseFromJSON(cJSON *vsmf_u
         ogs_error("OpenAPI_vsmf_update_data_parseFromJSON() failed [dnai_list]");
         goto end;
     }
-    OpenAPI_list_add(dnai_listList , ogs_strdup_or_assert(dnai_list_local->valuestring));
+    OpenAPI_list_add(dnai_listList , ogs_strdup(dnai_list_local->valuestring));
     }
     }
 
@@ -762,10 +762,10 @@ OpenAPI_vsmf_update_data_t *OpenAPI_vsmf_update_data_parseFromJSON(cJSON *vsmf_u
         n1_sm_info_to_ue ? n1_sm_info_to_ue_local_nonprim : NULL,
         always_on_granted ? true : false,
         always_on_granted ? always_on_granted->valueint : 0,
-        hsmf_pdu_session_uri ? ogs_strdup_or_assert(hsmf_pdu_session_uri->valuestring) : NULL,
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL,
+        hsmf_pdu_session_uri ? ogs_strdup(hsmf_pdu_session_uri->valuestring) : NULL,
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL,
         cause ? causeVariable : 0,
-        n1sm_cause ? ogs_strdup_or_assert(n1sm_cause->valuestring) : NULL,
+        n1sm_cause ? ogs_strdup(n1sm_cause->valuestring) : NULL,
         back_off_timer ? true : false,
         back_off_timer ? back_off_timer->valuedouble : 0,
         ma_release_ind ? ma_release_indVariable : 0,

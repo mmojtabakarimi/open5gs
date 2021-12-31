@@ -101,7 +101,7 @@ OpenAPI_dnai_information_t *OpenAPI_dnai_information_parseFromJSON(cJSON *dnai_i
     }
 
     dnai_information_local_var = OpenAPI_dnai_information_create (
-        ogs_strdup_or_assert(dnai->valuestring),
+        ogs_strdup(dnai->valuestring),
         no_dnai_change_ind ? true : false,
         no_dnai_change_ind ? no_dnai_change_ind->valueint : 0,
         no_local_psa_change_ind ? true : false,

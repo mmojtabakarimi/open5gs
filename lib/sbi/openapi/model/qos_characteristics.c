@@ -202,7 +202,7 @@ OpenAPI_qos_characteristics_t *OpenAPI_qos_characteristics_parseFromJSON(cJSON *
         priority_level->valuedouble,
         
         packet_delay_budget->valuedouble,
-        ogs_strdup_or_assert(packet_error_rate->valuestring),
+        ogs_strdup(packet_error_rate->valuestring),
         averaging_window ? true : false,
         averaging_window ? averaging_window->valuedouble : 0,
         max_data_burst_vol ? true : false,

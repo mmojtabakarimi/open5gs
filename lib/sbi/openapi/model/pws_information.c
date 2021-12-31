@@ -197,7 +197,7 @@ OpenAPI_pws_information_t *OpenAPI_pws_information_parseFromJSON(cJSON *pws_info
         bc_empty_area_list ? bc_empty_area_listList : NULL,
         send_ran_response ? true : false,
         send_ran_response ? send_ran_response->valueint : 0,
-        omc_id ? ogs_strdup_or_assert(omc_id->valuestring) : NULL
+        omc_id ? ogs_strdup(omc_id->valuestring) : NULL
     );
 
     return pws_information_local_var;

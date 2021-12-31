@@ -152,7 +152,7 @@ OpenAPI_ee_profile_data_t *OpenAPI_ee_profile_data_parseFromJSON(cJSON *ee_profi
 
     ee_profile_data_local_var = OpenAPI_ee_profile_data_create (
         restricted_event_types ? restricted_event_typesList : NULL,
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL,
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL,
         allowed_mtc_provider ? allowed_mtc_providerList : NULL
     );
 

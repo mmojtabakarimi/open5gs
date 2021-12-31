@@ -103,7 +103,7 @@ OpenAPI_pp_profile_data_t *OpenAPI_pp_profile_data_parseFromJSON(cJSON *pp_profi
 
     pp_profile_data_local_var = OpenAPI_pp_profile_data_create (
         allowed_mtc_providers ? allowed_mtc_providersList : NULL,
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL
     );
 
     return pp_profile_data_local_var;

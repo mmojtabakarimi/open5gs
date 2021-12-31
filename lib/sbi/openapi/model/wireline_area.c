@@ -121,7 +121,7 @@ OpenAPI_wireline_area_t *OpenAPI_wireline_area_parseFromJSON(cJSON *wireline_are
         ogs_error("OpenAPI_wireline_area_parseFromJSON() failed [global_line_ids]");
         goto end;
     }
-    OpenAPI_list_add(global_line_idsList , ogs_strdup_or_assert(global_line_ids_local->valuestring));
+    OpenAPI_list_add(global_line_idsList , ogs_strdup(global_line_ids_local->valuestring));
     }
     }
 
@@ -141,7 +141,7 @@ OpenAPI_wireline_area_t *OpenAPI_wireline_area_parseFromJSON(cJSON *wireline_are
         ogs_error("OpenAPI_wireline_area_parseFromJSON() failed [hfc_n_ids]");
         goto end;
     }
-    OpenAPI_list_add(hfc_n_idsList , ogs_strdup_or_assert(hfc_n_ids_local->valuestring));
+    OpenAPI_list_add(hfc_n_idsList , ogs_strdup(hfc_n_ids_local->valuestring));
     }
     }
 
@@ -166,8 +166,8 @@ OpenAPI_wireline_area_t *OpenAPI_wireline_area_parseFromJSON(cJSON *wireline_are
     wireline_area_local_var = OpenAPI_wireline_area_create (
         global_line_ids ? global_line_idsList : NULL,
         hfc_n_ids ? hfc_n_idsList : NULL,
-        area_code_b ? ogs_strdup_or_assert(area_code_b->valuestring) : NULL,
-        area_code_c ? ogs_strdup_or_assert(area_code_c->valuestring) : NULL
+        area_code_b ? ogs_strdup(area_code_b->valuestring) : NULL,
+        area_code_c ? ogs_strdup(area_code_c->valuestring) : NULL
     );
 
     return wireline_area_local_var;

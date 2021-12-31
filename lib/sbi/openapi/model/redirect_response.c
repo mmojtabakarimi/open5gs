@@ -80,8 +80,8 @@ OpenAPI_redirect_response_t *OpenAPI_redirect_response_parseFromJSON(cJSON *redi
     }
 
     redirect_response_local_var = OpenAPI_redirect_response_create (
-        cause ? ogs_strdup_or_assert(cause->valuestring) : NULL,
-        target_scp ? ogs_strdup_or_assert(target_scp->valuestring) : NULL
+        cause ? ogs_strdup(cause->valuestring) : NULL,
+        target_scp ? ogs_strdup(target_scp->valuestring) : NULL
     );
 
     return redirect_response_local_var;

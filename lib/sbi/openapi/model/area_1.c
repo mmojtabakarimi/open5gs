@@ -89,7 +89,7 @@ OpenAPI_area_1_t *OpenAPI_area_1_parseFromJSON(cJSON *area_1JSON)
         ogs_error("OpenAPI_area_1_parseFromJSON() failed [tacs]");
         goto end;
     }
-    OpenAPI_list_add(tacsList , ogs_strdup_or_assert(tacs_local->valuestring));
+    OpenAPI_list_add(tacsList , ogs_strdup(tacs_local->valuestring));
     }
     }
 
@@ -104,7 +104,7 @@ OpenAPI_area_1_t *OpenAPI_area_1_parseFromJSON(cJSON *area_1JSON)
 
     area_1_local_var = OpenAPI_area_1_create (
         tacs ? tacsList : NULL,
-        area_code ? ogs_strdup_or_assert(area_code->valuestring) : NULL
+        area_code ? ogs_strdup(area_code->valuestring) : NULL
     );
 
     return area_1_local_var;

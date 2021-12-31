@@ -153,7 +153,7 @@ OpenAPI_ee_group_profile_data_t *OpenAPI_ee_group_profile_data_parseFromJSON(cJS
     ee_group_profile_data_local_var = OpenAPI_ee_group_profile_data_create (
         restricted_event_types ? restricted_event_typesList : NULL,
         allowed_mtc_provider ? allowed_mtc_providerList : NULL,
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL
     );
 
     return ee_group_profile_data_local_var;

@@ -167,7 +167,7 @@ OpenAPI_reporting_options_t *OpenAPI_reporting_options_parseFromJSON(cJSON *repo
         report_mode ? report_mode_local_nonprim : NULL,
         max_num_of_reports ? true : false,
         max_num_of_reports ? max_num_of_reports->valuedouble : 0,
-        expiry ? ogs_strdup_or_assert(expiry->valuestring) : NULL,
+        expiry ? ogs_strdup(expiry->valuestring) : NULL,
         sampling_ratio ? true : false,
         sampling_ratio ? sampling_ratio->valuedouble : 0,
         guard_time ? true : false,

@@ -242,7 +242,7 @@ OpenAPI_dynamic5_qi_t *OpenAPI_dynamic5_qi_parseFromJSON(cJSON *dynamic5_qiJSON)
         priority_level->valuedouble,
         
         packet_delay_budget->valuedouble,
-        ogs_strdup_or_assert(packet_err_rate->valuestring),
+        ogs_strdup(packet_err_rate->valuestring),
         aver_window ? true : false,
         aver_window ? aver_window->valuedouble : 0,
         max_data_burst_vol ? true : false,

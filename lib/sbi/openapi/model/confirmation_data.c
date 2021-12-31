@@ -80,8 +80,8 @@ OpenAPI_confirmation_data_t *OpenAPI_confirmation_data_parseFromJSON(cJSON *conf
     }
 
     confirmation_data_local_var = OpenAPI_confirmation_data_create (
-        ogs_strdup_or_assert(res_star->valuestring),
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL
+        ogs_strdup(res_star->valuestring),
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL
     );
 
     return confirmation_data_local_var;

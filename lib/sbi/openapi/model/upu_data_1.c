@@ -129,9 +129,9 @@ OpenAPI_upu_data_1_t *OpenAPI_upu_data_1_parseFromJSON(cJSON *upu_data_1JSON)
     }
 
     upu_data_1_local_var = OpenAPI_upu_data_1_create (
-        sec_packet ? ogs_strdup_or_assert(sec_packet->valuestring) : NULL,
+        sec_packet ? ogs_strdup(sec_packet->valuestring) : NULL,
         default_conf_nssai ? default_conf_nssaiList : NULL,
-        routing_id ? ogs_strdup_or_assert(routing_id->valuestring) : NULL
+        routing_id ? ogs_strdup(routing_id->valuestring) : NULL
     );
 
     return upu_data_1_local_var;

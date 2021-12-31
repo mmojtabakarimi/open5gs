@@ -83,7 +83,7 @@ OpenAPI_sms_subscription_data_1_t *OpenAPI_sms_subscription_data_1_parseFromJSON
     sms_subscription_data_1_local_var = OpenAPI_sms_subscription_data_1_create (
         sms_subscribed ? true : false,
         sms_subscribed ? sms_subscribed->valueint : 0,
-        shared_sms_subs_data_id ? ogs_strdup_or_assert(shared_sms_subs_data_id->valuestring) : NULL
+        shared_sms_subs_data_id ? ogs_strdup(shared_sms_subs_data_id->valuestring) : NULL
     );
 
     return sms_subscription_data_1_local_var;

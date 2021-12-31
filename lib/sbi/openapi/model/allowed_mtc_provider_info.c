@@ -80,8 +80,8 @@ OpenAPI_allowed_mtc_provider_info_t *OpenAPI_allowed_mtc_provider_info_parseFrom
     }
 
     allowed_mtc_provider_info_local_var = OpenAPI_allowed_mtc_provider_info_create (
-        mtc_provider_information ? ogs_strdup_or_assert(mtc_provider_information->valuestring) : NULL,
-        af_id ? ogs_strdup_or_assert(af_id->valuestring) : NULL
+        mtc_provider_information ? ogs_strdup(mtc_provider_information->valuestring) : NULL,
+        af_id ? ogs_strdup(af_id->valuestring) : NULL
     );
 
     return allowed_mtc_provider_info_local_var;

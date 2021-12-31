@@ -132,7 +132,7 @@ OpenAPI_qos_notification_control_info_t *OpenAPI_qos_notification_control_info_p
     qos_notification_control_info_local_var = OpenAPI_qos_notification_control_info_create (
         notif_typeVariable,
         flows ? flowsList : NULL,
-        alt_ser_req ? ogs_strdup_or_assert(alt_ser_req->valuestring) : NULL
+        alt_ser_req ? ogs_strdup(alt_ser_req->valuestring) : NULL
     );
 
     return qos_notification_control_info_local_var;

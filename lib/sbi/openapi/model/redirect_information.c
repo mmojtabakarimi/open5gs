@@ -104,7 +104,7 @@ OpenAPI_redirect_information_t *OpenAPI_redirect_information_parseFromJSON(cJSON
         redirect_enabled ? true : false,
         redirect_enabled ? redirect_enabled->valueint : 0,
         redirect_address_type ? redirect_address_typeVariable : 0,
-        redirect_server_address ? ogs_strdup_or_assert(redirect_server_address->valuestring) : NULL
+        redirect_server_address ? ogs_strdup(redirect_server_address->valuestring) : NULL
     );
 
     return redirect_information_local_var;

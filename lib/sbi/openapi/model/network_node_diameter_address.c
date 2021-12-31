@@ -80,8 +80,8 @@ OpenAPI_network_node_diameter_address_t *OpenAPI_network_node_diameter_address_p
     }
 
     network_node_diameter_address_local_var = OpenAPI_network_node_diameter_address_create (
-        ogs_strdup_or_assert(name->valuestring),
-        ogs_strdup_or_assert(realm->valuestring)
+        ogs_strdup(name->valuestring),
+        ogs_strdup(realm->valuestring)
     );
 
     return network_node_diameter_address_local_var;

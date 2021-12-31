@@ -207,12 +207,12 @@ OpenAPI_usage_mon_data_t *OpenAPI_usage_mon_data_parseFromJSON(cJSON *usage_mon_
     }
 
     usage_mon_data_local_var = OpenAPI_usage_mon_data_create (
-        ogs_strdup_or_assert(limit_id->valuestring),
+        ogs_strdup(limit_id->valuestring),
         scopes ? scopesList : NULL,
         um_level ? um_level_local_nonprim : NULL,
         allowed_usage ? allowed_usage_local_nonprim : NULL,
         reset_time ? reset_time_local_nonprim : NULL,
-        supp_feat ? ogs_strdup_or_assert(supp_feat->valuestring) : NULL
+        supp_feat ? ogs_strdup(supp_feat->valuestring) : NULL
     );
 
     return usage_mon_data_local_var;

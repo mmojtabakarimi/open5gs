@@ -80,8 +80,8 @@ OpenAPI_frame_route_info_1_t *OpenAPI_frame_route_info_1_parseFromJSON(cJSON *fr
     }
 
     frame_route_info_1_local_var = OpenAPI_frame_route_info_1_create (
-        ipv4_mask ? ogs_strdup_or_assert(ipv4_mask->valuestring) : NULL,
-        ipv6_prefix ? ogs_strdup_or_assert(ipv6_prefix->valuestring) : NULL
+        ipv4_mask ? ogs_strdup(ipv4_mask->valuestring) : NULL,
+        ipv6_prefix ? ogs_strdup(ipv6_prefix->valuestring) : NULL
     );
 
     return frame_route_info_1_local_var;

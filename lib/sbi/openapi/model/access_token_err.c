@@ -124,8 +124,8 @@ OpenAPI_access_token_err_t *OpenAPI_access_token_err_parseFromJSON(cJSON *access
 
     access_token_err_local_var = OpenAPI_access_token_err_create (
         errorVariable,
-        error_description ? ogs_strdup_or_assert(error_description->valuestring) : NULL,
-        error_uri ? ogs_strdup_or_assert(error_uri->valuestring) : NULL
+        error_description ? ogs_strdup(error_description->valuestring) : NULL,
+        error_uri ? ogs_strdup(error_uri->valuestring) : NULL
     );
 
     return access_token_err_local_var;

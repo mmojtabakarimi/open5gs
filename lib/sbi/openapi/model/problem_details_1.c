@@ -206,13 +206,13 @@ OpenAPI_problem_details_1_t *OpenAPI_problem_details_1_parseFromJSON(cJSON *prob
     }
 
     problem_details_1_local_var = OpenAPI_problem_details_1_create (
-        type ? ogs_strdup_or_assert(type->valuestring) : NULL,
-        title ? ogs_strdup_or_assert(title->valuestring) : NULL,
+        type ? ogs_strdup(type->valuestring) : NULL,
+        title ? ogs_strdup(title->valuestring) : NULL,
         status ? true : false,
         status ? status->valuedouble : 0,
-        detail ? ogs_strdup_or_assert(detail->valuestring) : NULL,
-        instance ? ogs_strdup_or_assert(instance->valuestring) : NULL,
-        cause ? ogs_strdup_or_assert(cause->valuestring) : NULL,
+        detail ? ogs_strdup(detail->valuestring) : NULL,
+        instance ? ogs_strdup(instance->valuestring) : NULL,
+        cause ? ogs_strdup(cause->valuestring) : NULL,
         invalid_params ? invalid_paramsList : NULL
     );
 

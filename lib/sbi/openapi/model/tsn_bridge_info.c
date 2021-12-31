@@ -123,7 +123,7 @@ OpenAPI_tsn_bridge_info_t *OpenAPI_tsn_bridge_info_parseFromJSON(cJSON *tsn_brid
     tsn_bridge_info_local_var = OpenAPI_tsn_bridge_info_create (
         bridge_id ? true : false,
         bridge_id ? bridge_id->valuedouble : 0,
-        dstt_addr ? ogs_strdup_or_assert(dstt_addr->valuestring) : NULL,
+        dstt_addr ? ogs_strdup(dstt_addr->valuestring) : NULL,
         dstt_port_num ? true : false,
         dstt_port_num ? dstt_port_num->valuedouble : 0,
         dstt_resid_time ? true : false,

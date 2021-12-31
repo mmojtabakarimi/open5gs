@@ -279,7 +279,7 @@ OpenAPI_qos_monitoring_data_t *OpenAPI_qos_monitoring_data_parseFromJSON(cJSON *
     }
 
     qos_monitoring_data_local_var = OpenAPI_qos_monitoring_data_create (
-        ogs_strdup_or_assert(qm_id->valuestring),
+        ogs_strdup(qm_id->valuestring),
         req_qos_mon_paramsList,
         rep_freqsList,
         rep_thresh_dl ? true : false,
@@ -292,8 +292,8 @@ OpenAPI_qos_monitoring_data_t *OpenAPI_qos_monitoring_data_parseFromJSON(cJSON *
         wait_time ? wait_time->valuedouble : 0,
         rep_period ? true : false,
         rep_period ? rep_period->valuedouble : 0,
-        notify_uri ? ogs_strdup_or_assert(notify_uri->valuestring) : NULL,
-        notify_corre_id ? ogs_strdup_or_assert(notify_corre_id->valuestring) : NULL
+        notify_uri ? ogs_strdup(notify_uri->valuestring) : NULL,
+        notify_corre_id ? ogs_strdup(notify_corre_id->valuestring) : NULL
     );
 
     return qos_monitoring_data_local_var;

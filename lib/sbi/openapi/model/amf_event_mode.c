@@ -147,7 +147,7 @@ OpenAPI_amf_event_mode_t *OpenAPI_amf_event_mode_parseFromJSON(cJSON *amf_event_
         trigger_local_nonprim,
         max_reports ? true : false,
         max_reports ? max_reports->valuedouble : 0,
-        expiry ? ogs_strdup_or_assert(expiry->valuestring) : NULL,
+        expiry ? ogs_strdup(expiry->valuestring) : NULL,
         rep_period ? true : false,
         rep_period ? rep_period->valuedouble : 0,
         samp_ratio ? true : false,

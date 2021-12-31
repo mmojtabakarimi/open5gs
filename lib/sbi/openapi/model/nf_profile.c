@@ -1527,7 +1527,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [nsi_list]");
         goto end;
     }
-    OpenAPI_list_add(nsi_listList , ogs_strdup_or_assert(nsi_list_local->valuestring));
+    OpenAPI_list_add(nsi_listList , ogs_strdup(nsi_list_local->valuestring));
     }
     }
 
@@ -1565,7 +1565,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [ipv4_addresses]");
         goto end;
     }
-    OpenAPI_list_add(ipv4_addressesList , ogs_strdup_or_assert(ipv4_addresses_local->valuestring));
+    OpenAPI_list_add(ipv4_addressesList , ogs_strdup(ipv4_addresses_local->valuestring));
     }
     }
 
@@ -1585,7 +1585,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [ipv6_addresses]");
         goto end;
     }
-    OpenAPI_list_add(ipv6_addressesList , ogs_strdup_or_assert(ipv6_addresses_local->valuestring));
+    OpenAPI_list_add(ipv6_addressesList , ogs_strdup(ipv6_addresses_local->valuestring));
     }
     }
 
@@ -1673,7 +1673,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [allowed_nf_domains]");
         goto end;
     }
-    OpenAPI_list_add(allowed_nf_domainsList , ogs_strdup_or_assert(allowed_nf_domains_local->valuestring));
+    OpenAPI_list_add(allowed_nf_domainsList , ogs_strdup(allowed_nf_domains_local->valuestring));
     }
     }
 
@@ -2293,7 +2293,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [nf_set_id_list]");
         goto end;
     }
-    OpenAPI_list_add(nf_set_id_listList , ogs_strdup_or_assert(nf_set_id_list_local->valuestring));
+    OpenAPI_list_add(nf_set_id_listList , ogs_strdup(nf_set_id_list_local->valuestring));
     }
     }
 
@@ -2313,7 +2313,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [serving_scope]");
         goto end;
     }
-    OpenAPI_list_add(serving_scopeList , ogs_strdup_or_assert(serving_scope_local->valuestring));
+    OpenAPI_list_add(serving_scopeList , ogs_strdup(serving_scope_local->valuestring));
     }
     }
 
@@ -2385,7 +2385,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         ogs_error("OpenAPI_nf_profile_parseFromJSON() failed [scp_domains]");
         goto end;
     }
-    OpenAPI_list_add(scp_domainsList , ogs_strdup_or_assert(scp_domains_local->valuestring));
+    OpenAPI_list_add(scp_domainsList , ogs_strdup(scp_domains_local->valuestring));
     }
     }
 
@@ -2397,8 +2397,8 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
     }
 
     nf_profile_local_var = OpenAPI_nf_profile_create (
-        ogs_strdup_or_assert(nf_instance_id->valuestring),
-        nf_instance_name ? ogs_strdup_or_assert(nf_instance_name->valuestring) : NULL,
+        ogs_strdup(nf_instance_id->valuestring),
+        nf_instance_name ? ogs_strdup(nf_instance_name->valuestring) : NULL,
         nf_typeVariable,
         nf_statusVariable,
         heart_beat_timer ? true : false,
@@ -2408,8 +2408,8 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         s_nssais ? s_nssaisList : NULL,
         per_plmn_snssai_list ? per_plmn_snssai_listList : NULL,
         nsi_list ? nsi_listList : NULL,
-        fqdn ? ogs_strdup_or_assert(fqdn->valuestring) : NULL,
-        inter_plmn_fqdn ? ogs_strdup_or_assert(inter_plmn_fqdn->valuestring) : NULL,
+        fqdn ? ogs_strdup(fqdn->valuestring) : NULL,
+        inter_plmn_fqdn ? ogs_strdup(inter_plmn_fqdn->valuestring) : NULL,
         ipv4_addresses ? ipv4_addressesList : NULL,
         ipv6_addresses ? ipv6_addressesList : NULL,
         allowed_plmns ? allowed_plmnsList : NULL,
@@ -2423,8 +2423,8 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         capacity ? capacity->valuedouble : 0,
         load ? true : false,
         load ? load->valuedouble : 0,
-        load_time_stamp ? ogs_strdup_or_assert(load_time_stamp->valuestring) : NULL,
-        locality ? ogs_strdup_or_assert(locality->valuestring) : NULL,
+        load_time_stamp ? ogs_strdup(load_time_stamp->valuestring) : NULL,
+        locality ? ogs_strdup(locality->valuestring) : NULL,
         udr_info ? udr_info_local_nonprim : NULL,
         udr_info_list ? udr_info_listList : NULL,
         udm_info ? udm_info_local_nonprim : NULL,
@@ -2451,7 +2451,7 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_parseFromJSON(cJSON *nf_profileJSON)
         pcscf_info_list ? pcscf_info_listList : NULL,
         hss_info_list ? hss_info_listList : NULL,
         custom_info ? custom_info_local_object : NULL,
-        recovery_time ? ogs_strdup_or_assert(recovery_time->valuestring) : NULL,
+        recovery_time ? ogs_strdup(recovery_time->valuestring) : NULL,
         nf_service_persistence ? true : false,
         nf_service_persistence ? nf_service_persistence->valueint : 0,
         nf_services ? nf_servicesList : NULL,

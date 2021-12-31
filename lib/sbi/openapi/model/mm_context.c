@@ -539,7 +539,7 @@ OpenAPI_mm_context_t *OpenAPI_mm_context_parseFromJSON(cJSON *mm_contextJSON)
         ogs_error("OpenAPI_mm_context_parseFromJSON() failed [ns_instance_list]");
         goto end;
     }
-    OpenAPI_list_add(ns_instance_listList , ogs_strdup_or_assert(ns_instance_list_local->valuestring));
+    OpenAPI_list_add(ns_instance_listList , ogs_strdup(ns_instance_list_local->valuestring));
     }
     }
 
@@ -678,7 +678,7 @@ OpenAPI_mm_context_t *OpenAPI_mm_context_parseFromJSON(cJSON *mm_contextJSON)
         ue_differentiation_info ? ue_differentiation_info_local_nonprim : NULL,
         plmn_assi_ue_radio_cap_id ? plmn_assi_ue_radio_cap_id->valueint : 0,
         man_assi_ue_radio_cap_id ? man_assi_ue_radio_cap_id->valueint : 0,
-        ucmf_dic_entry_id ? ogs_strdup_or_assert(ucmf_dic_entry_id->valuestring) : NULL,
+        ucmf_dic_entry_id ? ogs_strdup(ucmf_dic_entry_id->valuestring) : NULL,
         n3_iwf_id ? n3_iwf_id_local_nonprim : NULL,
         wagf_id ? wagf_id_local_nonprim : NULL,
         tngf_id ? tngf_id_local_nonprim : NULL,

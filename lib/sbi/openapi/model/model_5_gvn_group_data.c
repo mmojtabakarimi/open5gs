@@ -216,7 +216,7 @@ OpenAPI_model_5_gvn_group_data_t *OpenAPI_model_5_gvn_group_data_parseFromJSON(c
     }
 
     model_5_gvn_group_data_local_var = OpenAPI_model_5_gvn_group_data_create (
-        ogs_strdup_or_assert(dnn->valuestring),
+        ogs_strdup(dnn->valuestring),
         s_nssai_local_nonprim,
         pdu_session_types ? pdu_session_typesList : NULL,
         app_descriptors ? app_descriptorsList : NULL,

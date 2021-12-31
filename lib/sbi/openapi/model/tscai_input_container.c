@@ -83,7 +83,7 @@ OpenAPI_tscai_input_container_t *OpenAPI_tscai_input_container_parseFromJSON(cJS
     tscai_input_container_local_var = OpenAPI_tscai_input_container_create (
         periodicity ? true : false,
         periodicity ? periodicity->valuedouble : 0,
-        burst_arrival_time ? ogs_strdup_or_assert(burst_arrival_time->valuestring) : NULL
+        burst_arrival_time ? ogs_strdup(burst_arrival_time->valuestring) : NULL
     );
 
     return tscai_input_container_local_var;

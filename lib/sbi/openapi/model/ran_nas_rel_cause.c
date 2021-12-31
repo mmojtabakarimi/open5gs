@@ -129,7 +129,7 @@ OpenAPI_ran_nas_rel_cause_t *OpenAPI_ran_nas_rel_cause_parseFromJSON(cJSON *ran_
         _5g_mm_cause ? _5g_mm_cause->valuedouble : 0,
         _5g_sm_cause ? true : false,
         _5g_sm_cause ? _5g_sm_cause->valuedouble : 0,
-        eps_cause ? ogs_strdup_or_assert(eps_cause->valuestring) : NULL
+        eps_cause ? ogs_strdup(eps_cause->valuestring) : NULL
     );
 
     return ran_nas_rel_cause_local_var;

@@ -84,7 +84,7 @@ OpenAPI_traffic_influ_data_notif_t *OpenAPI_traffic_influ_data_notif_parseFromJS
     }
 
     traffic_influ_data_notif_local_var = OpenAPI_traffic_influ_data_notif_create (
-        ogs_strdup_or_assert(res_uri->valuestring),
+        ogs_strdup(res_uri->valuestring),
         traffic_influ_data ? traffic_influ_data_local_nonprim : NULL
     );
 

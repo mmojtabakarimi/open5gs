@@ -500,7 +500,7 @@ OpenAPI_access_token_req_t *OpenAPI_access_token_req_parseFromJSON(cJSON *access
         ogs_error("OpenAPI_access_token_req_parseFromJSON() failed [target_nsi_list]");
         goto end;
     }
-    OpenAPI_list_add(target_nsi_listList , ogs_strdup_or_assert(target_nsi_list_local->valuestring));
+    OpenAPI_list_add(target_nsi_listList , ogs_strdup(target_nsi_list_local->valuestring));
     }
     }
 
@@ -524,21 +524,21 @@ OpenAPI_access_token_req_t *OpenAPI_access_token_req_parseFromJSON(cJSON *access
 
     access_token_req_local_var = OpenAPI_access_token_req_create (
         grant_typeVariable,
-        ogs_strdup_or_assert(nf_instance_id->valuestring),
+        ogs_strdup(nf_instance_id->valuestring),
         nf_type ? nf_typeVariable : 0,
         target_nf_type ? target_nf_typeVariable : 0,
-        ogs_strdup_or_assert(scope->valuestring),
-        target_nf_instance_id ? ogs_strdup_or_assert(target_nf_instance_id->valuestring) : NULL,
+        ogs_strdup(scope->valuestring),
+        target_nf_instance_id ? ogs_strdup(target_nf_instance_id->valuestring) : NULL,
         requester_plmn ? requester_plmn_local_nonprim : NULL,
         requester_plmn_list ? requester_plmn_listList : NULL,
         requester_snssai_list ? requester_snssai_listList : NULL,
-        requester_fqdn ? ogs_strdup_or_assert(requester_fqdn->valuestring) : NULL,
+        requester_fqdn ? ogs_strdup(requester_fqdn->valuestring) : NULL,
         requester_snpn_list ? requester_snpn_listList : NULL,
         target_plmn ? target_plmn_local_nonprim : NULL,
         target_snssai_list ? target_snssai_listList : NULL,
         target_nsi_list ? target_nsi_listList : NULL,
-        target_nf_set_id ? ogs_strdup_or_assert(target_nf_set_id->valuestring) : NULL,
-        target_nf_service_set_id ? ogs_strdup_or_assert(target_nf_service_set_id->valuestring) : NULL
+        target_nf_set_id ? ogs_strdup(target_nf_set_id->valuestring) : NULL,
+        target_nf_service_set_id ? ogs_strdup(target_nf_service_set_id->valuestring) : NULL
     );
 
     return access_token_req_local_var;

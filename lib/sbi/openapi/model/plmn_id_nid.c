@@ -99,9 +99,9 @@ OpenAPI_plmn_id_nid_t *OpenAPI_plmn_id_nid_parseFromJSON(cJSON *plmn_id_nidJSON)
     }
 
     plmn_id_nid_local_var = OpenAPI_plmn_id_nid_create (
-        ogs_strdup_or_assert(mcc->valuestring),
-        ogs_strdup_or_assert(mnc->valuestring),
-        nid ? ogs_strdup_or_assert(nid->valuestring) : NULL
+        ogs_strdup(mcc->valuestring),
+        ogs_strdup(mnc->valuestring),
+        nid ? ogs_strdup(nid->valuestring) : NULL
     );
 
     return plmn_id_nid_local_var;

@@ -291,7 +291,7 @@ OpenAPI_smf_info_t *OpenAPI_smf_info_parseFromJSON(cJSON *smf_infoJSON)
         s_nssai_smf_info_listList,
         tai_list ? tai_listList : NULL,
         tai_range_list ? tai_range_listList : NULL,
-        pgw_fqdn ? ogs_strdup_or_assert(pgw_fqdn->valuestring) : NULL,
+        pgw_fqdn ? ogs_strdup(pgw_fqdn->valuestring) : NULL,
         access_type ? access_typeList : NULL,
         priority ? true : false,
         priority ? priority->valuedouble : 0,

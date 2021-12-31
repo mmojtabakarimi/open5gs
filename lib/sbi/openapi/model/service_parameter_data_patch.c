@@ -80,8 +80,8 @@ OpenAPI_service_parameter_data_patch_t *OpenAPI_service_parameter_data_patch_par
     }
 
     service_parameter_data_patch_local_var = OpenAPI_service_parameter_data_patch_create (
-        param_over_pc5 ? ogs_strdup_or_assert(param_over_pc5->valuestring) : NULL,
-        param_over_uu ? ogs_strdup_or_assert(param_over_uu->valuestring) : NULL
+        param_over_pc5 ? ogs_strdup(param_over_pc5->valuestring) : NULL,
+        param_over_uu ? ogs_strdup(param_over_uu->valuestring) : NULL
     );
 
     return service_parameter_data_patch_local_var;

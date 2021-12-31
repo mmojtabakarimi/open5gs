@@ -84,7 +84,7 @@ OpenAPI_ue_context_cancel_relocate_data_t *OpenAPI_ue_context_cancel_relocate_da
     relocation_cancel_request_local_nonprim = OpenAPI_ref_to_binary_data_parseFromJSON(relocation_cancel_request);
 
     ue_context_cancel_relocate_data_local_var = OpenAPI_ue_context_cancel_relocate_data_create (
-        supi ? ogs_strdup_or_assert(supi->valuestring) : NULL,
+        supi ? ogs_strdup(supi->valuestring) : NULL,
         relocation_cancel_request_local_nonprim
     );
 

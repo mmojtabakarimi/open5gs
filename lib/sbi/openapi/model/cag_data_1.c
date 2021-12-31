@@ -120,7 +120,7 @@ OpenAPI_cag_data_1_t *OpenAPI_cag_data_1_parseFromJSON(cJSON *cag_data_1JSON)
 
     cag_data_1_local_var = OpenAPI_cag_data_1_create (
         cag_infosList,
-        provisioning_time ? ogs_strdup_or_assert(provisioning_time->valuestring) : NULL
+        provisioning_time ? ogs_strdup(provisioning_time->valuestring) : NULL
     );
 
     return cag_data_1_local_var;

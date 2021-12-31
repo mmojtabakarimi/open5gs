@@ -80,8 +80,8 @@ OpenAPI_deregistration_info_t *OpenAPI_deregistration_info_parseFromJSON(cJSON *
     }
 
     deregistration_info_local_var = OpenAPI_deregistration_info_create (
-        ogs_strdup_or_assert(supi->valuestring),
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL
+        ogs_strdup(supi->valuestring),
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL
     );
 
     return deregistration_info_local_var;

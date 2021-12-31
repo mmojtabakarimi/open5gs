@@ -99,9 +99,9 @@ OpenAPI_ip_address_1_t *OpenAPI_ip_address_1_parseFromJSON(cJSON *ip_address_1JS
     }
 
     ip_address_1_local_var = OpenAPI_ip_address_1_create (
-        ipv4_addr ? ogs_strdup_or_assert(ipv4_addr->valuestring) : NULL,
-        ipv6_addr ? ogs_strdup_or_assert(ipv6_addr->valuestring) : NULL,
-        ipv6_prefix ? ogs_strdup_or_assert(ipv6_prefix->valuestring) : NULL
+        ipv4_addr ? ogs_strdup(ipv4_addr->valuestring) : NULL,
+        ipv6_addr ? ogs_strdup(ipv6_addr->valuestring) : NULL,
+        ipv6_prefix ? ogs_strdup(ipv6_prefix->valuestring) : NULL
     );
 
     return ip_address_1_local_var;

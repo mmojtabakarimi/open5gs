@@ -255,7 +255,7 @@ OpenAPI_ue_context_relocate_data_t *OpenAPI_ue_context_relocate_data_parseFromJS
         pdu_session_list ? pdu_session_listList : NULL,
         ue_radio_capability ? ue_radio_capability_local_nonprim : NULL,
         ngap_cause ? ngap_cause_local_nonprim : NULL,
-        supported_features ? ogs_strdup_or_assert(supported_features->valuestring) : NULL
+        supported_features ? ogs_strdup(supported_features->valuestring) : NULL
     );
 
     return ue_context_relocate_data_local_var;

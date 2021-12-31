@@ -80,8 +80,8 @@ OpenAPI_invalid_param_1_t *OpenAPI_invalid_param_1_parseFromJSON(cJSON *invalid_
     }
 
     invalid_param_1_local_var = OpenAPI_invalid_param_1_create (
-        ogs_strdup_or_assert(param->valuestring),
-        reason ? ogs_strdup_or_assert(reason->valuestring) : NULL
+        ogs_strdup(param->valuestring),
+        reason ? ogs_strdup(reason->valuestring) : NULL
     );
 
     return invalid_param_1_local_var;

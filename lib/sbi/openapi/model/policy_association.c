@@ -303,7 +303,7 @@ OpenAPI_policy_association_t *OpenAPI_policy_association_parseFromJSON(cJSON *po
         smf_sel_info ? smf_sel_info_local_nonprim : NULL,
         ue_ambr ? ue_ambr_local_nonprim : NULL,
         pras ? prasList : NULL,
-        ogs_strdup_or_assert(supp_feat->valuestring)
+        ogs_strdup(supp_feat->valuestring)
     );
 
     return policy_association_local_var;

@@ -123,9 +123,9 @@ OpenAPI_emergency_info_1_t *OpenAPI_emergency_info_1_parseFromJSON(cJSON *emerge
     }
 
     emergency_info_1_local_var = OpenAPI_emergency_info_1_create (
-        pgw_fqdn ? ogs_strdup_or_assert(pgw_fqdn->valuestring) : NULL,
+        pgw_fqdn ? ogs_strdup(pgw_fqdn->valuestring) : NULL,
         pgw_ip_address ? pgw_ip_address_local_nonprim : NULL,
-        smf_instance_id ? ogs_strdup_or_assert(smf_instance_id->valuestring) : NULL,
+        smf_instance_id ? ogs_strdup(smf_instance_id->valuestring) : NULL,
         epdg_ind ? true : false,
         epdg_ind ? epdg_ind->valueint : 0
     );

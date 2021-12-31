@@ -249,9 +249,9 @@ OpenAPI_chf_info_t *OpenAPI_chf_info_parseFromJSON(cJSON *chf_infoJSON)
         supi_range_list ? supi_range_listList : NULL,
         gpsi_range_list ? gpsi_range_listList : NULL,
         plmn_range_list ? plmn_range_listList : NULL,
-        group_id ? ogs_strdup_or_assert(group_id->valuestring) : NULL,
-        primary_chf_instance ? ogs_strdup_or_assert(primary_chf_instance->valuestring) : NULL,
-        secondary_chf_instance ? ogs_strdup_or_assert(secondary_chf_instance->valuestring) : NULL
+        group_id ? ogs_strdup(group_id->valuestring) : NULL,
+        primary_chf_instance ? ogs_strdup(primary_chf_instance->valuestring) : NULL,
+        secondary_chf_instance ? ogs_strdup(secondary_chf_instance->valuestring) : NULL
     );
 
     return chf_info_local_var;

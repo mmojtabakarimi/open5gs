@@ -376,7 +376,7 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_parseFromJSON(cJSON *sm
         ogs_error("OpenAPI_sm_policy_dnn_data_parseFromJSON() failed [allowed_services]");
         goto end;
     }
-    OpenAPI_list_add(allowed_servicesList , ogs_strdup_or_assert(allowed_services_local->valuestring));
+    OpenAPI_list_add(allowed_servicesList , ogs_strdup(allowed_services_local->valuestring));
     }
     }
 
@@ -396,7 +396,7 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_parseFromJSON(cJSON *sm
         ogs_error("OpenAPI_sm_policy_dnn_data_parseFromJSON() failed [subsc_cats]");
         goto end;
     }
-    OpenAPI_list_add(subsc_catsList , ogs_strdup_or_assert(subsc_cats_local->valuestring));
+    OpenAPI_list_add(subsc_catsList , ogs_strdup(subsc_cats_local->valuestring));
     }
     }
 
@@ -603,11 +603,11 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_parseFromJSON(cJSON *sm
     }
 
     sm_policy_dnn_data_local_var = OpenAPI_sm_policy_dnn_data_create (
-        ogs_strdup_or_assert(dnn->valuestring),
+        ogs_strdup(dnn->valuestring),
         allowed_services ? allowed_servicesList : NULL,
         subsc_cats ? subsc_catsList : NULL,
-        gbr_ul ? ogs_strdup_or_assert(gbr_ul->valuestring) : NULL,
-        gbr_dl ? ogs_strdup_or_assert(gbr_dl->valuestring) : NULL,
+        gbr_ul ? ogs_strdup(gbr_ul->valuestring) : NULL,
+        gbr_dl ? ogs_strdup(gbr_dl->valuestring) : NULL,
         adc_support ? true : false,
         adc_support ? adc_support->valueint : 0,
         subsc_spending_limits ? true : false,

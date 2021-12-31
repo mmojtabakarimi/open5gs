@@ -234,11 +234,11 @@ OpenAPI_n1_message_notification_t *OpenAPI_n1_message_notification_parseFromJSON
     }
 
     n1_message_notification_local_var = OpenAPI_n1_message_notification_create (
-        n1_notify_subscription_id ? ogs_strdup_or_assert(n1_notify_subscription_id->valuestring) : NULL,
+        n1_notify_subscription_id ? ogs_strdup(n1_notify_subscription_id->valuestring) : NULL,
         n1_message_container_local_nonprim,
-        lcs_correlation_id ? ogs_strdup_or_assert(lcs_correlation_id->valuestring) : NULL,
+        lcs_correlation_id ? ogs_strdup(lcs_correlation_id->valuestring) : NULL,
         registration_ctxt_container ? registration_ctxt_container_local_nonprim : NULL,
-        new_lmf_identification ? ogs_strdup_or_assert(new_lmf_identification->valuestring) : NULL,
+        new_lmf_identification ? ogs_strdup(new_lmf_identification->valuestring) : NULL,
         guami ? guami_local_nonprim : NULL,
         c_io_t5_gs_optimisation ? true : false,
         c_io_t5_gs_optimisation ? c_io_t5_gs_optimisation->valueint : 0,

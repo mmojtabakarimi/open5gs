@@ -104,8 +104,8 @@ OpenAPI_ncgi_1_t *OpenAPI_ncgi_1_parseFromJSON(cJSON *ncgi_1JSON)
 
     ncgi_1_local_var = OpenAPI_ncgi_1_create (
         plmn_id_local_nonprim,
-        ogs_strdup_or_assert(nr_cell_id->valuestring),
-        nid ? ogs_strdup_or_assert(nid->valuestring) : NULL
+        ogs_strdup(nr_cell_id->valuestring),
+        nid ? ogs_strdup(nid->valuestring) : NULL
     );
 
     return ncgi_1_local_var;

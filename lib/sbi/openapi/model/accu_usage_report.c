@@ -221,7 +221,7 @@ OpenAPI_accu_usage_report_t *OpenAPI_accu_usage_report_parseFromJSON(cJSON *accu
     }
 
     accu_usage_report_local_var = OpenAPI_accu_usage_report_create (
-        ogs_strdup_or_assert(ref_um_ids->valuestring),
+        ogs_strdup(ref_um_ids->valuestring),
         vol_usage ? true : false,
         vol_usage ? vol_usage->valuedouble : 0,
         vol_usage_uplink ? true : false,

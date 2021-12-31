@@ -132,7 +132,7 @@ OpenAPI_resources_allocation_info_t *OpenAPI_resources_allocation_info_parseFrom
     resources_allocation_info_local_var = OpenAPI_resources_allocation_info_create (
         mc_resourc_status ? mc_resourc_statusVariable : 0,
         flows ? flowsList : NULL,
-        alt_ser_req ? ogs_strdup_or_assert(alt_ser_req->valuestring) : NULL
+        alt_ser_req ? ogs_strdup(alt_ser_req->valuestring) : NULL
     );
 
     return resources_allocation_info_local_var;

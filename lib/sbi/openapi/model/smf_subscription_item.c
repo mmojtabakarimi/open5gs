@@ -80,8 +80,8 @@ OpenAPI_smf_subscription_item_t *OpenAPI_smf_subscription_item_parseFromJSON(cJS
     }
 
     smf_subscription_item_local_var = OpenAPI_smf_subscription_item_create (
-        ogs_strdup_or_assert(smf_instance_id->valuestring),
-        ogs_strdup_or_assert(subscription_id->valuestring)
+        ogs_strdup(smf_instance_id->valuestring),
+        ogs_strdup(subscription_id->valuestring)
     );
 
     return smf_subscription_item_local_var;

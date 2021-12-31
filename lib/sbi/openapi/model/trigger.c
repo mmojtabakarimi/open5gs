@@ -219,7 +219,7 @@ OpenAPI_trigger_t *OpenAPI_trigger_parseFromJSON(cJSON *triggerJSON)
         event_limit ? event_limit->valuedouble : 0,
         max_number_ofccc ? true : false,
         max_number_ofccc ? max_number_ofccc->valuedouble : 0,
-        tariff_time_change ? ogs_strdup_or_assert(tariff_time_change->valuestring) : NULL
+        tariff_time_change ? ogs_strdup(tariff_time_change->valuestring) : NULL
     );
 
     return trigger_local_var;

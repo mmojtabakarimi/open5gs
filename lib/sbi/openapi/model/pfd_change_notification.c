@@ -150,7 +150,7 @@ OpenAPI_pfd_change_notification_t *OpenAPI_pfd_change_notification_parseFromJSON
     }
 
     pfd_change_notification_local_var = OpenAPI_pfd_change_notification_create (
-        ogs_strdup_or_assert(application_id->valuestring),
+        ogs_strdup(application_id->valuestring),
         removal_flag ? true : false,
         removal_flag ? removal_flag->valueint : 0,
         partial_flag ? true : false,

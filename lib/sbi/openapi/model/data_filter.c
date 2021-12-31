@@ -260,7 +260,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [dnns]");
         goto end;
     }
-    OpenAPI_list_add(dnnsList , ogs_strdup_or_assert(dnns_local->valuestring));
+    OpenAPI_list_add(dnnsList , ogs_strdup(dnns_local->valuestring));
     }
     }
 
@@ -303,7 +303,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [internal_group_ids]");
         goto end;
     }
-    OpenAPI_list_add(internal_group_idsList , ogs_strdup_or_assert(internal_group_ids_local->valuestring));
+    OpenAPI_list_add(internal_group_idsList , ogs_strdup(internal_group_ids_local->valuestring));
     }
     }
 
@@ -323,7 +323,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [supis]");
         goto end;
     }
-    OpenAPI_list_add(supisList , ogs_strdup_or_assert(supis_local->valuestring));
+    OpenAPI_list_add(supisList , ogs_strdup(supis_local->valuestring));
     }
     }
 
@@ -343,7 +343,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [app_ids]");
         goto end;
     }
-    OpenAPI_list_add(app_idsList , ogs_strdup_or_assert(app_ids_local->valuestring));
+    OpenAPI_list_add(app_idsList , ogs_strdup(app_ids_local->valuestring));
     }
     }
 
@@ -363,7 +363,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [ue_ipv4s]");
         goto end;
     }
-    OpenAPI_list_add(ue_ipv4sList , ogs_strdup_or_assert(ue_ipv4s_local->valuestring));
+    OpenAPI_list_add(ue_ipv4sList , ogs_strdup(ue_ipv4s_local->valuestring));
     }
     }
 
@@ -383,7 +383,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [ue_ipv6s]");
         goto end;
     }
-    OpenAPI_list_add(ue_ipv6sList , ogs_strdup_or_assert(ue_ipv6s_local->valuestring));
+    OpenAPI_list_add(ue_ipv6sList , ogs_strdup(ue_ipv6s_local->valuestring));
     }
     }
 
@@ -403,7 +403,7 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_parseFromJSON(cJSON *data_filterJSON)
         ogs_error("OpenAPI_data_filter_parseFromJSON() failed [ue_macs]");
         goto end;
     }
-    OpenAPI_list_add(ue_macsList , ogs_strdup_or_assert(ue_macs_local->valuestring));
+    OpenAPI_list_add(ue_macsList , ogs_strdup(ue_macs_local->valuestring));
     }
     }
 

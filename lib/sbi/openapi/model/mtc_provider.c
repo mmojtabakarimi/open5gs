@@ -80,8 +80,8 @@ OpenAPI_mtc_provider_t *OpenAPI_mtc_provider_parseFromJSON(cJSON *mtc_providerJS
     }
 
     mtc_provider_local_var = OpenAPI_mtc_provider_create (
-        mtc_provider_information ? ogs_strdup_or_assert(mtc_provider_information->valuestring) : NULL,
-        af_id ? ogs_strdup_or_assert(af_id->valuestring) : NULL
+        mtc_provider_information ? ogs_strdup(mtc_provider_information->valuestring) : NULL,
+        af_id ? ogs_strdup(af_id->valuestring) : NULL
     );
 
     return mtc_provider_local_var;
