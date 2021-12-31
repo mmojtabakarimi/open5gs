@@ -218,15 +218,20 @@ static int epoll_process(ogs_pollset_t *pollset, ogs_time_t timeout)
         short when = 0;
 
 		received = context->event_list[i].events;
-		if (received & (EPOLLERR|EPOLLHUP)) {
-            when = OGS_POLLIN|OGS_POLLOUT;
+		if (received & EPOLLERR) {
+            /* Ignore Error */
+        } else if ((received & EPOLLHUP) && !(received & EPOLLRDHUP)) {
+            /* Ignore EPOLLHUP without EPOLLRDHUP */
 		} else {
-            if (received & (EPOLLIN|EPOLLRDHUP)) {
+            if (received & EPOLLIN) {
                 when |= OGS_POLLIN;
             }
             if (received & EPOLLOUT) {
                 when |= OGS_POLLOUT;
             } 
+            if (received & EPOLLRDHUP) {
+                when |= OGS_POLLIN;
+            }
         }
 
         if (!when)
