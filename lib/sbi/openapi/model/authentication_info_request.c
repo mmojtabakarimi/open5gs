@@ -14,10 +14,9 @@ OpenAPI_authentication_info_request_t *OpenAPI_authentication_info_request_creat
     int n5gc_ind
 )
 {
-    OpenAPI_authentication_info_request_t *authentication_info_request_local_var = OpenAPI_malloc(sizeof(OpenAPI_authentication_info_request_t));
-    if (!authentication_info_request_local_var) {
-        return NULL;
-    }
+    OpenAPI_authentication_info_request_t *authentication_info_request_local_var = ogs_malloc(sizeof(OpenAPI_authentication_info_request_t));
+    ogs_assert(authentication_info_request_local_var);
+
     authentication_info_request_local_var->supported_features = supported_features;
     authentication_info_request_local_var->serving_network_name = serving_network_name;
     authentication_info_request_local_var->resynchronization_info = resynchronization_info;

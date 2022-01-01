@@ -128,10 +128,9 @@ OpenAPI_{{classname}}_t *OpenAPI_{{classname}}_create(
     {{/isContainer}}
 {{/vars}})
 {
-    OpenAPI_{{classname}}_t *{{classname}}_local_var = OpenAPI_malloc(sizeof(OpenAPI_{{classname}}_t));
-    if (!{{classname}}_local_var) {
-        return NULL;
-    }
+    OpenAPI_{{classname}}_t *{{classname}}_local_var = ogs_malloc(sizeof(OpenAPI_{{classname}}_t));
+    ogs_assert({{classname}}_local_var);
+
 {{#vars}}
     {{^isContainer}}
         {{#isPrimitiveType}}
@@ -593,7 +592,8 @@ OpenAPI_{{classname}}_t *OpenAPI_{{classname}}_parseFromJSON(cJSON *{{classname}
     }
             {{/isByteArray}}
             {{#isBinary}}
-    OpenAPI_binary_t* decoded_str_{{{name}}} = OpenAPI_malloc(sizeof(OpenAPI_binary_t));
+    OpenAPI_binary_t* decoded_str_{{{name}}} = ogs_malloc(sizeof(OpenAPI_binary_t));
+    ogs_assert(decoded_str_{{{name}}});
                 {{^required}}
     if ({{{name}}}) {
                 {{/required}}

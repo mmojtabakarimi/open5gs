@@ -17,10 +17,9 @@ OpenAPI_ue_policy_set_t *OpenAPI_ue_policy_set_create(
     char *supp_feat
 )
 {
-    OpenAPI_ue_policy_set_t *ue_policy_set_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_policy_set_t));
-    if (!ue_policy_set_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_policy_set_t *ue_policy_set_local_var = ogs_malloc(sizeof(OpenAPI_ue_policy_set_t));
+    ogs_assert(ue_policy_set_local_var);
+
     ue_policy_set_local_var->pra_infos = pra_infos;
     ue_policy_set_local_var->subsc_cats = subsc_cats;
     ue_policy_set_local_var->ue_policy_sections = ue_policy_sections;

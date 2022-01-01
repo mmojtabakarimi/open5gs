@@ -12,10 +12,9 @@ OpenAPI_error_report_t *OpenAPI_error_report_create(
     char *alt_qos_param_id
 )
 {
-    OpenAPI_error_report_t *error_report_local_var = OpenAPI_malloc(sizeof(OpenAPI_error_report_t));
-    if (!error_report_local_var) {
-        return NULL;
-    }
+    OpenAPI_error_report_t *error_report_local_var = ogs_malloc(sizeof(OpenAPI_error_report_t));
+    ogs_assert(error_report_local_var);
+
     error_report_local_var->error = error;
     error_report_local_var->rule_reports = rule_reports;
     error_report_local_var->sess_rule_reports = sess_rule_reports;

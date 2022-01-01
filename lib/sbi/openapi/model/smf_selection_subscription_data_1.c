@@ -10,10 +10,9 @@ OpenAPI_smf_selection_subscription_data_1_t *OpenAPI_smf_selection_subscription_
     char *shared_snssai_infos_id
 )
 {
-    OpenAPI_smf_selection_subscription_data_1_t *smf_selection_subscription_data_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_smf_selection_subscription_data_1_t));
-    if (!smf_selection_subscription_data_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_smf_selection_subscription_data_1_t *smf_selection_subscription_data_1_local_var = ogs_malloc(sizeof(OpenAPI_smf_selection_subscription_data_1_t));
+    ogs_assert(smf_selection_subscription_data_1_local_var);
+
     smf_selection_subscription_data_1_local_var->supported_features = supported_features;
     smf_selection_subscription_data_1_local_var->subscribed_snssai_infos = subscribed_snssai_infos;
     smf_selection_subscription_data_1_local_var->shared_snssai_infos_id = shared_snssai_infos_id;

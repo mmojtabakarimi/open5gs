@@ -9,10 +9,9 @@ OpenAPI_smsf_info_t *OpenAPI_smsf_info_create(
     OpenAPI_plmn_id_t *plmn_id
 )
 {
-    OpenAPI_smsf_info_t *smsf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_smsf_info_t));
-    if (!smsf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_smsf_info_t *smsf_info_local_var = ogs_malloc(sizeof(OpenAPI_smsf_info_t));
+    ogs_assert(smsf_info_local_var);
+
     smsf_info_local_var->smsf_instance_id = smsf_instance_id;
     smsf_info_local_var->plmn_id = plmn_id;
 

@@ -9,10 +9,9 @@ OpenAPI_sdm_subs_modification_t *OpenAPI_sdm_subs_modification_create(
     OpenAPI_list_t *monitored_resource_uris
 )
 {
-    OpenAPI_sdm_subs_modification_t *sdm_subs_modification_local_var = OpenAPI_malloc(sizeof(OpenAPI_sdm_subs_modification_t));
-    if (!sdm_subs_modification_local_var) {
-        return NULL;
-    }
+    OpenAPI_sdm_subs_modification_t *sdm_subs_modification_local_var = ogs_malloc(sizeof(OpenAPI_sdm_subs_modification_t));
+    ogs_assert(sdm_subs_modification_local_var);
+
     sdm_subs_modification_local_var->expires = expires;
     sdm_subs_modification_local_var->monitored_resource_uris = monitored_resource_uris;
 

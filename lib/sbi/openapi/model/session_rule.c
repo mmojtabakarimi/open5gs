@@ -13,10 +13,9 @@ OpenAPI_session_rule_t *OpenAPI_session_rule_create(
     char *ref_cond_data
 )
 {
-    OpenAPI_session_rule_t *session_rule_local_var = OpenAPI_malloc(sizeof(OpenAPI_session_rule_t));
-    if (!session_rule_local_var) {
-        return NULL;
-    }
+    OpenAPI_session_rule_t *session_rule_local_var = ogs_malloc(sizeof(OpenAPI_session_rule_t));
+    ogs_assert(session_rule_local_var);
+
     session_rule_local_var->auth_sess_ambr = auth_sess_ambr;
     session_rule_local_var->auth_def_qos = auth_def_qos;
     session_rule_local_var->sess_rule_id = sess_rule_id;

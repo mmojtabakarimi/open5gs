@@ -21,10 +21,9 @@ OpenAPI_authentication_subscription_t *OpenAPI_authentication_subscription_creat
     char *supi
 )
 {
-    OpenAPI_authentication_subscription_t *authentication_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_authentication_subscription_t));
-    if (!authentication_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_authentication_subscription_t *authentication_subscription_local_var = ogs_malloc(sizeof(OpenAPI_authentication_subscription_t));
+    ogs_assert(authentication_subscription_local_var);
+
     authentication_subscription_local_var->authentication_method = authentication_method;
     authentication_subscription_local_var->enc_permanent_key = enc_permanent_key;
     authentication_subscription_local_var->protection_parameter_id = protection_parameter_id;

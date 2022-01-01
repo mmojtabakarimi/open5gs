@@ -33,10 +33,9 @@ OpenAPI_registration_context_container_t *OpenAPI_registration_context_container
     OpenAPI_npn_access_info_t *npn_access_info
 )
 {
-    OpenAPI_registration_context_container_t *registration_context_container_local_var = OpenAPI_malloc(sizeof(OpenAPI_registration_context_container_t));
-    if (!registration_context_container_local_var) {
-        return NULL;
-    }
+    OpenAPI_registration_context_container_t *registration_context_container_local_var = ogs_malloc(sizeof(OpenAPI_registration_context_container_t));
+    ogs_assert(registration_context_container_local_var);
+
     registration_context_container_local_var->ue_context = ue_context;
     registration_context_container_local_var->local_time_zone = local_time_zone;
     registration_context_container_local_var->an_type = an_type;

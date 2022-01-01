@@ -9,10 +9,9 @@ OpenAPI_updated_item_t *OpenAPI_updated_item_create(
     char *value
 )
 {
-    OpenAPI_updated_item_t *updated_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_updated_item_t));
-    if (!updated_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_updated_item_t *updated_item_local_var = ogs_malloc(sizeof(OpenAPI_updated_item_t));
+    ogs_assert(updated_item_local_var);
+
     updated_item_local_var->item = item;
     updated_item_local_var->value = value;
 

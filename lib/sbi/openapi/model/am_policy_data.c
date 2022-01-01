@@ -9,10 +9,9 @@ OpenAPI_am_policy_data_t *OpenAPI_am_policy_data_create(
     OpenAPI_list_t *subsc_cats
 )
 {
-    OpenAPI_am_policy_data_t *am_policy_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_am_policy_data_t));
-    if (!am_policy_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_am_policy_data_t *am_policy_data_local_var = ogs_malloc(sizeof(OpenAPI_am_policy_data_t));
+    ogs_assert(am_policy_data_local_var);
+
     am_policy_data_local_var->pra_infos = pra_infos;
     am_policy_data_local_var->subsc_cats = subsc_cats;
 

@@ -10,10 +10,9 @@ OpenAPI_ue_context_in_smf_data_1_t *OpenAPI_ue_context_in_smf_data_1_create(
     OpenAPI_emergency_info_1_t *emergency_info
 )
 {
-    OpenAPI_ue_context_in_smf_data_1_t *ue_context_in_smf_data_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_context_in_smf_data_1_t));
-    if (!ue_context_in_smf_data_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_context_in_smf_data_1_t *ue_context_in_smf_data_1_local_var = ogs_malloc(sizeof(OpenAPI_ue_context_in_smf_data_1_t));
+    ogs_assert(ue_context_in_smf_data_1_local_var);
+
     ue_context_in_smf_data_1_local_var->pdu_sessions = pdu_sessions;
     ue_context_in_smf_data_1_local_var->pgw_info = pgw_info;
     ue_context_in_smf_data_1_local_var->emergency_info = emergency_info;

@@ -10,10 +10,9 @@ OpenAPI_ue_identity_info_t *OpenAPI_ue_identity_info_create(
     char *supi
 )
 {
-    OpenAPI_ue_identity_info_t *ue_identity_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_identity_info_t));
-    if (!ue_identity_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_identity_info_t *ue_identity_info_local_var = ogs_malloc(sizeof(OpenAPI_ue_identity_info_t));
+    ogs_assert(ue_identity_info_local_var);
+
     ue_identity_info_local_var->gpsi = gpsi;
     ue_identity_info_local_var->pei = pei;
     ue_identity_info_local_var->supi = supi;

@@ -20,10 +20,9 @@ OpenAPI_trigger_t *OpenAPI_trigger_create(
     char *tariff_time_change
 )
 {
-    OpenAPI_trigger_t *trigger_local_var = OpenAPI_malloc(sizeof(OpenAPI_trigger_t));
-    if (!trigger_local_var) {
-        return NULL;
-    }
+    OpenAPI_trigger_t *trigger_local_var = ogs_malloc(sizeof(OpenAPI_trigger_t));
+    ogs_assert(trigger_local_var);
+
     trigger_local_var->trigger_type = trigger_type;
     trigger_local_var->trigger_category = trigger_category;
     trigger_local_var->is_time_limit = is_time_limit;

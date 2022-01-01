@@ -10,10 +10,9 @@ OpenAPI_ausf_info_t *OpenAPI_ausf_info_create(
     OpenAPI_list_t *routing_indicators
 )
 {
-    OpenAPI_ausf_info_t *ausf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_ausf_info_t));
-    if (!ausf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_ausf_info_t *ausf_info_local_var = ogs_malloc(sizeof(OpenAPI_ausf_info_t));
+    ogs_assert(ausf_info_local_var);
+
     ausf_info_local_var->group_id = group_id;
     ausf_info_local_var->supi_ranges = supi_ranges;
     ausf_info_local_var->routing_indicators = routing_indicators;

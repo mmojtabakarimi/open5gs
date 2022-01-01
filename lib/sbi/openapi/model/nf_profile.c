@@ -83,10 +83,9 @@ OpenAPI_nf_profile_t *OpenAPI_nf_profile_create(
     OpenAPI_scp_info_t *scp_info
 )
 {
-    OpenAPI_nf_profile_t *nf_profile_local_var = OpenAPI_malloc(sizeof(OpenAPI_nf_profile_t));
-    if (!nf_profile_local_var) {
-        return NULL;
-    }
+    OpenAPI_nf_profile_t *nf_profile_local_var = ogs_malloc(sizeof(OpenAPI_nf_profile_t));
+    ogs_assert(nf_profile_local_var);
+
     nf_profile_local_var->nf_instance_id = nf_instance_id;
     nf_profile_local_var->nf_instance_name = nf_instance_name;
     nf_profile_local_var->nf_type = nf_type;

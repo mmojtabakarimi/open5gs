@@ -20,10 +20,9 @@ OpenAPI_extended_problem_details_t *OpenAPI_extended_problem_details_create(
     OpenAPI_acceptable_service_info_t *acceptable_serv_info
 )
 {
-    OpenAPI_extended_problem_details_t *extended_problem_details_local_var = OpenAPI_malloc(sizeof(OpenAPI_extended_problem_details_t));
-    if (!extended_problem_details_local_var) {
-        return NULL;
-    }
+    OpenAPI_extended_problem_details_t *extended_problem_details_local_var = ogs_malloc(sizeof(OpenAPI_extended_problem_details_t));
+    ogs_assert(extended_problem_details_local_var);
+
     extended_problem_details_local_var->type = type;
     extended_problem_details_local_var->title = title;
     extended_problem_details_local_var->is_status = is_status;

@@ -23,10 +23,9 @@ OpenAPI_sm_context_created_data_t *OpenAPI_sm_context_created_data_create(
     char *selected_old_smf_id
 )
 {
-    OpenAPI_sm_context_created_data_t *sm_context_created_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_created_data_t));
-    if (!sm_context_created_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_created_data_t *sm_context_created_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_created_data_t));
+    ogs_assert(sm_context_created_data_local_var);
+
     sm_context_created_data_local_var->h_smf_uri = h_smf_uri;
     sm_context_created_data_local_var->smf_uri = smf_uri;
     sm_context_created_data_local_var->is_pdu_session_id = is_pdu_session_id;

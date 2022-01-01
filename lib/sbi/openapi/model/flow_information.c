@@ -16,10 +16,9 @@ OpenAPI_flow_information_t *OpenAPI_flow_information_create(
     OpenAPI_flow_direction_e flow_direction
 )
 {
-    OpenAPI_flow_information_t *flow_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_flow_information_t));
-    if (!flow_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_flow_information_t *flow_information_local_var = ogs_malloc(sizeof(OpenAPI_flow_information_t));
+    ogs_assert(flow_information_local_var);
+
     flow_information_local_var->flow_description = flow_description;
     flow_information_local_var->eth_flow_description = eth_flow_description;
     flow_information_local_var->pack_filt_id = pack_filt_id;

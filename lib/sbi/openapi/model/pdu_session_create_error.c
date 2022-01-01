@@ -13,10 +13,9 @@ OpenAPI_pdu_session_create_error_t *OpenAPI_pdu_session_create_error_create(
     char *recovery_time
 )
 {
-    OpenAPI_pdu_session_create_error_t *pdu_session_create_error_local_var = OpenAPI_malloc(sizeof(OpenAPI_pdu_session_create_error_t));
-    if (!pdu_session_create_error_local_var) {
-        return NULL;
-    }
+    OpenAPI_pdu_session_create_error_t *pdu_session_create_error_local_var = ogs_malloc(sizeof(OpenAPI_pdu_session_create_error_t));
+    ogs_assert(pdu_session_create_error_local_var);
+
     pdu_session_create_error_local_var->error = error;
     pdu_session_create_error_local_var->n1sm_cause = n1sm_cause;
     pdu_session_create_error_local_var->n1_sm_info_to_ue = n1_sm_info_to_ue;

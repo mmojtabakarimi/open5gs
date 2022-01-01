@@ -9,10 +9,9 @@ OpenAPI_pc5_flow_bit_rates_t *OpenAPI_pc5_flow_bit_rates_create(
     char *max_fbr
 )
 {
-    OpenAPI_pc5_flow_bit_rates_t *pc5_flow_bit_rates_local_var = OpenAPI_malloc(sizeof(OpenAPI_pc5_flow_bit_rates_t));
-    if (!pc5_flow_bit_rates_local_var) {
-        return NULL;
-    }
+    OpenAPI_pc5_flow_bit_rates_t *pc5_flow_bit_rates_local_var = ogs_malloc(sizeof(OpenAPI_pc5_flow_bit_rates_t));
+    ogs_assert(pc5_flow_bit_rates_local_var);
+
     pc5_flow_bit_rates_local_var->gua_fbr = gua_fbr;
     pc5_flow_bit_rates_local_var->max_fbr = max_fbr;
 

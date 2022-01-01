@@ -10,10 +10,9 @@ OpenAPI_n2_interface_amf_info_t *OpenAPI_n2_interface_amf_info_create(
     char *amf_name
 )
 {
-    OpenAPI_n2_interface_amf_info_t *n2_interface_amf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_n2_interface_amf_info_t));
-    if (!n2_interface_amf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_n2_interface_amf_info_t *n2_interface_amf_info_local_var = ogs_malloc(sizeof(OpenAPI_n2_interface_amf_info_t));
+    ogs_assert(n2_interface_amf_info_local_var);
+
     n2_interface_amf_info_local_var->ipv4_endpoint_address = ipv4_endpoint_address;
     n2_interface_amf_info_local_var->ipv6_endpoint_address = ipv6_endpoint_address;
     n2_interface_amf_info_local_var->amf_name = amf_name;

@@ -12,10 +12,9 @@ OpenAPI_pp_maximum_latency_t *OpenAPI_pp_maximum_latency_create(
     char *mtc_provider_information
 )
 {
-    OpenAPI_pp_maximum_latency_t *pp_maximum_latency_local_var = OpenAPI_malloc(sizeof(OpenAPI_pp_maximum_latency_t));
-    if (!pp_maximum_latency_local_var) {
-        return NULL;
-    }
+    OpenAPI_pp_maximum_latency_t *pp_maximum_latency_local_var = ogs_malloc(sizeof(OpenAPI_pp_maximum_latency_t));
+    ogs_assert(pp_maximum_latency_local_var);
+
     pp_maximum_latency_local_var->maximum_latency = maximum_latency;
     pp_maximum_latency_local_var->af_instance_id = af_instance_id;
     pp_maximum_latency_local_var->reference_id = reference_id;

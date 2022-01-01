@@ -8,10 +8,9 @@ OpenAPI_service_name_cond_t *OpenAPI_service_name_cond_create(
     char *service_name
 )
 {
-    OpenAPI_service_name_cond_t *service_name_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_service_name_cond_t));
-    if (!service_name_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_service_name_cond_t *service_name_cond_local_var = ogs_malloc(sizeof(OpenAPI_service_name_cond_t));
+    ogs_assert(service_name_cond_local_var);
+
     service_name_cond_local_var->service_name = service_name;
 
     return service_name_cond_local_var;

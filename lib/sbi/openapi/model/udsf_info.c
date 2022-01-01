@@ -10,10 +10,9 @@ OpenAPI_udsf_info_t *OpenAPI_udsf_info_create(
     OpenAPI_list_t* storage_id_ranges
 )
 {
-    OpenAPI_udsf_info_t *udsf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_udsf_info_t));
-    if (!udsf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_udsf_info_t *udsf_info_local_var = ogs_malloc(sizeof(OpenAPI_udsf_info_t));
+    ogs_assert(udsf_info_local_var);
+
     udsf_info_local_var->group_id = group_id;
     udsf_info_local_var->supi_ranges = supi_ranges;
     udsf_info_local_var->storage_id_ranges = storage_id_ranges;

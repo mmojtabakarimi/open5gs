@@ -14,10 +14,9 @@ OpenAPI_trace_data_t *OpenAPI_trace_data_create(
     char *interface_list
 )
 {
-    OpenAPI_trace_data_t *trace_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_trace_data_t));
-    if (!trace_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_trace_data_t *trace_data_local_var = ogs_malloc(sizeof(OpenAPI_trace_data_t));
+    ogs_assert(trace_data_local_var);
+
     trace_data_local_var->trace_ref = trace_ref;
     trace_data_local_var->trace_depth = trace_depth;
     trace_data_local_var->ne_type_list = ne_type_list;

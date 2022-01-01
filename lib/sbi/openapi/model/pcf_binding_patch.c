@@ -18,10 +18,9 @@ OpenAPI_pcf_binding_patch_t *OpenAPI_pcf_binding_patch_create(
     char *pcf_diam_realm
 )
 {
-    OpenAPI_pcf_binding_patch_t *pcf_binding_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcf_binding_patch_t));
-    if (!pcf_binding_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcf_binding_patch_t *pcf_binding_patch_local_var = ogs_malloc(sizeof(OpenAPI_pcf_binding_patch_t));
+    ogs_assert(pcf_binding_patch_local_var);
+
     pcf_binding_patch_local_var->ipv4_addr = ipv4_addr;
     pcf_binding_patch_local_var->ip_domain = ip_domain;
     pcf_binding_patch_local_var->ipv6_prefix = ipv6_prefix;

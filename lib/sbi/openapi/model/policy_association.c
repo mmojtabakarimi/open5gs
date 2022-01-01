@@ -17,10 +17,9 @@ OpenAPI_policy_association_t *OpenAPI_policy_association_create(
     char *supp_feat
 )
 {
-    OpenAPI_policy_association_t *policy_association_local_var = OpenAPI_malloc(sizeof(OpenAPI_policy_association_t));
-    if (!policy_association_local_var) {
-        return NULL;
-    }
+    OpenAPI_policy_association_t *policy_association_local_var = ogs_malloc(sizeof(OpenAPI_policy_association_t));
+    ogs_assert(policy_association_local_var);
+
     policy_association_local_var->request = request;
     policy_association_local_var->triggers = triggers;
     policy_association_local_var->serv_area_res = serv_area_res;

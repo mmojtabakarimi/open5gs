@@ -9,10 +9,9 @@ OpenAPI_plmn_operator_class_t *OpenAPI_plmn_operator_class_create(
     OpenAPI_list_t *lcs_client_ids
 )
 {
-    OpenAPI_plmn_operator_class_t *plmn_operator_class_local_var = OpenAPI_malloc(sizeof(OpenAPI_plmn_operator_class_t));
-    if (!plmn_operator_class_local_var) {
-        return NULL;
-    }
+    OpenAPI_plmn_operator_class_t *plmn_operator_class_local_var = ogs_malloc(sizeof(OpenAPI_plmn_operator_class_t));
+    ogs_assert(plmn_operator_class_local_var);
+
     plmn_operator_class_local_var->lcs_client_class = lcs_client_class;
     plmn_operator_class_local_var->lcs_client_ids = lcs_client_ids;
 

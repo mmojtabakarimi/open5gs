@@ -23,10 +23,9 @@ OpenAPI_subscription_data_t *OpenAPI_subscription_data_create(
     OpenAPI_list_t *serving_scope
 )
 {
-    OpenAPI_subscription_data_t *subscription_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_subscription_data_t));
-    if (!subscription_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_subscription_data_t *subscription_data_local_var = ogs_malloc(sizeof(OpenAPI_subscription_data_t));
+    ogs_assert(subscription_data_local_var);
+
     subscription_data_local_var->nf_status_notification_uri = nf_status_notification_uri;
     subscription_data_local_var->req_nf_instance_id = req_nf_instance_id;
     subscription_data_local_var->subscr_cond = subscr_cond;

@@ -29,10 +29,9 @@ OpenAPI_traffic_influ_data_patch_t *OpenAPI_traffic_influ_data_patch_create(
     int addr_preser_ind
 )
 {
-    OpenAPI_traffic_influ_data_patch_t *traffic_influ_data_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_traffic_influ_data_patch_t));
-    if (!traffic_influ_data_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_traffic_influ_data_patch_t *traffic_influ_data_patch_local_var = ogs_malloc(sizeof(OpenAPI_traffic_influ_data_patch_t));
+    ogs_assert(traffic_influ_data_patch_local_var);
+
     traffic_influ_data_patch_local_var->up_path_chg_notif_corre_id = up_path_chg_notif_corre_id;
     traffic_influ_data_patch_local_var->is_app_relo_ind = is_app_relo_ind;
     traffic_influ_data_patch_local_var->app_relo_ind = app_relo_ind;

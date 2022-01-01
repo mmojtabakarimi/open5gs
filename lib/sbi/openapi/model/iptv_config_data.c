@@ -15,10 +15,9 @@ OpenAPI_iptv_config_data_t *OpenAPI_iptv_config_data_create(
     char *res_uri
 )
 {
-    OpenAPI_iptv_config_data_t *iptv_config_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_iptv_config_data_t));
-    if (!iptv_config_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_iptv_config_data_t *iptv_config_data_local_var = ogs_malloc(sizeof(OpenAPI_iptv_config_data_t));
+    ogs_assert(iptv_config_data_local_var);
+
     iptv_config_data_local_var->supi = supi;
     iptv_config_data_local_var->inter_group_id = inter_group_id;
     iptv_config_data_local_var->dnn = dnn;

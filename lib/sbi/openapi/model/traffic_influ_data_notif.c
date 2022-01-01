@@ -9,10 +9,9 @@ OpenAPI_traffic_influ_data_notif_t *OpenAPI_traffic_influ_data_notif_create(
     OpenAPI_traffic_influ_data_t *traffic_influ_data
 )
 {
-    OpenAPI_traffic_influ_data_notif_t *traffic_influ_data_notif_local_var = OpenAPI_malloc(sizeof(OpenAPI_traffic_influ_data_notif_t));
-    if (!traffic_influ_data_notif_local_var) {
-        return NULL;
-    }
+    OpenAPI_traffic_influ_data_notif_t *traffic_influ_data_notif_local_var = ogs_malloc(sizeof(OpenAPI_traffic_influ_data_notif_t));
+    ogs_assert(traffic_influ_data_notif_local_var);
+
     traffic_influ_data_notif_local_var->res_uri = res_uri;
     traffic_influ_data_notif_local_var->traffic_influ_data = traffic_influ_data;
 

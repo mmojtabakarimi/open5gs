@@ -10,10 +10,9 @@ OpenAPI_tngf_info_t *OpenAPI_tngf_info_create(
     char *endpoint_fqdn
 )
 {
-    OpenAPI_tngf_info_t *tngf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_tngf_info_t));
-    if (!tngf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_tngf_info_t *tngf_info_local_var = ogs_malloc(sizeof(OpenAPI_tngf_info_t));
+    ogs_assert(tngf_info_local_var);
+
     tngf_info_local_var->ipv4_endpoint_addresses = ipv4_endpoint_addresses;
     tngf_info_local_var->ipv6_endpoint_addresses = ipv6_endpoint_addresses;
     tngf_info_local_var->endpoint_fqdn = endpoint_fqdn;

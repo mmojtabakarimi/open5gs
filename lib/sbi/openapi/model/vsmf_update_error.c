@@ -21,10 +21,9 @@ OpenAPI_vsmf_update_error_t *OpenAPI_vsmf_update_error_create(
     OpenAPI_n4_information_t *n4_info_ext2
 )
 {
-    OpenAPI_vsmf_update_error_t *vsmf_update_error_local_var = OpenAPI_malloc(sizeof(OpenAPI_vsmf_update_error_t));
-    if (!vsmf_update_error_local_var) {
-        return NULL;
-    }
+    OpenAPI_vsmf_update_error_t *vsmf_update_error_local_var = ogs_malloc(sizeof(OpenAPI_vsmf_update_error_t));
+    ogs_assert(vsmf_update_error_local_var);
+
     vsmf_update_error_local_var->error = error;
     vsmf_update_error_local_var->is_pti = is_pti;
     vsmf_update_error_local_var->pti = pti;

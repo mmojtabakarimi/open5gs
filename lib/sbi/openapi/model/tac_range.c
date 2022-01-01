@@ -10,10 +10,9 @@ OpenAPI_tac_range_t *OpenAPI_tac_range_create(
     char *pattern
 )
 {
-    OpenAPI_tac_range_t *tac_range_local_var = OpenAPI_malloc(sizeof(OpenAPI_tac_range_t));
-    if (!tac_range_local_var) {
-        return NULL;
-    }
+    OpenAPI_tac_range_t *tac_range_local_var = ogs_malloc(sizeof(OpenAPI_tac_range_t));
+    ogs_assert(tac_range_local_var);
+
     tac_range_local_var->start = start;
     tac_range_local_var->end = end;
     tac_range_local_var->pattern = pattern;

@@ -60,10 +60,9 @@ OpenAPI_sm_policy_update_context_data_t *OpenAPI_sm_policy_update_context_data_c
     OpenAPI_list_t *types_of_notif
 )
 {
-    OpenAPI_sm_policy_update_context_data_t *sm_policy_update_context_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_update_context_data_t));
-    if (!sm_policy_update_context_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_update_context_data_t *sm_policy_update_context_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_update_context_data_t));
+    ogs_assert(sm_policy_update_context_data_local_var);
+
     sm_policy_update_context_data_local_var->rep_policy_ctrl_req_triggers = rep_policy_ctrl_req_triggers;
     sm_policy_update_context_data_local_var->acc_net_ch_ids = acc_net_ch_ids;
     sm_policy_update_context_data_local_var->access_type = access_type;

@@ -10,10 +10,9 @@ OpenAPI_twif_info_t *OpenAPI_twif_info_create(
     char *endpoint_fqdn
 )
 {
-    OpenAPI_twif_info_t *twif_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_twif_info_t));
-    if (!twif_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_twif_info_t *twif_info_local_var = ogs_malloc(sizeof(OpenAPI_twif_info_t));
+    ogs_assert(twif_info_local_var);
+
     twif_info_local_var->ipv4_endpoint_addresses = ipv4_endpoint_addresses;
     twif_info_local_var->ipv6_endpoint_addresses = ipv6_endpoint_addresses;
     twif_info_local_var->endpoint_fqdn = endpoint_fqdn;

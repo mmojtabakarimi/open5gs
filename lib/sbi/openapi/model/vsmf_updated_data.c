@@ -24,10 +24,9 @@ OpenAPI_vsmf_updated_data_t *OpenAPI_vsmf_updated_data_create(
     OpenAPI_n4_information_t *n4_info_ext2
 )
 {
-    OpenAPI_vsmf_updated_data_t *vsmf_updated_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_vsmf_updated_data_t));
-    if (!vsmf_updated_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_vsmf_updated_data_t *vsmf_updated_data_local_var = ogs_malloc(sizeof(OpenAPI_vsmf_updated_data_t));
+    ogs_assert(vsmf_updated_data_local_var);
+
     vsmf_updated_data_local_var->qos_flows_add_mod_list = qos_flows_add_mod_list;
     vsmf_updated_data_local_var->qos_flows_rel_list = qos_flows_rel_list;
     vsmf_updated_data_local_var->qos_flows_failedto_add_mod_list = qos_flows_failedto_add_mod_list;

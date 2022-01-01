@@ -9,10 +9,9 @@ OpenAPI_acc_net_charging_address_t *OpenAPI_acc_net_charging_address_create(
     char *an_charg_ipv6_addr
 )
 {
-    OpenAPI_acc_net_charging_address_t *acc_net_charging_address_local_var = OpenAPI_malloc(sizeof(OpenAPI_acc_net_charging_address_t));
-    if (!acc_net_charging_address_local_var) {
-        return NULL;
-    }
+    OpenAPI_acc_net_charging_address_t *acc_net_charging_address_local_var = ogs_malloc(sizeof(OpenAPI_acc_net_charging_address_t));
+    ogs_assert(acc_net_charging_address_local_var);
+
     acc_net_charging_address_local_var->an_charg_ipv4_addr = an_charg_ipv4_addr;
     acc_net_charging_address_local_var->an_charg_ipv6_addr = an_charg_ipv6_addr;
 

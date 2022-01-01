@@ -9,10 +9,9 @@ OpenAPI_pc5_qo_s_para_t *OpenAPI_pc5_qo_s_para_create(
     char *pc5_link_ambr
 )
 {
-    OpenAPI_pc5_qo_s_para_t *pc5_qo_s_para_local_var = OpenAPI_malloc(sizeof(OpenAPI_pc5_qo_s_para_t));
-    if (!pc5_qo_s_para_local_var) {
-        return NULL;
-    }
+    OpenAPI_pc5_qo_s_para_t *pc5_qo_s_para_local_var = ogs_malloc(sizeof(OpenAPI_pc5_qo_s_para_t));
+    ogs_assert(pc5_qo_s_para_local_var);
+
     pc5_qo_s_para_local_var->pc5_qos_flow_list = pc5_qos_flow_list;
     pc5_qo_s_para_local_var->pc5_link_ambr = pc5_link_ambr;
 

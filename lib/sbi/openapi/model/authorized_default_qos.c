@@ -22,10 +22,9 @@ OpenAPI_authorized_default_qos_t *OpenAPI_authorized_default_qos_create(
     int ext_max_data_burst_vol
 )
 {
-    OpenAPI_authorized_default_qos_t *authorized_default_qos_local_var = OpenAPI_malloc(sizeof(OpenAPI_authorized_default_qos_t));
-    if (!authorized_default_qos_local_var) {
-        return NULL;
-    }
+    OpenAPI_authorized_default_qos_t *authorized_default_qos_local_var = ogs_malloc(sizeof(OpenAPI_authorized_default_qos_t));
+    ogs_assert(authorized_default_qos_local_var);
+
     authorized_default_qos_local_var->is__5qi = is__5qi;
     authorized_default_qos_local_var->_5qi = _5qi;
     authorized_default_qos_local_var->arp = arp;

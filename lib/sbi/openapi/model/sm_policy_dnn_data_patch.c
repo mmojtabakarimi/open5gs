@@ -9,10 +9,9 @@ OpenAPI_sm_policy_dnn_data_patch_t *OpenAPI_sm_policy_dnn_data_patch_create(
     OpenAPI_list_t* bdt_ref_ids
 )
 {
-    OpenAPI_sm_policy_dnn_data_patch_t *sm_policy_dnn_data_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_dnn_data_patch_t));
-    if (!sm_policy_dnn_data_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_dnn_data_patch_t *sm_policy_dnn_data_patch_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_dnn_data_patch_t));
+    ogs_assert(sm_policy_dnn_data_patch_local_var);
+
     sm_policy_dnn_data_patch_local_var->dnn = dnn;
     sm_policy_dnn_data_patch_local_var->bdt_ref_ids = bdt_ref_ids;
 

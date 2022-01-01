@@ -18,10 +18,9 @@ OpenAPI_expected_ue_behaviour_data_t *OpenAPI_expected_ue_behaviour_data_create(
     char *validity_time
 )
 {
-    OpenAPI_expected_ue_behaviour_data_t *expected_ue_behaviour_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_expected_ue_behaviour_data_t));
-    if (!expected_ue_behaviour_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_expected_ue_behaviour_data_t *expected_ue_behaviour_data_local_var = ogs_malloc(sizeof(OpenAPI_expected_ue_behaviour_data_t));
+    ogs_assert(expected_ue_behaviour_data_local_var);
+
     expected_ue_behaviour_data_local_var->stationary_indication = stationary_indication;
     expected_ue_behaviour_data_local_var->is_communication_duration_time = is_communication_duration_time;
     expected_ue_behaviour_data_local_var->communication_duration_time = communication_duration_time;

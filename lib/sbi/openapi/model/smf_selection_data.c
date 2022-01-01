@@ -13,10 +13,9 @@ OpenAPI_smf_selection_data_t *OpenAPI_smf_selection_data_create(
     char *dnn
 )
 {
-    OpenAPI_smf_selection_data_t *smf_selection_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_smf_selection_data_t));
-    if (!smf_selection_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_smf_selection_data_t *smf_selection_data_local_var = ogs_malloc(sizeof(OpenAPI_smf_selection_data_t));
+    ogs_assert(smf_selection_data_local_var);
+
     smf_selection_data_local_var->is_unsupp_dnn = is_unsupp_dnn;
     smf_selection_data_local_var->unsupp_dnn = unsupp_dnn;
     smf_selection_data_local_var->candidates = candidates;

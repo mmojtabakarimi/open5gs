@@ -52,10 +52,9 @@ OpenAPI_pdu_session_created_data_t *OpenAPI_pdu_session_created_data_create(
     OpenAPI_redundant_pdu_session_information_t *redundant_pdu_session_info
 )
 {
-    OpenAPI_pdu_session_created_data_t *pdu_session_created_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pdu_session_created_data_t));
-    if (!pdu_session_created_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pdu_session_created_data_t *pdu_session_created_data_local_var = ogs_malloc(sizeof(OpenAPI_pdu_session_created_data_t));
+    ogs_assert(pdu_session_created_data_local_var);
+
     pdu_session_created_data_local_var->pdu_session_type = pdu_session_type;
     pdu_session_created_data_local_var->ssc_mode = ssc_mode;
     pdu_session_created_data_local_var->hcn_tunnel_info = hcn_tunnel_info;

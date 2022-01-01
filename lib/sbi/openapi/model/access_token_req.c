@@ -46,10 +46,9 @@ OpenAPI_access_token_req_t *OpenAPI_access_token_req_create(
     char *target_nf_service_set_id
 )
 {
-    OpenAPI_access_token_req_t *access_token_req_local_var = OpenAPI_malloc(sizeof(OpenAPI_access_token_req_t));
-    if (!access_token_req_local_var) {
-        return NULL;
-    }
+    OpenAPI_access_token_req_t *access_token_req_local_var = ogs_malloc(sizeof(OpenAPI_access_token_req_t));
+    ogs_assert(access_token_req_local_var);
+
     access_token_req_local_var->grant_type = grant_type;
     access_token_req_local_var->nf_instance_id = nf_instance_id;
     access_token_req_local_var->nf_type = nf_type;

@@ -15,10 +15,9 @@ OpenAPI_nr_location_t *OpenAPI_nr_location_create(
     OpenAPI_global_ran_node_id_t *global_gnb_id
 )
 {
-    OpenAPI_nr_location_t *nr_location_local_var = OpenAPI_malloc(sizeof(OpenAPI_nr_location_t));
-    if (!nr_location_local_var) {
-        return NULL;
-    }
+    OpenAPI_nr_location_t *nr_location_local_var = ogs_malloc(sizeof(OpenAPI_nr_location_t));
+    ogs_assert(nr_location_local_var);
+
     nr_location_local_var->tai = tai;
     nr_location_local_var->ncgi = ncgi;
     nr_location_local_var->is_age_of_location_information = is_age_of_location_information;

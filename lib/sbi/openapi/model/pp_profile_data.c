@@ -9,10 +9,9 @@ OpenAPI_pp_profile_data_t *OpenAPI_pp_profile_data_create(
     char *supported_features
 )
 {
-    OpenAPI_pp_profile_data_t *pp_profile_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pp_profile_data_t));
-    if (!pp_profile_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pp_profile_data_t *pp_profile_data_local_var = ogs_malloc(sizeof(OpenAPI_pp_profile_data_t));
+    ogs_assert(pp_profile_data_local_var);
+
     pp_profile_data_local_var->allowed_mtc_providers = allowed_mtc_providers;
     pp_profile_data_local_var->supported_features = supported_features;
 

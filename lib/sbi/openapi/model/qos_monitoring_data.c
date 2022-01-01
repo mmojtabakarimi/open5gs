@@ -22,10 +22,9 @@ OpenAPI_qos_monitoring_data_t *OpenAPI_qos_monitoring_data_create(
     char *notify_corre_id
 )
 {
-    OpenAPI_qos_monitoring_data_t *qos_monitoring_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_qos_monitoring_data_t));
-    if (!qos_monitoring_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_qos_monitoring_data_t *qos_monitoring_data_local_var = ogs_malloc(sizeof(OpenAPI_qos_monitoring_data_t));
+    ogs_assert(qos_monitoring_data_local_var);
+
     qos_monitoring_data_local_var->qm_id = qm_id;
     qos_monitoring_data_local_var->req_qos_mon_params = req_qos_mon_params;
     qos_monitoring_data_local_var->rep_freqs = rep_freqs;

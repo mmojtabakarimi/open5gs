@@ -15,10 +15,9 @@ OpenAPI_shared_data_t *OpenAPI_shared_data_create(
     OpenAPI_list_t* shared_vn_group_datas
 )
 {
-    OpenAPI_shared_data_t *shared_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_shared_data_t));
-    if (!shared_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_shared_data_t *shared_data_local_var = ogs_malloc(sizeof(OpenAPI_shared_data_t));
+    ogs_assert(shared_data_local_var);
+
     shared_data_local_var->shared_data_id = shared_data_id;
     shared_data_local_var->shared_am_data = shared_am_data;
     shared_data_local_var->shared_sms_subs_data = shared_sms_subs_data;

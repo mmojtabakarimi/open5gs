@@ -10,10 +10,9 @@ OpenAPI_internal_group_id_range_t *OpenAPI_internal_group_id_range_create(
     char *pattern
 )
 {
-    OpenAPI_internal_group_id_range_t *internal_group_id_range_local_var = OpenAPI_malloc(sizeof(OpenAPI_internal_group_id_range_t));
-    if (!internal_group_id_range_local_var) {
-        return NULL;
-    }
+    OpenAPI_internal_group_id_range_t *internal_group_id_range_local_var = ogs_malloc(sizeof(OpenAPI_internal_group_id_range_t));
+    ogs_assert(internal_group_id_range_local_var);
+
     internal_group_id_range_local_var->start = start;
     internal_group_id_range_local_var->end = end;
     internal_group_id_range_local_var->pattern = pattern;

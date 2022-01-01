@@ -15,10 +15,9 @@ OpenAPI_presence_info_t *OpenAPI_presence_info_create(
     OpenAPI_list_t *globale_nb_id_list
 )
 {
-    OpenAPI_presence_info_t *presence_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_presence_info_t));
-    if (!presence_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_presence_info_t *presence_info_local_var = ogs_malloc(sizeof(OpenAPI_presence_info_t));
+    ogs_assert(presence_info_local_var);
+
     presence_info_local_var->pra_id = pra_id;
     presence_info_local_var->additional_pra_id = additional_pra_id;
     presence_info_local_var->presence_state = presence_state;

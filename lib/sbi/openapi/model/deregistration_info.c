@@ -9,10 +9,9 @@ OpenAPI_deregistration_info_t *OpenAPI_deregistration_info_create(
     char *supported_features
 )
 {
-    OpenAPI_deregistration_info_t *deregistration_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_deregistration_info_t));
-    if (!deregistration_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_deregistration_info_t *deregistration_info_local_var = ogs_malloc(sizeof(OpenAPI_deregistration_info_t));
+    ogs_assert(deregistration_info_local_var);
+
     deregistration_info_local_var->supi = supi;
     deregistration_info_local_var->supported_features = supported_features;
 

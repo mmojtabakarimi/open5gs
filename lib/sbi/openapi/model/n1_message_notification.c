@@ -17,10 +17,9 @@ OpenAPI_n1_message_notification_t *OpenAPI_n1_message_notification_create(
     OpenAPI_ncgi_t *ncgi
 )
 {
-    OpenAPI_n1_message_notification_t *n1_message_notification_local_var = OpenAPI_malloc(sizeof(OpenAPI_n1_message_notification_t));
-    if (!n1_message_notification_local_var) {
-        return NULL;
-    }
+    OpenAPI_n1_message_notification_t *n1_message_notification_local_var = ogs_malloc(sizeof(OpenAPI_n1_message_notification_t));
+    ogs_assert(n1_message_notification_local_var);
+
     n1_message_notification_local_var->n1_notify_subscription_id = n1_notify_subscription_id;
     n1_message_notification_local_var->n1_message_container = n1_message_container;
     n1_message_notification_local_var->lcs_correlation_id = lcs_correlation_id;

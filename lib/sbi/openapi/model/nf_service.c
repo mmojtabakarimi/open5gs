@@ -40,10 +40,9 @@ OpenAPI_nf_service_t *OpenAPI_nf_service_create(
     int oauth2_required
 )
 {
-    OpenAPI_nf_service_t *nf_service_local_var = OpenAPI_malloc(sizeof(OpenAPI_nf_service_t));
-    if (!nf_service_local_var) {
-        return NULL;
-    }
+    OpenAPI_nf_service_t *nf_service_local_var = ogs_malloc(sizeof(OpenAPI_nf_service_t));
+    ogs_assert(nf_service_local_var);
+
     nf_service_local_var->service_instance_id = service_instance_id;
     nf_service_local_var->service_name = service_name;
     nf_service_local_var->versions = versions;

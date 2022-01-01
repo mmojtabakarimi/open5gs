@@ -11,10 +11,9 @@ OpenAPI_wireline_area_t *OpenAPI_wireline_area_create(
     char *area_code_c
 )
 {
-    OpenAPI_wireline_area_t *wireline_area_local_var = OpenAPI_malloc(sizeof(OpenAPI_wireline_area_t));
-    if (!wireline_area_local_var) {
-        return NULL;
-    }
+    OpenAPI_wireline_area_t *wireline_area_local_var = ogs_malloc(sizeof(OpenAPI_wireline_area_t));
+    ogs_assert(wireline_area_local_var);
+
     wireline_area_local_var->global_line_ids = global_line_ids;
     wireline_area_local_var->hfc_n_ids = hfc_n_ids;
     wireline_area_local_var->area_code_b = area_code_b;

@@ -16,10 +16,9 @@ OpenAPI_policy_update_t *OpenAPI_policy_update_create(
     OpenAPI_list_t* pras
 )
 {
-    OpenAPI_policy_update_t *policy_update_local_var = OpenAPI_malloc(sizeof(OpenAPI_policy_update_t));
-    if (!policy_update_local_var) {
-        return NULL;
-    }
+    OpenAPI_policy_update_t *policy_update_local_var = ogs_malloc(sizeof(OpenAPI_policy_update_t));
+    ogs_assert(policy_update_local_var);
+
     policy_update_local_var->resource_uri = resource_uri;
     policy_update_local_var->triggers = triggers;
     policy_update_local_var->serv_area_res = serv_area_res;

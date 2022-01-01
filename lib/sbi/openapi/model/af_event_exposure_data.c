@@ -10,10 +10,9 @@ OpenAPI_af_event_exposure_data_t *OpenAPI_af_event_exposure_data_create(
     OpenAPI_list_t *app_ids
 )
 {
-    OpenAPI_af_event_exposure_data_t *af_event_exposure_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_af_event_exposure_data_t));
-    if (!af_event_exposure_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_af_event_exposure_data_t *af_event_exposure_data_local_var = ogs_malloc(sizeof(OpenAPI_af_event_exposure_data_t));
+    ogs_assert(af_event_exposure_data_local_var);
+
     af_event_exposure_data_local_var->af_events = af_events;
     af_event_exposure_data_local_var->af_ids = af_ids;
     af_event_exposure_data_local_var->app_ids = app_ids;

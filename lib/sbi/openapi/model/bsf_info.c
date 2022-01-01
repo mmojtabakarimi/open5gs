@@ -11,10 +11,9 @@ OpenAPI_bsf_info_t *OpenAPI_bsf_info_create(
     OpenAPI_list_t *ipv6_prefix_ranges
 )
 {
-    OpenAPI_bsf_info_t *bsf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_bsf_info_t));
-    if (!bsf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_bsf_info_t *bsf_info_local_var = ogs_malloc(sizeof(OpenAPI_bsf_info_t));
+    ogs_assert(bsf_info_local_var);
+
     bsf_info_local_var->dnn_list = dnn_list;
     bsf_info_local_var->ip_domain_list = ip_domain_list;
     bsf_info_local_var->ipv4_address_ranges = ipv4_address_ranges;

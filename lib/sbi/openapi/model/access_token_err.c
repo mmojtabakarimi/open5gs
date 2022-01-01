@@ -33,10 +33,9 @@ OpenAPI_access_token_err_t *OpenAPI_access_token_err_create(
     char *error_uri
 )
 {
-    OpenAPI_access_token_err_t *access_token_err_local_var = OpenAPI_malloc(sizeof(OpenAPI_access_token_err_t));
-    if (!access_token_err_local_var) {
-        return NULL;
-    }
+    OpenAPI_access_token_err_t *access_token_err_local_var = ogs_malloc(sizeof(OpenAPI_access_token_err_t));
+    ogs_assert(access_token_err_local_var);
+
     access_token_err_local_var->error = error;
     access_token_err_local_var->error_description = error_description;
     access_token_err_local_var->error_uri = error_uri;

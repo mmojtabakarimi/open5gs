@@ -19,10 +19,9 @@ OpenAPI_authorized_network_slice_info_t *OpenAPI_authorized_network_slice_info_c
     char *target_amf_service_set
 )
 {
-    OpenAPI_authorized_network_slice_info_t *authorized_network_slice_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_authorized_network_slice_info_t));
-    if (!authorized_network_slice_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_authorized_network_slice_info_t *authorized_network_slice_info_local_var = ogs_malloc(sizeof(OpenAPI_authorized_network_slice_info_t));
+    ogs_assert(authorized_network_slice_info_local_var);
+
     authorized_network_slice_info_local_var->allowed_nssai_list = allowed_nssai_list;
     authorized_network_slice_info_local_var->configured_nssai = configured_nssai;
     authorized_network_slice_info_local_var->target_amf_set = target_amf_set;

@@ -9,10 +9,9 @@ OpenAPI_ambr_rm_t *OpenAPI_ambr_rm_create(
     char *downlink
 )
 {
-    OpenAPI_ambr_rm_t *ambr_rm_local_var = OpenAPI_malloc(sizeof(OpenAPI_ambr_rm_t));
-    if (!ambr_rm_local_var) {
-        return NULL;
-    }
+    OpenAPI_ambr_rm_t *ambr_rm_local_var = ogs_malloc(sizeof(OpenAPI_ambr_rm_t));
+    ogs_assert(ambr_rm_local_var);
+
     ambr_rm_local_var->uplink = uplink;
     ambr_rm_local_var->downlink = downlink;
 

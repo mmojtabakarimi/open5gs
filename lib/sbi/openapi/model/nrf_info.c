@@ -35,10 +35,9 @@ OpenAPI_nrf_info_t *OpenAPI_nrf_info_create(
     OpenAPI_list_t* served_scp_info_list
 )
 {
-    OpenAPI_nrf_info_t *nrf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_nrf_info_t));
-    if (!nrf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_nrf_info_t *nrf_info_local_var = ogs_malloc(sizeof(OpenAPI_nrf_info_t));
+    ogs_assert(nrf_info_local_var);
+
     nrf_info_local_var->served_udr_info = served_udr_info;
     nrf_info_local_var->served_udr_info_list = served_udr_info_list;
     nrf_info_local_var->served_udm_info = served_udm_info;

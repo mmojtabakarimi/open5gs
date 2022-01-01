@@ -12,10 +12,9 @@ OpenAPI_pgw_info_t *OpenAPI_pgw_info_create(
     int epdg_ind
 )
 {
-    OpenAPI_pgw_info_t *pgw_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_pgw_info_t));
-    if (!pgw_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_pgw_info_t *pgw_info_local_var = ogs_malloc(sizeof(OpenAPI_pgw_info_t));
+    ogs_assert(pgw_info_local_var);
+
     pgw_info_local_var->dnn = dnn;
     pgw_info_local_var->pgw_fqdn = pgw_fqdn;
     pgw_info_local_var->plmn_id = plmn_id;

@@ -66,10 +66,9 @@ OpenAPI_access_and_mobility_subscription_data_1_t *OpenAPI_access_and_mobility_s
     OpenAPI_wireline_service_area_restriction_1_t *wireline_service_area_restriction
 )
 {
-    OpenAPI_access_and_mobility_subscription_data_1_t *access_and_mobility_subscription_data_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_access_and_mobility_subscription_data_1_t));
-    if (!access_and_mobility_subscription_data_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_access_and_mobility_subscription_data_1_t *access_and_mobility_subscription_data_1_local_var = ogs_malloc(sizeof(OpenAPI_access_and_mobility_subscription_data_1_t));
+    ogs_assert(access_and_mobility_subscription_data_1_local_var);
+
     access_and_mobility_subscription_data_1_local_var->supported_features = supported_features;
     access_and_mobility_subscription_data_1_local_var->gpsis = gpsis;
     access_and_mobility_subscription_data_1_local_var->internal_group_ids = internal_group_ids;

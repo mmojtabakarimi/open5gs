@@ -21,10 +21,9 @@ OpenAPI_ext_problem_details_t *OpenAPI_ext_problem_details_create(
     int remote_error
 )
 {
-    OpenAPI_ext_problem_details_t *ext_problem_details_local_var = OpenAPI_malloc(sizeof(OpenAPI_ext_problem_details_t));
-    if (!ext_problem_details_local_var) {
-        return NULL;
-    }
+    OpenAPI_ext_problem_details_t *ext_problem_details_local_var = ogs_malloc(sizeof(OpenAPI_ext_problem_details_t));
+    ogs_assert(ext_problem_details_local_var);
+
     ext_problem_details_local_var->type = type;
     ext_problem_details_local_var->title = title;
     ext_problem_details_local_var->is_status = is_status;

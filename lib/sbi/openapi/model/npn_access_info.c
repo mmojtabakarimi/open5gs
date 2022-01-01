@@ -8,10 +8,9 @@ OpenAPI_npn_access_info_t *OpenAPI_npn_access_info_create(
     OpenAPI_list_t *cell_cag_info
 )
 {
-    OpenAPI_npn_access_info_t *npn_access_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_npn_access_info_t));
-    if (!npn_access_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_npn_access_info_t *npn_access_info_local_var = ogs_malloc(sizeof(OpenAPI_npn_access_info_t));
+    ogs_assert(npn_access_info_local_var);
+
     npn_access_info_local_var->cell_cag_info = cell_cag_info;
 
     return npn_access_info_local_var;

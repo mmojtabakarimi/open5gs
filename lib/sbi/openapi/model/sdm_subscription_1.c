@@ -23,10 +23,9 @@ OpenAPI_sdm_subscription_1_t *OpenAPI_sdm_subscription_1_create(
     OpenAPI_context_info_t *context_info
 )
 {
-    OpenAPI_sdm_subscription_1_t *sdm_subscription_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_sdm_subscription_1_t));
-    if (!sdm_subscription_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_sdm_subscription_1_t *sdm_subscription_1_local_var = ogs_malloc(sizeof(OpenAPI_sdm_subscription_1_t));
+    ogs_assert(sdm_subscription_1_local_var);
+
     sdm_subscription_1_local_var->nf_instance_id = nf_instance_id;
     sdm_subscription_1_local_var->is_implicit_unsubscribe = is_implicit_unsubscribe;
     sdm_subscription_1_local_var->implicit_unsubscribe = implicit_unsubscribe;

@@ -8,10 +8,9 @@ OpenAPI_sponsor_connectivity_data_t *OpenAPI_sponsor_connectivity_data_create(
     OpenAPI_list_t *asp_ids
 )
 {
-    OpenAPI_sponsor_connectivity_data_t *sponsor_connectivity_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sponsor_connectivity_data_t));
-    if (!sponsor_connectivity_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sponsor_connectivity_data_t *sponsor_connectivity_data_local_var = ogs_malloc(sizeof(OpenAPI_sponsor_connectivity_data_t));
+    ogs_assert(sponsor_connectivity_data_local_var);
+
     sponsor_connectivity_data_local_var->asp_ids = asp_ids;
 
     return sponsor_connectivity_data_local_var;

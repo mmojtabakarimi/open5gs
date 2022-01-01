@@ -29,10 +29,9 @@ OpenAPI_amf_non3_gpp_access_registration_t *OpenAPI_amf_non3_gpp_access_registra
     char *supi
 )
 {
-    OpenAPI_amf_non3_gpp_access_registration_t *amf_non3_gpp_access_registration_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_non3_gpp_access_registration_t));
-    if (!amf_non3_gpp_access_registration_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_non3_gpp_access_registration_t *amf_non3_gpp_access_registration_local_var = ogs_malloc(sizeof(OpenAPI_amf_non3_gpp_access_registration_t));
+    ogs_assert(amf_non3_gpp_access_registration_local_var);
+
     amf_non3_gpp_access_registration_local_var->amf_instance_id = amf_instance_id;
     amf_non3_gpp_access_registration_local_var->supported_features = supported_features;
     amf_non3_gpp_access_registration_local_var->is_purge_flag = is_purge_flag;

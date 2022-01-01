@@ -9,10 +9,9 @@ OpenAPI_smsc_data_t *OpenAPI_smsc_data_create(
     OpenAPI_network_node_diameter_address_1_t *smsc_diameter_address
 )
 {
-    OpenAPI_smsc_data_t *smsc_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_smsc_data_t));
-    if (!smsc_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_smsc_data_t *smsc_data_local_var = ogs_malloc(sizeof(OpenAPI_smsc_data_t));
+    ogs_assert(smsc_data_local_var);
+
     smsc_data_local_var->smsc_map_address = smsc_map_address;
     smsc_data_local_var->smsc_diameter_address = smsc_diameter_address;
 

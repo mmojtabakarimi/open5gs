@@ -8,10 +8,9 @@ OpenAPI_nf_service_set_cond_t *OpenAPI_nf_service_set_cond_create(
     char *nf_service_set_id
 )
 {
-    OpenAPI_nf_service_set_cond_t *nf_service_set_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_nf_service_set_cond_t));
-    if (!nf_service_set_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_nf_service_set_cond_t *nf_service_set_cond_local_var = ogs_malloc(sizeof(OpenAPI_nf_service_set_cond_t));
+    ogs_assert(nf_service_set_cond_local_var);
+
     nf_service_set_cond_local_var->nf_service_set_id = nf_service_set_id;
 
     return nf_service_set_cond_local_var;

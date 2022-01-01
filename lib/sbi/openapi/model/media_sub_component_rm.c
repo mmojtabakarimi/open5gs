@@ -16,10 +16,9 @@ OpenAPI_media_sub_component_rm_t *OpenAPI_media_sub_component_rm_create(
     OpenAPI_flow_usage_e flow_usage
 )
 {
-    OpenAPI_media_sub_component_rm_t *media_sub_component_rm_local_var = OpenAPI_malloc(sizeof(OpenAPI_media_sub_component_rm_t));
-    if (!media_sub_component_rm_local_var) {
-        return NULL;
-    }
+    OpenAPI_media_sub_component_rm_t *media_sub_component_rm_local_var = ogs_malloc(sizeof(OpenAPI_media_sub_component_rm_t));
+    ogs_assert(media_sub_component_rm_local_var);
+
     media_sub_component_rm_local_var->af_sig_protocol = af_sig_protocol;
     media_sub_component_rm_local_var->ethf_descs = ethf_descs;
     media_sub_component_rm_local_var->f_num = f_num;

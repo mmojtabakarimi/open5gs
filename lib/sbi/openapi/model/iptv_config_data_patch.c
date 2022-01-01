@@ -8,10 +8,9 @@ OpenAPI_iptv_config_data_patch_t *OpenAPI_iptv_config_data_patch_create(
     OpenAPI_list_t* multi_acc_ctrls
 )
 {
-    OpenAPI_iptv_config_data_patch_t *iptv_config_data_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_iptv_config_data_patch_t));
-    if (!iptv_config_data_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_iptv_config_data_patch_t *iptv_config_data_patch_local_var = ogs_malloc(sizeof(OpenAPI_iptv_config_data_patch_t));
+    ogs_assert(iptv_config_data_patch_local_var);
+
     iptv_config_data_patch_local_var->multi_acc_ctrls = multi_acc_ctrls;
 
     return iptv_config_data_patch_local_var;

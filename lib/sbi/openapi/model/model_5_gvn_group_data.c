@@ -14,10 +14,9 @@ OpenAPI_model_5_gvn_group_data_t *OpenAPI_model_5_gvn_group_data_create(
     OpenAPI_ip_address_1_t *dn_aaa_address
 )
 {
-    OpenAPI_model_5_gvn_group_data_t *model_5_gvn_group_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_model_5_gvn_group_data_t));
-    if (!model_5_gvn_group_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_model_5_gvn_group_data_t *model_5_gvn_group_data_local_var = ogs_malloc(sizeof(OpenAPI_model_5_gvn_group_data_t));
+    ogs_assert(model_5_gvn_group_data_local_var);
+
     model_5_gvn_group_data_local_var->dnn = dnn;
     model_5_gvn_group_data_local_var->s_nssai = s_nssai;
     model_5_gvn_group_data_local_var->pdu_session_types = pdu_session_types;

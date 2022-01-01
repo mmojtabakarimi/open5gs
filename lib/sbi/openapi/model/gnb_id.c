@@ -9,10 +9,9 @@ OpenAPI_gnb_id_t *OpenAPI_gnb_id_create(
     char *g_nb_value
 )
 {
-    OpenAPI_gnb_id_t *gnb_id_local_var = OpenAPI_malloc(sizeof(OpenAPI_gnb_id_t));
-    if (!gnb_id_local_var) {
-        return NULL;
-    }
+    OpenAPI_gnb_id_t *gnb_id_local_var = ogs_malloc(sizeof(OpenAPI_gnb_id_t));
+    ogs_assert(gnb_id_local_var);
+
     gnb_id_local_var->bit_length = bit_length;
     gnb_id_local_var->g_nb_value = g_nb_value;
 

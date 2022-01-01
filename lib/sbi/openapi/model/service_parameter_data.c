@@ -21,10 +21,9 @@ OpenAPI_service_parameter_data_t *OpenAPI_service_parameter_data_create(
     char *res_uri
 )
 {
-    OpenAPI_service_parameter_data_t *service_parameter_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_service_parameter_data_t));
-    if (!service_parameter_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_service_parameter_data_t *service_parameter_data_local_var = ogs_malloc(sizeof(OpenAPI_service_parameter_data_t));
+    ogs_assert(service_parameter_data_local_var);
+
     service_parameter_data_local_var->app_id = app_id;
     service_parameter_data_local_var->dnn = dnn;
     service_parameter_data_local_var->snssai = snssai;

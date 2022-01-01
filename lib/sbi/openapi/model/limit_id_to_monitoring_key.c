@@ -9,10 +9,9 @@ OpenAPI_limit_id_to_monitoring_key_t *OpenAPI_limit_id_to_monitoring_key_create(
     OpenAPI_list_t *monkey
 )
 {
-    OpenAPI_limit_id_to_monitoring_key_t *limit_id_to_monitoring_key_local_var = OpenAPI_malloc(sizeof(OpenAPI_limit_id_to_monitoring_key_t));
-    if (!limit_id_to_monitoring_key_local_var) {
-        return NULL;
-    }
+    OpenAPI_limit_id_to_monitoring_key_t *limit_id_to_monitoring_key_local_var = ogs_malloc(sizeof(OpenAPI_limit_id_to_monitoring_key_t));
+    ogs_assert(limit_id_to_monitoring_key_local_var);
+
     limit_id_to_monitoring_key_local_var->limit_id = limit_id;
     limit_id_to_monitoring_key_local_var->monkey = monkey;
 

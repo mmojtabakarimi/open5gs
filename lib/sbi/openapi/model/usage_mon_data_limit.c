@@ -14,10 +14,9 @@ OpenAPI_usage_mon_data_limit_t *OpenAPI_usage_mon_data_limit_create(
     char *reset_period
 )
 {
-    OpenAPI_usage_mon_data_limit_t *usage_mon_data_limit_local_var = OpenAPI_malloc(sizeof(OpenAPI_usage_mon_data_limit_t));
-    if (!usage_mon_data_limit_local_var) {
-        return NULL;
-    }
+    OpenAPI_usage_mon_data_limit_t *usage_mon_data_limit_local_var = ogs_malloc(sizeof(OpenAPI_usage_mon_data_limit_t));
+    ogs_assert(usage_mon_data_limit_local_var);
+
     usage_mon_data_limit_local_var->limit_id = limit_id;
     usage_mon_data_limit_local_var->scopes = scopes;
     usage_mon_data_limit_local_var->um_level = um_level;

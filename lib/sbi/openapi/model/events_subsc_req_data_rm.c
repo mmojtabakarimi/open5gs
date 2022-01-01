@@ -14,10 +14,9 @@ OpenAPI_events_subsc_req_data_rm_t *OpenAPI_events_subsc_req_data_rm_create(
     char *notif_corre_id
 )
 {
-    OpenAPI_events_subsc_req_data_rm_t *events_subsc_req_data_rm_local_var = OpenAPI_malloc(sizeof(OpenAPI_events_subsc_req_data_rm_t));
-    if (!events_subsc_req_data_rm_local_var) {
-        return NULL;
-    }
+    OpenAPI_events_subsc_req_data_rm_t *events_subsc_req_data_rm_local_var = ogs_malloc(sizeof(OpenAPI_events_subsc_req_data_rm_t));
+    ogs_assert(events_subsc_req_data_rm_local_var);
+
     events_subsc_req_data_rm_local_var->events = events;
     events_subsc_req_data_rm_local_var->notif_uri = notif_uri;
     events_subsc_req_data_rm_local_var->req_qos_mon_params = req_qos_mon_params;

@@ -9,10 +9,9 @@ OpenAPI_ue_policy_section_t *OpenAPI_ue_policy_section_create(
     char *upsi
 )
 {
-    OpenAPI_ue_policy_section_t *ue_policy_section_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_policy_section_t));
-    if (!ue_policy_section_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_policy_section_t *ue_policy_section_local_var = ogs_malloc(sizeof(OpenAPI_ue_policy_section_t));
+    ogs_assert(ue_policy_section_local_var);
+
     ue_policy_section_local_var->ue_policy_section_info = ue_policy_section_info;
     ue_policy_section_local_var->upsi = upsi;
 

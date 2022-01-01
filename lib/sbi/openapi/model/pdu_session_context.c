@@ -32,10 +32,9 @@ OpenAPI_pdu_session_context_t *OpenAPI_pdu_session_context_create(
     OpenAPI_cn_assisted_ran_para_t *cn_assisted_ran_para
 )
 {
-    OpenAPI_pdu_session_context_t *pdu_session_context_local_var = OpenAPI_malloc(sizeof(OpenAPI_pdu_session_context_t));
-    if (!pdu_session_context_local_var) {
-        return NULL;
-    }
+    OpenAPI_pdu_session_context_t *pdu_session_context_local_var = ogs_malloc(sizeof(OpenAPI_pdu_session_context_t));
+    ogs_assert(pdu_session_context_local_var);
+
     pdu_session_context_local_var->pdu_session_id = pdu_session_id;
     pdu_session_context_local_var->sm_context_ref = sm_context_ref;
     pdu_session_context_local_var->s_nssai = s_nssai;

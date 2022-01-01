@@ -11,10 +11,9 @@ OpenAPI_patch_item_t *OpenAPI_patch_item_create(
     OpenAPI_any_type_t *value
 )
 {
-    OpenAPI_patch_item_t *patch_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_patch_item_t));
-    if (!patch_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_patch_item_t *patch_item_local_var = ogs_malloc(sizeof(OpenAPI_patch_item_t));
+    ogs_assert(patch_item_local_var);
+
     patch_item_local_var->op = op;
     patch_item_local_var->path = path;
     patch_item_local_var->from = from;

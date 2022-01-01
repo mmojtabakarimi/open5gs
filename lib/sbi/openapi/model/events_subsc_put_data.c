@@ -37,10 +37,9 @@ OpenAPI_events_subsc_put_data_t *OpenAPI_events_subsc_put_data_create(
     OpenAPI_list_t *tsn_port_man_cont_nwtts
 )
 {
-    OpenAPI_events_subsc_put_data_t *events_subsc_put_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_events_subsc_put_data_t));
-    if (!events_subsc_put_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_events_subsc_put_data_t *events_subsc_put_data_local_var = ogs_malloc(sizeof(OpenAPI_events_subsc_put_data_t));
+    ogs_assert(events_subsc_put_data_local_var);
+
     events_subsc_put_data_local_var->events = events;
     events_subsc_put_data_local_var->notif_uri = notif_uri;
     events_subsc_put_data_local_var->req_qos_mon_params = req_qos_mon_params;

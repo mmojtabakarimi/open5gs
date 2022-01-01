@@ -13,10 +13,9 @@ OpenAPI_eap_session_t *OpenAPI_eap_session_create(
     char *supported_features
 )
 {
-    OpenAPI_eap_session_t *eap_session_local_var = OpenAPI_malloc(sizeof(OpenAPI_eap_session_t));
-    if (!eap_session_local_var) {
-        return NULL;
-    }
+    OpenAPI_eap_session_t *eap_session_local_var = ogs_malloc(sizeof(OpenAPI_eap_session_t));
+    ogs_assert(eap_session_local_var);
+
     eap_session_local_var->eap_payload = eap_payload;
     eap_session_local_var->k_seaf = k_seaf;
     eap_session_local_var->_links = _links;

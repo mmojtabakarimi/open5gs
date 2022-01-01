@@ -9,10 +9,9 @@ OpenAPI_notification_item_t *OpenAPI_notification_item_create(
     OpenAPI_list_t *notif_items
 )
 {
-    OpenAPI_notification_item_t *notification_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_notification_item_t));
-    if (!notification_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_notification_item_t *notification_item_local_var = ogs_malloc(sizeof(OpenAPI_notification_item_t));
+    ogs_assert(notification_item_local_var);
+
     notification_item_local_var->resource_id = resource_id;
     notification_item_local_var->notif_items = notif_items;
 

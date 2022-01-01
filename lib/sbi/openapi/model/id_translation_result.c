@@ -10,10 +10,9 @@ OpenAPI_id_translation_result_t *OpenAPI_id_translation_result_create(
     char *gpsi
 )
 {
-    OpenAPI_id_translation_result_t *id_translation_result_local_var = OpenAPI_malloc(sizeof(OpenAPI_id_translation_result_t));
-    if (!id_translation_result_local_var) {
-        return NULL;
-    }
+    OpenAPI_id_translation_result_t *id_translation_result_local_var = ogs_malloc(sizeof(OpenAPI_id_translation_result_t));
+    ogs_assert(id_translation_result_local_var);
+
     id_translation_result_local_var->supported_features = supported_features;
     id_translation_result_local_var->supi = supi;
     id_translation_result_local_var->gpsi = gpsi;

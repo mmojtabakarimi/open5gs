@@ -10,10 +10,9 @@ OpenAPI_tai_1_t *OpenAPI_tai_1_create(
     char *nid
 )
 {
-    OpenAPI_tai_1_t *tai_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_tai_1_t));
-    if (!tai_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_tai_1_t *tai_1_local_var = ogs_malloc(sizeof(OpenAPI_tai_1_t));
+    ogs_assert(tai_1_local_var);
+
     tai_1_local_var->plmn_id = plmn_id;
     tai_1_local_var->tac = tac;
     tai_1_local_var->nid = nid;

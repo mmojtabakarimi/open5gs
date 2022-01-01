@@ -25,10 +25,9 @@ OpenAPI_charging_data_t *OpenAPI_charging_data_create(
     char *af_charg_id
 )
 {
-    OpenAPI_charging_data_t *charging_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_charging_data_t));
-    if (!charging_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_charging_data_t *charging_data_local_var = ogs_malloc(sizeof(OpenAPI_charging_data_t));
+    ogs_assert(charging_data_local_var);
+
     charging_data_local_var->chg_id = chg_id;
     charging_data_local_var->metering_method = metering_method;
     charging_data_local_var->is_offline = is_offline;

@@ -13,10 +13,9 @@ OpenAPI_data_change_notify_t *OpenAPI_data_change_notify_create(
     OpenAPI_list_t *subscription_data_subscriptions
 )
 {
-    OpenAPI_data_change_notify_t *data_change_notify_local_var = OpenAPI_malloc(sizeof(OpenAPI_data_change_notify_t));
-    if (!data_change_notify_local_var) {
-        return NULL;
-    }
+    OpenAPI_data_change_notify_t *data_change_notify_local_var = ogs_malloc(sizeof(OpenAPI_data_change_notify_t));
+    ogs_assert(data_change_notify_local_var);
+
     data_change_notify_local_var->original_callback_reference = original_callback_reference;
     data_change_notify_local_var->ue_id = ue_id;
     data_change_notify_local_var->notify_items = notify_items;

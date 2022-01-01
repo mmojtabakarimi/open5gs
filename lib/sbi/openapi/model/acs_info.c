@@ -10,10 +10,9 @@ OpenAPI_acs_info_t *OpenAPI_acs_info_create(
     char *acs_ipv6_addr
 )
 {
-    OpenAPI_acs_info_t *acs_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_acs_info_t));
-    if (!acs_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_acs_info_t *acs_info_local_var = ogs_malloc(sizeof(OpenAPI_acs_info_t));
+    ogs_assert(acs_info_local_var);
+
     acs_info_local_var->acs_url = acs_url;
     acs_info_local_var->acs_ipv4_addr = acs_ipv4_addr;
     acs_info_local_var->acs_ipv6_addr = acs_ipv6_addr;

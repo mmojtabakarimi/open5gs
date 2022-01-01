@@ -12,10 +12,9 @@ OpenAPI_dnai_information_t *OpenAPI_dnai_information_create(
     int no_local_psa_change_ind
 )
 {
-    OpenAPI_dnai_information_t *dnai_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_dnai_information_t));
-    if (!dnai_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_dnai_information_t *dnai_information_local_var = ogs_malloc(sizeof(OpenAPI_dnai_information_t));
+    ogs_assert(dnai_information_local_var);
+
     dnai_information_local_var->dnai = dnai;
     dnai_information_local_var->is_no_dnai_change_ind = is_no_dnai_change_ind;
     dnai_information_local_var->no_dnai_change_ind = no_dnai_change_ind;

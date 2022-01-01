@@ -72,10 +72,9 @@ OpenAPI_hsmf_update_data_t *OpenAPI_hsmf_update_data_create(
     OpenAPI_guami_t *guami
 )
 {
-    OpenAPI_hsmf_update_data_t *hsmf_update_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_hsmf_update_data_t));
-    if (!hsmf_update_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_hsmf_update_data_t *hsmf_update_data_local_var = ogs_malloc(sizeof(OpenAPI_hsmf_update_data_t));
+    ogs_assert(hsmf_update_data_local_var);
+
     hsmf_update_data_local_var->request_indication = request_indication;
     hsmf_update_data_local_var->pei = pei;
     hsmf_update_data_local_var->vcn_tunnel_info = vcn_tunnel_info;

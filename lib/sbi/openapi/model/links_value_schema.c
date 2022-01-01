@@ -8,10 +8,9 @@ OpenAPI_links_value_schema_t *OpenAPI_links_value_schema_create(
     char *href
 )
 {
-    OpenAPI_links_value_schema_t *links_value_schema_local_var = OpenAPI_malloc(sizeof(OpenAPI_links_value_schema_t));
-    if (!links_value_schema_local_var) {
-        return NULL;
-    }
+    OpenAPI_links_value_schema_t *links_value_schema_local_var = ogs_malloc(sizeof(OpenAPI_links_value_schema_t));
+    ogs_assert(links_value_schema_local_var);
+
     links_value_schema_local_var->href = href;
 
     return links_value_schema_local_var;

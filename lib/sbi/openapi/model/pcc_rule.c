@@ -35,10 +35,9 @@ OpenAPI_pcc_rule_t *OpenAPI_pcc_rule_create(
     int dis_ue_notif
 )
 {
-    OpenAPI_pcc_rule_t *pcc_rule_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcc_rule_t));
-    if (!pcc_rule_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcc_rule_t *pcc_rule_local_var = ogs_malloc(sizeof(OpenAPI_pcc_rule_t));
+    ogs_assert(pcc_rule_local_var);
+
     pcc_rule_local_var->flow_infos = flow_infos;
     pcc_rule_local_var->app_id = app_id;
     pcc_rule_local_var->app_descriptor = app_descriptor;

@@ -11,10 +11,9 @@ OpenAPI_registration_location_info_t *OpenAPI_registration_location_info_create(
     OpenAPI_list_t *access_type_list
 )
 {
-    OpenAPI_registration_location_info_t *registration_location_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_registration_location_info_t));
-    if (!registration_location_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_registration_location_info_t *registration_location_info_local_var = ogs_malloc(sizeof(OpenAPI_registration_location_info_t));
+    ogs_assert(registration_location_info_local_var);
+
     registration_location_info_local_var->amf_instance_id = amf_instance_id;
     registration_location_info_local_var->plmn_id = plmn_id;
     registration_location_info_local_var->vgmlc_address = vgmlc_address;

@@ -11,10 +11,9 @@ OpenAPI_acc_net_ch_id_t *OpenAPI_acc_net_ch_id_create(
     int session_ch_scope
 )
 {
-    OpenAPI_acc_net_ch_id_t *acc_net_ch_id_local_var = OpenAPI_malloc(sizeof(OpenAPI_acc_net_ch_id_t));
-    if (!acc_net_ch_id_local_var) {
-        return NULL;
-    }
+    OpenAPI_acc_net_ch_id_t *acc_net_ch_id_local_var = ogs_malloc(sizeof(OpenAPI_acc_net_ch_id_t));
+    ogs_assert(acc_net_ch_id_local_var);
+
     acc_net_ch_id_local_var->acc_net_cha_id_value = acc_net_cha_id_value;
     acc_net_ch_id_local_var->ref_pcc_rule_ids = ref_pcc_rule_ids;
     acc_net_ch_id_local_var->is_session_ch_scope = is_session_ch_scope;

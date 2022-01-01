@@ -9,10 +9,9 @@ OpenAPI_valid_time_period_t *OpenAPI_valid_time_period_create(
     char *end_time
 )
 {
-    OpenAPI_valid_time_period_t *valid_time_period_local_var = OpenAPI_malloc(sizeof(OpenAPI_valid_time_period_t));
-    if (!valid_time_period_local_var) {
-        return NULL;
-    }
+    OpenAPI_valid_time_period_t *valid_time_period_local_var = ogs_malloc(sizeof(OpenAPI_valid_time_period_t));
+    ogs_assert(valid_time_period_local_var);
+
     valid_time_period_local_var->start_time = start_time;
     valid_time_period_local_var->end_time = end_time;
 

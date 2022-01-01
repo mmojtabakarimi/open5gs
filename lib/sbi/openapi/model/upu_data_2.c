@@ -10,10 +10,9 @@ OpenAPI_upu_data_2_t *OpenAPI_upu_data_2_create(
     char *routing_id
 )
 {
-    OpenAPI_upu_data_2_t *upu_data_2_local_var = OpenAPI_malloc(sizeof(OpenAPI_upu_data_2_t));
-    if (!upu_data_2_local_var) {
-        return NULL;
-    }
+    OpenAPI_upu_data_2_t *upu_data_2_local_var = ogs_malloc(sizeof(OpenAPI_upu_data_2_t));
+    ogs_assert(upu_data_2_local_var);
+
     upu_data_2_local_var->sec_packet = sec_packet;
     upu_data_2_local_var->default_conf_nssai = default_conf_nssai;
     upu_data_2_local_var->routing_id = routing_id;

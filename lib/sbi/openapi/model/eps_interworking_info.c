@@ -8,10 +8,9 @@ OpenAPI_eps_interworking_info_t *OpenAPI_eps_interworking_info_create(
     OpenAPI_list_t* eps_iwk_pgws
 )
 {
-    OpenAPI_eps_interworking_info_t *eps_interworking_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_eps_interworking_info_t));
-    if (!eps_interworking_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_eps_interworking_info_t *eps_interworking_info_local_var = ogs_malloc(sizeof(OpenAPI_eps_interworking_info_t));
+    ogs_assert(eps_interworking_info_local_var);
+
     eps_interworking_info_local_var->eps_iwk_pgws = eps_iwk_pgws;
 
     return eps_interworking_info_local_var;

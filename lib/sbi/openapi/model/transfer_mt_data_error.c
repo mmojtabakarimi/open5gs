@@ -21,10 +21,9 @@ OpenAPI_transfer_mt_data_error_t *OpenAPI_transfer_mt_data_error_create(
     int max_waiting_time
 )
 {
-    OpenAPI_transfer_mt_data_error_t *transfer_mt_data_error_local_var = OpenAPI_malloc(sizeof(OpenAPI_transfer_mt_data_error_t));
-    if (!transfer_mt_data_error_local_var) {
-        return NULL;
-    }
+    OpenAPI_transfer_mt_data_error_t *transfer_mt_data_error_local_var = ogs_malloc(sizeof(OpenAPI_transfer_mt_data_error_t));
+    ogs_assert(transfer_mt_data_error_local_var);
+
     transfer_mt_data_error_local_var->type = type;
     transfer_mt_data_error_local_var->title = title;
     transfer_mt_data_error_local_var->is_status = is_status;

@@ -10,10 +10,9 @@ OpenAPI_nrppa_information_t *OpenAPI_nrppa_information_create(
     char *service_instance_id
 )
 {
-    OpenAPI_nrppa_information_t *nrppa_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_nrppa_information_t));
-    if (!nrppa_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_nrppa_information_t *nrppa_information_local_var = ogs_malloc(sizeof(OpenAPI_nrppa_information_t));
+    ogs_assert(nrppa_information_local_var);
+
     nrppa_information_local_var->nf_id = nf_id;
     nrppa_information_local_var->nrppa_pdu = nrppa_pdu;
     nrppa_information_local_var->service_instance_id = service_instance_id;

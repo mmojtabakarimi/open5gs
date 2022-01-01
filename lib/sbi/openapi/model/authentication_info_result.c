@@ -11,10 +11,9 @@ OpenAPI_authentication_info_result_t *OpenAPI_authentication_info_result_create(
     char *supi
 )
 {
-    OpenAPI_authentication_info_result_t *authentication_info_result_local_var = OpenAPI_malloc(sizeof(OpenAPI_authentication_info_result_t));
-    if (!authentication_info_result_local_var) {
-        return NULL;
-    }
+    OpenAPI_authentication_info_result_t *authentication_info_result_local_var = ogs_malloc(sizeof(OpenAPI_authentication_info_result_t));
+    ogs_assert(authentication_info_result_local_var);
+
     authentication_info_result_local_var->auth_type = auth_type;
     authentication_info_result_local_var->supported_features = supported_features;
     authentication_info_result_local_var->authentication_vector = authentication_vector;

@@ -15,10 +15,9 @@ OpenAPI_pp_data_t *OpenAPI_pp_data_create(
     OpenAPI_sor_info_t *sor_info
 )
 {
-    OpenAPI_pp_data_t *pp_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pp_data_t));
-    if (!pp_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pp_data_t *pp_data_local_var = ogs_malloc(sizeof(OpenAPI_pp_data_t));
+    ogs_assert(pp_data_local_var);
+
     pp_data_local_var->communication_characteristics = communication_characteristics;
     pp_data_local_var->supported_features = supported_features;
     pp_data_local_var->expected_ue_behaviour_parameters = expected_ue_behaviour_parameters;

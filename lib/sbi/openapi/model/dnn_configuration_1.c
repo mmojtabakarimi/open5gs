@@ -32,10 +32,9 @@ OpenAPI_dnn_configuration_1_t *OpenAPI_dnn_configuration_1_create(
     char *iptv_acc_ctrl_info
 )
 {
-    OpenAPI_dnn_configuration_1_t *dnn_configuration_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_dnn_configuration_1_t));
-    if (!dnn_configuration_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_dnn_configuration_1_t *dnn_configuration_1_local_var = ogs_malloc(sizeof(OpenAPI_dnn_configuration_1_t));
+    ogs_assert(dnn_configuration_1_local_var);
+
     dnn_configuration_1_local_var->pdu_session_types = pdu_session_types;
     dnn_configuration_1_local_var->ssc_modes = ssc_modes;
     dnn_configuration_1_local_var->is_iwk_eps_ind = is_iwk_eps_ind;

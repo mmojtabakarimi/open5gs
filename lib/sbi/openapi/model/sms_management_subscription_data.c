@@ -22,10 +22,9 @@ OpenAPI_sms_management_subscription_data_t *OpenAPI_sms_management_subscription_
     OpenAPI_trace_data_1_t *trace_data
 )
 {
-    OpenAPI_sms_management_subscription_data_t *sms_management_subscription_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sms_management_subscription_data_t));
-    if (!sms_management_subscription_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sms_management_subscription_data_t *sms_management_subscription_data_local_var = ogs_malloc(sizeof(OpenAPI_sms_management_subscription_data_t));
+    ogs_assert(sms_management_subscription_data_local_var);
+
     sms_management_subscription_data_local_var->supported_features = supported_features;
     sms_management_subscription_data_local_var->is_mt_sms_subscribed = is_mt_sms_subscribed;
     sms_management_subscription_data_local_var->mt_sms_subscribed = mt_sms_subscribed;

@@ -17,10 +17,9 @@ OpenAPI_reporting_options_t *OpenAPI_reporting_options_create(
     int report_period
 )
 {
-    OpenAPI_reporting_options_t *reporting_options_local_var = OpenAPI_malloc(sizeof(OpenAPI_reporting_options_t));
-    if (!reporting_options_local_var) {
-        return NULL;
-    }
+    OpenAPI_reporting_options_t *reporting_options_local_var = ogs_malloc(sizeof(OpenAPI_reporting_options_t));
+    ogs_assert(reporting_options_local_var);
+
     reporting_options_local_var->report_mode = report_mode;
     reporting_options_local_var->is_max_num_of_reports = is_max_num_of_reports;
     reporting_options_local_var->max_num_of_reports = max_num_of_reports;

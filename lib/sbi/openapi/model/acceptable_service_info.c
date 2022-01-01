@@ -10,10 +10,9 @@ OpenAPI_acceptable_service_info_t *OpenAPI_acceptable_service_info_create(
     char *mar_bw_dl
 )
 {
-    OpenAPI_acceptable_service_info_t *acceptable_service_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_acceptable_service_info_t));
-    if (!acceptable_service_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_acceptable_service_info_t *acceptable_service_info_local_var = ogs_malloc(sizeof(OpenAPI_acceptable_service_info_t));
+    ogs_assert(acceptable_service_info_local_var);
+
     acceptable_service_info_local_var->acc_bw_med_comps = acc_bw_med_comps;
     acceptable_service_info_local_var->mar_bw_ul = mar_bw_ul;
     acceptable_service_info_local_var->mar_bw_dl = mar_bw_dl;

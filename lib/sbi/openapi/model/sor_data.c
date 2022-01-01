@@ -11,10 +11,9 @@ OpenAPI_sor_data_t *OpenAPI_sor_data_create(
     char *sor_mac_iue
 )
 {
-    OpenAPI_sor_data_t *sor_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sor_data_t));
-    if (!sor_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sor_data_t *sor_data_local_var = ogs_malloc(sizeof(OpenAPI_sor_data_t));
+    ogs_assert(sor_data_local_var);
+
     sor_data_local_var->provisioning_time = provisioning_time;
     sor_data_local_var->ue_update_status = ue_update_status;
     sor_data_local_var->sor_xmac_iue = sor_xmac_iue;

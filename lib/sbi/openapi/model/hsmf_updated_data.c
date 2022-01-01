@@ -25,10 +25,9 @@ OpenAPI_hsmf_updated_data_t *OpenAPI_hsmf_updated_data_create(
     int pti
 )
 {
-    OpenAPI_hsmf_updated_data_t *hsmf_updated_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_hsmf_updated_data_t));
-    if (!hsmf_updated_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_hsmf_updated_data_t *hsmf_updated_data_local_var = ogs_malloc(sizeof(OpenAPI_hsmf_updated_data_t));
+    ogs_assert(hsmf_updated_data_local_var);
+
     hsmf_updated_data_local_var->n1_sm_info_to_ue = n1_sm_info_to_ue;
     hsmf_updated_data_local_var->n4_info = n4_info;
     hsmf_updated_data_local_var->n4_info_ext1 = n4_info_ext1;

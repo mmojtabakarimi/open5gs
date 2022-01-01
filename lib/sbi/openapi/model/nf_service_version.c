@@ -10,10 +10,9 @@ OpenAPI_nf_service_version_t *OpenAPI_nf_service_version_create(
     char *expiry
 )
 {
-    OpenAPI_nf_service_version_t *nf_service_version_local_var = OpenAPI_malloc(sizeof(OpenAPI_nf_service_version_t));
-    if (!nf_service_version_local_var) {
-        return NULL;
-    }
+    OpenAPI_nf_service_version_t *nf_service_version_local_var = ogs_malloc(sizeof(OpenAPI_nf_service_version_t));
+    ogs_assert(nf_service_version_local_var);
+
     nf_service_version_local_var->api_version_in_uri = api_version_in_uri;
     nf_service_version_local_var->api_full_version = api_full_version;
     nf_service_version_local_var->expiry = expiry;

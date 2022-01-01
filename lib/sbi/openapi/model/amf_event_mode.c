@@ -15,10 +15,9 @@ OpenAPI_amf_event_mode_t *OpenAPI_amf_event_mode_create(
     int samp_ratio
 )
 {
-    OpenAPI_amf_event_mode_t *amf_event_mode_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_event_mode_t));
-    if (!amf_event_mode_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_event_mode_t *amf_event_mode_local_var = ogs_malloc(sizeof(OpenAPI_amf_event_mode_t));
+    ogs_assert(amf_event_mode_local_var);
+
     amf_event_mode_local_var->trigger = trigger;
     amf_event_mode_local_var->is_max_reports = is_max_reports;
     amf_event_mode_local_var->max_reports = max_reports;

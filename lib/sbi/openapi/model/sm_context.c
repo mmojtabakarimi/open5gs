@@ -59,10 +59,9 @@ OpenAPI_sm_context_t *OpenAPI_sm_context_create(
     OpenAPI_list_t *add_red_ran_tunnel_info
 )
 {
-    OpenAPI_sm_context_t *sm_context_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_t));
-    if (!sm_context_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_t *sm_context_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_t));
+    ogs_assert(sm_context_local_var);
+
     sm_context_local_var->pdu_session_id = pdu_session_id;
     sm_context_local_var->dnn = dnn;
     sm_context_local_var->selected_dnn = selected_dnn;

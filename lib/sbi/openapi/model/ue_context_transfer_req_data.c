@@ -12,10 +12,9 @@ OpenAPI_ue_context_transfer_req_data_t *OpenAPI_ue_context_transfer_req_data_cre
     char *supported_features
 )
 {
-    OpenAPI_ue_context_transfer_req_data_t *ue_context_transfer_req_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_context_transfer_req_data_t));
-    if (!ue_context_transfer_req_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_context_transfer_req_data_t *ue_context_transfer_req_data_local_var = ogs_malloc(sizeof(OpenAPI_ue_context_transfer_req_data_t));
+    ogs_assert(ue_context_transfer_req_data_local_var);
+
     ue_context_transfer_req_data_local_var->reason = reason;
     ue_context_transfer_req_data_local_var->access_type = access_type;
     ue_context_transfer_req_data_local_var->plmn_id = plmn_id;

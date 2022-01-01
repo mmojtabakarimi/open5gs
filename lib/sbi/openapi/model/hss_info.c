@@ -12,10 +12,9 @@ OpenAPI_hss_info_t *OpenAPI_hss_info_create(
     OpenAPI_list_t *msisdn_ranges
 )
 {
-    OpenAPI_hss_info_t *hss_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_hss_info_t));
-    if (!hss_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_hss_info_t *hss_info_local_var = ogs_malloc(sizeof(OpenAPI_hss_info_t));
+    ogs_assert(hss_info_local_var);
+
     hss_info_local_var->group_id = group_id;
     hss_info_local_var->imsi_ranges = imsi_ranges;
     hss_info_local_var->ims_private_identity_ranges = ims_private_identity_ranges;

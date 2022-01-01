@@ -9,10 +9,9 @@ OpenAPI_app_descriptor_t *OpenAPI_app_descriptor_create(
     char *app_id
 )
 {
-    OpenAPI_app_descriptor_t *app_descriptor_local_var = OpenAPI_malloc(sizeof(OpenAPI_app_descriptor_t));
-    if (!app_descriptor_local_var) {
-        return NULL;
-    }
+    OpenAPI_app_descriptor_t *app_descriptor_local_var = ogs_malloc(sizeof(OpenAPI_app_descriptor_t));
+    ogs_assert(app_descriptor_local_var);
+
     app_descriptor_local_var->os_id = os_id;
     app_descriptor_local_var->app_id = app_id;
 

@@ -50,10 +50,9 @@ OpenAPI_media_component_t *OpenAPI_media_component_create(
     OpenAPI_tscai_input_container_t *tscai_input_ul
 )
 {
-    OpenAPI_media_component_t *media_component_local_var = OpenAPI_malloc(sizeof(OpenAPI_media_component_t));
-    if (!media_component_local_var) {
-        return NULL;
-    }
+    OpenAPI_media_component_t *media_component_local_var = ogs_malloc(sizeof(OpenAPI_media_component_t));
+    ogs_assert(media_component_local_var);
+
     media_component_local_var->af_app_id = af_app_id;
     media_component_local_var->af_rout_req = af_rout_req;
     media_component_local_var->qos_reference = qos_reference;

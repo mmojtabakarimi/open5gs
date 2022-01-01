@@ -9,10 +9,9 @@ OpenAPI_cag_data_1_t *OpenAPI_cag_data_1_create(
     char *provisioning_time
 )
 {
-    OpenAPI_cag_data_1_t *cag_data_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_cag_data_1_t));
-    if (!cag_data_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_cag_data_1_t *cag_data_1_local_var = ogs_malloc(sizeof(OpenAPI_cag_data_1_t));
+    ogs_assert(cag_data_1_local_var);
+
     cag_data_1_local_var->cag_infos = cag_infos;
     cag_data_1_local_var->provisioning_time = provisioning_time;
 

@@ -18,10 +18,9 @@ OpenAPI_ee_subscription_t *OpenAPI_ee_subscription_create(
     char *notify_correlation_id
 )
 {
-    OpenAPI_ee_subscription_t *ee_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_ee_subscription_t));
-    if (!ee_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_ee_subscription_t *ee_subscription_local_var = ogs_malloc(sizeof(OpenAPI_ee_subscription_t));
+    ogs_assert(ee_subscription_local_var);
+
     ee_subscription_local_var->callback_reference = callback_reference;
     ee_subscription_local_var->monitoring_configurations = monitoring_configurations;
     ee_subscription_local_var->reporting_options = reporting_options;

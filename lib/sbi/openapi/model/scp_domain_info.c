@@ -11,10 +11,9 @@ OpenAPI_scp_domain_info_t *OpenAPI_scp_domain_info_create(
     OpenAPI_list_t* scp_ports
 )
 {
-    OpenAPI_scp_domain_info_t *scp_domain_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_scp_domain_info_t));
-    if (!scp_domain_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_scp_domain_info_t *scp_domain_info_local_var = ogs_malloc(sizeof(OpenAPI_scp_domain_info_t));
+    ogs_assert(scp_domain_info_local_var);
+
     scp_domain_info_local_var->scp_fqdn = scp_fqdn;
     scp_domain_info_local_var->scp_ip_end_points = scp_ip_end_points;
     scp_domain_info_local_var->scp_prefix = scp_prefix;

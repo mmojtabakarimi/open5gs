@@ -12,10 +12,9 @@ OpenAPI_sor_info_t *OpenAPI_sor_info_create(
     char *provisioning_time
 )
 {
-    OpenAPI_sor_info_t *sor_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_sor_info_t));
-    if (!sor_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_sor_info_t *sor_info_local_var = ogs_malloc(sizeof(OpenAPI_sor_info_t));
+    ogs_assert(sor_info_local_var);
+
     sor_info_local_var->steering_container = steering_container;
     sor_info_local_var->ack_ind = ack_ind;
     sor_info_local_var->sor_mac_iausf = sor_mac_iausf;

@@ -11,10 +11,9 @@ OpenAPI_vn_group_data_t *OpenAPI_vn_group_data_create(
     OpenAPI_list_t *app_descriptors
 )
 {
-    OpenAPI_vn_group_data_t *vn_group_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_vn_group_data_t));
-    if (!vn_group_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_vn_group_data_t *vn_group_data_local_var = ogs_malloc(sizeof(OpenAPI_vn_group_data_t));
+    ogs_assert(vn_group_data_local_var);
+
     vn_group_data_local_var->pdu_session_types = pdu_session_types;
     vn_group_data_local_var->dnn = dnn;
     vn_group_data_local_var->single_nssai = single_nssai;

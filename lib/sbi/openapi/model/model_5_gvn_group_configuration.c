@@ -14,10 +14,9 @@ OpenAPI_model_5_gvn_group_configuration_t *OpenAPI_model_5_gvn_group_configurati
     char *mtc_provider_information
 )
 {
-    OpenAPI_model_5_gvn_group_configuration_t *model_5_gvn_group_configuration_local_var = OpenAPI_malloc(sizeof(OpenAPI_model_5_gvn_group_configuration_t));
-    if (!model_5_gvn_group_configuration_local_var) {
-        return NULL;
-    }
+    OpenAPI_model_5_gvn_group_configuration_t *model_5_gvn_group_configuration_local_var = ogs_malloc(sizeof(OpenAPI_model_5_gvn_group_configuration_t));
+    ogs_assert(model_5_gvn_group_configuration_local_var);
+
     model_5_gvn_group_configuration_local_var->_5g_vn_group_data = _5g_vn_group_data;
     model_5_gvn_group_configuration_local_var->members = members;
     model_5_gvn_group_configuration_local_var->is_reference_id = is_reference_id;

@@ -16,10 +16,9 @@ OpenAPI_seaf_data_t *OpenAPI_seaf_data_create(
     int key_amf_h_derivation_ind
 )
 {
-    OpenAPI_seaf_data_t *seaf_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_seaf_data_t));
-    if (!seaf_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_seaf_data_t *seaf_data_local_var = ogs_malloc(sizeof(OpenAPI_seaf_data_t));
+    ogs_assert(seaf_data_local_var);
+
     seaf_data_local_var->ng_ksi = ng_ksi;
     seaf_data_local_var->key_amf = key_amf;
     seaf_data_local_var->nh = nh;

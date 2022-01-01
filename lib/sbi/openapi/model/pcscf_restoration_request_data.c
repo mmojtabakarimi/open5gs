@@ -13,10 +13,9 @@ OpenAPI_pcscf_restoration_request_data_t *OpenAPI_pcscf_restoration_request_data
     char *ue_ipv6
 )
 {
-    OpenAPI_pcscf_restoration_request_data_t *pcscf_restoration_request_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcscf_restoration_request_data_t));
-    if (!pcscf_restoration_request_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcscf_restoration_request_data_t *pcscf_restoration_request_data_local_var = ogs_malloc(sizeof(OpenAPI_pcscf_restoration_request_data_t));
+    ogs_assert(pcscf_restoration_request_data_local_var);
+
     pcscf_restoration_request_data_local_var->dnn = dnn;
     pcscf_restoration_request_data_local_var->ip_domain = ip_domain;
     pcscf_restoration_request_data_local_var->slice_info = slice_info;

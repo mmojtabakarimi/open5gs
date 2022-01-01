@@ -9,10 +9,9 @@ OpenAPI_resource_item_t *OpenAPI_resource_item_create(
     OpenAPI_list_t *items
 )
 {
-    OpenAPI_resource_item_t *resource_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_resource_item_t));
-    if (!resource_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_resource_item_t *resource_item_local_var = ogs_malloc(sizeof(OpenAPI_resource_item_t));
+    ogs_assert(resource_item_local_var);
+
     resource_item_local_var->mon_resource_uri = mon_resource_uri;
     resource_item_local_var->items = items;
 

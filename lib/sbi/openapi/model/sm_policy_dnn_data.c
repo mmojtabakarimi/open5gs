@@ -40,10 +40,9 @@ OpenAPI_sm_policy_dnn_data_t *OpenAPI_sm_policy_dnn_data_create(
     int loc_rout_not_allowed
 )
 {
-    OpenAPI_sm_policy_dnn_data_t *sm_policy_dnn_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_dnn_data_t));
-    if (!sm_policy_dnn_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_dnn_data_t *sm_policy_dnn_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_dnn_data_t));
+    ogs_assert(sm_policy_dnn_data_local_var);
+
     sm_policy_dnn_data_local_var->dnn = dnn;
     sm_policy_dnn_data_local_var->allowed_services = allowed_services;
     sm_policy_dnn_data_local_var->subsc_cats = subsc_cats;

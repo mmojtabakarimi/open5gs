@@ -8,10 +8,9 @@ OpenAPI_scp_domain_cond_t *OpenAPI_scp_domain_cond_create(
     OpenAPI_list_t *scp_domains
 )
 {
-    OpenAPI_scp_domain_cond_t *scp_domain_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_scp_domain_cond_t));
-    if (!scp_domain_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_scp_domain_cond_t *scp_domain_cond_local_var = ogs_malloc(sizeof(OpenAPI_scp_domain_cond_t));
+    ogs_assert(scp_domain_cond_local_var);
+
     scp_domain_cond_local_var->scp_domains = scp_domains;
 
     return scp_domain_cond_local_var;

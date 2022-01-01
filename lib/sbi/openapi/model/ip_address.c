@@ -10,10 +10,9 @@ OpenAPI_ip_address_t *OpenAPI_ip_address_create(
     char *ipv6_prefix
 )
 {
-    OpenAPI_ip_address_t *ip_address_local_var = OpenAPI_malloc(sizeof(OpenAPI_ip_address_t));
-    if (!ip_address_local_var) {
-        return NULL;
-    }
+    OpenAPI_ip_address_t *ip_address_local_var = ogs_malloc(sizeof(OpenAPI_ip_address_t));
+    ogs_assert(ip_address_local_var);
+
     ip_address_local_var->ipv4_addr = ipv4_addr;
     ip_address_local_var->ipv6_addr = ipv6_addr;
     ip_address_local_var->ipv6_prefix = ipv6_prefix;

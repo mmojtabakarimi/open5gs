@@ -13,10 +13,9 @@ OpenAPI_policy_data_subscription_t *OpenAPI_policy_data_subscription_create(
     char *supported_features
 )
 {
-    OpenAPI_policy_data_subscription_t *policy_data_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_policy_data_subscription_t));
-    if (!policy_data_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_policy_data_subscription_t *policy_data_subscription_local_var = ogs_malloc(sizeof(OpenAPI_policy_data_subscription_t));
+    ogs_assert(policy_data_subscription_local_var);
+
     policy_data_subscription_local_var->notification_uri = notification_uri;
     policy_data_subscription_local_var->notif_id = notif_id;
     policy_data_subscription_local_var->monitored_resource_uris = monitored_resource_uris;

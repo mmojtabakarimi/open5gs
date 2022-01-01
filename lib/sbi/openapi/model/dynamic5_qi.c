@@ -23,10 +23,9 @@ OpenAPI_dynamic5_qi_t *OpenAPI_dynamic5_qi_create(
     int cn_packet_delay_budget_ul
 )
 {
-    OpenAPI_dynamic5_qi_t *dynamic5_qi_local_var = OpenAPI_malloc(sizeof(OpenAPI_dynamic5_qi_t));
-    if (!dynamic5_qi_local_var) {
-        return NULL;
-    }
+    OpenAPI_dynamic5_qi_t *dynamic5_qi_local_var = ogs_malloc(sizeof(OpenAPI_dynamic5_qi_t));
+    ogs_assert(dynamic5_qi_local_var);
+
     dynamic5_qi_local_var->resource_type = resource_type;
     dynamic5_qi_local_var->priority_level = priority_level;
     dynamic5_qi_local_var->packet_delay_budget = packet_delay_budget;

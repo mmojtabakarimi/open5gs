@@ -37,10 +37,9 @@ OpenAPI_vsmf_update_data_t *OpenAPI_vsmf_update_data_create(
     OpenAPI_qos_monitoring_info_t *qos_monitoring_info
 )
 {
-    OpenAPI_vsmf_update_data_t *vsmf_update_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_vsmf_update_data_t));
-    if (!vsmf_update_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_vsmf_update_data_t *vsmf_update_data_local_var = ogs_malloc(sizeof(OpenAPI_vsmf_update_data_t));
+    ogs_assert(vsmf_update_data_local_var);
+
     vsmf_update_data_local_var->request_indication = request_indication;
     vsmf_update_data_local_var->session_ambr = session_ambr;
     vsmf_update_data_local_var->qos_flows_add_mod_request_list = qos_flows_add_mod_request_list;

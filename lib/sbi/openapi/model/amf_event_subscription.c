@@ -21,10 +21,9 @@ OpenAPI_amf_event_subscription_t *OpenAPI_amf_event_subscription_create(
     OpenAPI_nf_type_e source_nf_type
 )
 {
-    OpenAPI_amf_event_subscription_t *amf_event_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_event_subscription_t));
-    if (!amf_event_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_event_subscription_t *amf_event_subscription_local_var = ogs_malloc(sizeof(OpenAPI_amf_event_subscription_t));
+    ogs_assert(amf_event_subscription_local_var);
+
     amf_event_subscription_local_var->event_list = event_list;
     amf_event_subscription_local_var->event_notify_uri = event_notify_uri;
     amf_event_subscription_local_var->notify_correlation_id = notify_correlation_id;

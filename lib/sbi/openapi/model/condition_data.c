@@ -12,10 +12,9 @@ OpenAPI_condition_data_t *OpenAPI_condition_data_create(
     OpenAPI_rat_type_e rat_type
 )
 {
-    OpenAPI_condition_data_t *condition_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_condition_data_t));
-    if (!condition_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_condition_data_t *condition_data_local_var = ogs_malloc(sizeof(OpenAPI_condition_data_t));
+    ogs_assert(condition_data_local_var);
+
     condition_data_local_var->cond_id = cond_id;
     condition_data_local_var->activation_time = activation_time;
     condition_data_local_var->deactivation_time = deactivation_time;

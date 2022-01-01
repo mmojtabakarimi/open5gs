@@ -13,10 +13,9 @@ OpenAPI_nef_info_t *OpenAPI_nef_info_create(
     OpenAPI_list_t *served_fqdn_list
 )
 {
-    OpenAPI_nef_info_t *nef_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_nef_info_t));
-    if (!nef_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_nef_info_t *nef_info_local_var = ogs_malloc(sizeof(OpenAPI_nef_info_t));
+    ogs_assert(nef_info_local_var);
+
     nef_info_local_var->nef_id = nef_id;
     nef_info_local_var->pfd_data = pfd_data;
     nef_info_local_var->af_ee_data = af_ee_data;

@@ -12,10 +12,9 @@ OpenAPI_v2x_context_t *OpenAPI_v2x_context_create(
     OpenAPI_pc5_qo_s_para_t *pc5_qo_s_para
 )
 {
-    OpenAPI_v2x_context_t *v2x_context_local_var = OpenAPI_malloc(sizeof(OpenAPI_v2x_context_t));
-    if (!v2x_context_local_var) {
-        return NULL;
-    }
+    OpenAPI_v2x_context_t *v2x_context_local_var = ogs_malloc(sizeof(OpenAPI_v2x_context_t));
+    ogs_assert(v2x_context_local_var);
+
     v2x_context_local_var->nr_v2x_services_auth = nr_v2x_services_auth;
     v2x_context_local_var->lte_v2x_services_auth = lte_v2x_services_auth;
     v2x_context_local_var->nr_ue_sidelink_ambr = nr_ue_sidelink_ambr;

@@ -10,10 +10,9 @@ OpenAPI_vgmlc_address_t *OpenAPI_vgmlc_address_create(
     char *vgmlc_fqdn
 )
 {
-    OpenAPI_vgmlc_address_t *vgmlc_address_local_var = OpenAPI_malloc(sizeof(OpenAPI_vgmlc_address_t));
-    if (!vgmlc_address_local_var) {
-        return NULL;
-    }
+    OpenAPI_vgmlc_address_t *vgmlc_address_local_var = ogs_malloc(sizeof(OpenAPI_vgmlc_address_t));
+    ogs_assert(vgmlc_address_local_var);
+
     vgmlc_address_local_var->vgmlc_address_ipv4 = vgmlc_address_ipv4;
     vgmlc_address_local_var->vgmlc_address_ipv6 = vgmlc_address_ipv6;
     vgmlc_address_local_var->vgmlc_fqdn = vgmlc_fqdn;

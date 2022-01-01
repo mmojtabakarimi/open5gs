@@ -9,10 +9,9 @@ OpenAPI_network_slice_cond_t *OpenAPI_network_slice_cond_create(
     OpenAPI_list_t *nsi_list
 )
 {
-    OpenAPI_network_slice_cond_t *network_slice_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_network_slice_cond_t));
-    if (!network_slice_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_network_slice_cond_t *network_slice_cond_local_var = ogs_malloc(sizeof(OpenAPI_network_slice_cond_t));
+    ogs_assert(network_slice_cond_local_var);
+
     network_slice_cond_local_var->snssai_list = snssai_list;
     network_slice_cond_local_var->nsi_list = nsi_list;
 

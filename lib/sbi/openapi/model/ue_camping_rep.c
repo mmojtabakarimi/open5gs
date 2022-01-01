@@ -14,10 +14,9 @@ OpenAPI_ue_camping_rep_t *OpenAPI_ue_camping_rep_create(
     OpenAPI_net_loc_access_support_e net_loc_acc_supp
 )
 {
-    OpenAPI_ue_camping_rep_t *ue_camping_rep_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_camping_rep_t));
-    if (!ue_camping_rep_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_camping_rep_t *ue_camping_rep_local_var = ogs_malloc(sizeof(OpenAPI_ue_camping_rep_t));
+    ogs_assert(ue_camping_rep_local_var);
+
     ue_camping_rep_local_var->access_type = access_type;
     ue_camping_rep_local_var->rat_type = rat_type;
     ue_camping_rep_local_var->serv_nf_id = serv_nf_id;

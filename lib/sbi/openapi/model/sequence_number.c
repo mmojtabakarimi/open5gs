@@ -13,10 +13,9 @@ OpenAPI_sequence_number_t *OpenAPI_sequence_number_create(
     OpenAPI_sign_e dif_sign
 )
 {
-    OpenAPI_sequence_number_t *sequence_number_local_var = OpenAPI_malloc(sizeof(OpenAPI_sequence_number_t));
-    if (!sequence_number_local_var) {
-        return NULL;
-    }
+    OpenAPI_sequence_number_t *sequence_number_local_var = ogs_malloc(sizeof(OpenAPI_sequence_number_t));
+    ogs_assert(sequence_number_local_var);
+
     sequence_number_local_var->sqn_scheme = sqn_scheme;
     sequence_number_local_var->sqn = sqn;
     sequence_number_local_var->last_indexes = last_indexes;

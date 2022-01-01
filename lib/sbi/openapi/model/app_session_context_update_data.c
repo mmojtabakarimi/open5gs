@@ -26,10 +26,9 @@ OpenAPI_app_session_context_update_data_t *OpenAPI_app_session_context_update_da
     OpenAPI_list_t *tsn_port_man_cont_nwtts
 )
 {
-    OpenAPI_app_session_context_update_data_t *app_session_context_update_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_app_session_context_update_data_t));
-    if (!app_session_context_update_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_app_session_context_update_data_t *app_session_context_update_data_local_var = ogs_malloc(sizeof(OpenAPI_app_session_context_update_data_t));
+    ogs_assert(app_session_context_update_data_local_var);
+
     app_session_context_update_data_local_var->af_app_id = af_app_id;
     app_session_context_update_data_local_var->af_rout_req = af_rout_req;
     app_session_context_update_data_local_var->asp_id = asp_id;

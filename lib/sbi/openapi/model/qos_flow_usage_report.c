@@ -12,10 +12,9 @@ OpenAPI_qos_flow_usage_report_t *OpenAPI_qos_flow_usage_report_create(
     long uplink_volume
 )
 {
-    OpenAPI_qos_flow_usage_report_t *qos_flow_usage_report_local_var = OpenAPI_malloc(sizeof(OpenAPI_qos_flow_usage_report_t));
-    if (!qos_flow_usage_report_local_var) {
-        return NULL;
-    }
+    OpenAPI_qos_flow_usage_report_t *qos_flow_usage_report_local_var = ogs_malloc(sizeof(OpenAPI_qos_flow_usage_report_t));
+    ogs_assert(qos_flow_usage_report_local_var);
+
     qos_flow_usage_report_local_var->qfi = qfi;
     qos_flow_usage_report_local_var->start_time_stamp = start_time_stamp;
     qos_flow_usage_report_local_var->end_time_stamp = end_time_stamp;

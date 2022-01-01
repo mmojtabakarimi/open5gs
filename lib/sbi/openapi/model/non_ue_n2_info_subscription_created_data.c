@@ -10,10 +10,9 @@ OpenAPI_non_ue_n2_info_subscription_created_data_t *OpenAPI_non_ue_n2_info_subsc
     OpenAPI_n2_information_class_e n2_information_class
 )
 {
-    OpenAPI_non_ue_n2_info_subscription_created_data_t *non_ue_n2_info_subscription_created_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_non_ue_n2_info_subscription_created_data_t));
-    if (!non_ue_n2_info_subscription_created_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_non_ue_n2_info_subscription_created_data_t *non_ue_n2_info_subscription_created_data_local_var = ogs_malloc(sizeof(OpenAPI_non_ue_n2_info_subscription_created_data_t));
+    ogs_assert(non_ue_n2_info_subscription_created_data_local_var);
+
     non_ue_n2_info_subscription_created_data_local_var->n2_notify_subscription_id = n2_notify_subscription_id;
     non_ue_n2_info_subscription_created_data_local_var->supported_features = supported_features;
     non_ue_n2_info_subscription_created_data_local_var->n2_information_class = n2_information_class;

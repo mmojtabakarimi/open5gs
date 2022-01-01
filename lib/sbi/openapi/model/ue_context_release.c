@@ -11,10 +11,9 @@ OpenAPI_ue_context_release_t *OpenAPI_ue_context_release_create(
     OpenAPI_ng_ap_cause_t *ngap_cause
 )
 {
-    OpenAPI_ue_context_release_t *ue_context_release_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_context_release_t));
-    if (!ue_context_release_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_context_release_t *ue_context_release_local_var = ogs_malloc(sizeof(OpenAPI_ue_context_release_t));
+    ogs_assert(ue_context_release_local_var);
+
     ue_context_release_local_var->supi = supi;
     ue_context_release_local_var->is_unauthenticated_supi = is_unauthenticated_supi;
     ue_context_release_local_var->unauthenticated_supi = unauthenticated_supi;

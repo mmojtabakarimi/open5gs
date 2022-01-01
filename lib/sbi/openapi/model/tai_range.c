@@ -10,10 +10,9 @@ OpenAPI_tai_range_t *OpenAPI_tai_range_create(
     char *nid
 )
 {
-    OpenAPI_tai_range_t *tai_range_local_var = OpenAPI_malloc(sizeof(OpenAPI_tai_range_t));
-    if (!tai_range_local_var) {
-        return NULL;
-    }
+    OpenAPI_tai_range_t *tai_range_local_var = ogs_malloc(sizeof(OpenAPI_tai_range_t));
+    ogs_assert(tai_range_local_var);
+
     tai_range_local_var->plmn_id = plmn_id;
     tai_range_local_var->tac_range_list = tac_range_list;
     tai_range_local_var->nid = nid;

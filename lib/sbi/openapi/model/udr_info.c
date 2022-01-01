@@ -12,10 +12,9 @@ OpenAPI_udr_info_t *OpenAPI_udr_info_create(
     OpenAPI_list_t *supported_data_sets
 )
 {
-    OpenAPI_udr_info_t *udr_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_udr_info_t));
-    if (!udr_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_udr_info_t *udr_info_local_var = ogs_malloc(sizeof(OpenAPI_udr_info_t));
+    ogs_assert(udr_info_local_var);
+
     udr_info_local_var->group_id = group_id;
     udr_info_local_var->supi_ranges = supi_ranges;
     udr_info_local_var->gpsi_ranges = gpsi_ranges;

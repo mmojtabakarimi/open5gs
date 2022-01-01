@@ -12,10 +12,9 @@ OpenAPI_interface_upf_info_item_t *OpenAPI_interface_upf_info_item_create(
     char *network_instance
 )
 {
-    OpenAPI_interface_upf_info_item_t *interface_upf_info_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_interface_upf_info_item_t));
-    if (!interface_upf_info_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_interface_upf_info_item_t *interface_upf_info_item_local_var = ogs_malloc(sizeof(OpenAPI_interface_upf_info_item_t));
+    ogs_assert(interface_upf_info_item_local_var);
+
     interface_upf_info_item_local_var->interface_type = interface_type;
     interface_upf_info_item_local_var->ipv4_endpoint_addresses = ipv4_endpoint_addresses;
     interface_upf_info_item_local_var->ipv6_endpoint_addresses = ipv6_endpoint_addresses;

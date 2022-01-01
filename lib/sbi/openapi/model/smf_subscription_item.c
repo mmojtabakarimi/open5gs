@@ -9,10 +9,9 @@ OpenAPI_smf_subscription_item_t *OpenAPI_smf_subscription_item_create(
     char *subscription_id
 )
 {
-    OpenAPI_smf_subscription_item_t *smf_subscription_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_smf_subscription_item_t));
-    if (!smf_subscription_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_smf_subscription_item_t *smf_subscription_item_local_var = ogs_malloc(sizeof(OpenAPI_smf_subscription_item_t));
+    ogs_assert(smf_subscription_item_local_var);
+
     smf_subscription_item_local_var->smf_instance_id = smf_instance_id;
     smf_subscription_item_local_var->subscription_id = subscription_id;
 

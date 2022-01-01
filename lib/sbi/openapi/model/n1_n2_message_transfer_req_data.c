@@ -33,10 +33,9 @@ OpenAPI_n1_n2_message_transfer_req_data_t *OpenAPI_n1_n2_message_transfer_req_da
     OpenAPI_access_type_e target_access
 )
 {
-    OpenAPI_n1_n2_message_transfer_req_data_t *n1_n2_message_transfer_req_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_n1_n2_message_transfer_req_data_t));
-    if (!n1_n2_message_transfer_req_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_n1_n2_message_transfer_req_data_t *n1_n2_message_transfer_req_data_local_var = ogs_malloc(sizeof(OpenAPI_n1_n2_message_transfer_req_data_t));
+    ogs_assert(n1_n2_message_transfer_req_data_local_var);
+
     n1_n2_message_transfer_req_data_local_var->n1_message_container = n1_message_container;
     n1_n2_message_transfer_req_data_local_var->n2_info_container = n2_info_container;
     n1_n2_message_transfer_req_data_local_var->mt_data = mt_data;

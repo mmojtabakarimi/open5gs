@@ -8,10 +8,9 @@ OpenAPI_spatial_validity_rm_t *OpenAPI_spatial_validity_rm_create(
     OpenAPI_list_t* presence_info_list
 )
 {
-    OpenAPI_spatial_validity_rm_t *spatial_validity_rm_local_var = OpenAPI_malloc(sizeof(OpenAPI_spatial_validity_rm_t));
-    if (!spatial_validity_rm_local_var) {
-        return NULL;
-    }
+    OpenAPI_spatial_validity_rm_t *spatial_validity_rm_local_var = ogs_malloc(sizeof(OpenAPI_spatial_validity_rm_t));
+    ogs_assert(spatial_validity_rm_local_var);
+
     spatial_validity_rm_local_var->presence_info_list = presence_info_list;
 
     return spatial_validity_rm_local_var;

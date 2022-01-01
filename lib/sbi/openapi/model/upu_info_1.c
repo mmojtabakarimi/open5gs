@@ -13,10 +13,9 @@ OpenAPI_upu_info_1_t *OpenAPI_upu_info_1_create(
     char *provisioning_time
 )
 {
-    OpenAPI_upu_info_1_t *upu_info_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_upu_info_1_t));
-    if (!upu_info_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_upu_info_1_t *upu_info_1_local_var = ogs_malloc(sizeof(OpenAPI_upu_info_1_t));
+    ogs_assert(upu_info_1_local_var);
+
     upu_info_1_local_var->upu_data_list = upu_data_list;
     upu_info_1_local_var->upu_reg_ind = upu_reg_ind;
     upu_info_1_local_var->upu_ack_ind = upu_ack_ind;

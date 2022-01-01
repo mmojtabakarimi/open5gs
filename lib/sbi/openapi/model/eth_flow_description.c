@@ -15,10 +15,9 @@ OpenAPI_eth_flow_description_t *OpenAPI_eth_flow_description_create(
     char *dest_mac_addr_end
 )
 {
-    OpenAPI_eth_flow_description_t *eth_flow_description_local_var = OpenAPI_malloc(sizeof(OpenAPI_eth_flow_description_t));
-    if (!eth_flow_description_local_var) {
-        return NULL;
-    }
+    OpenAPI_eth_flow_description_t *eth_flow_description_local_var = ogs_malloc(sizeof(OpenAPI_eth_flow_description_t));
+    ogs_assert(eth_flow_description_local_var);
+
     eth_flow_description_local_var->dest_mac_addr = dest_mac_addr;
     eth_flow_description_local_var->eth_type = eth_type;
     eth_flow_description_local_var->f_desc = f_desc;

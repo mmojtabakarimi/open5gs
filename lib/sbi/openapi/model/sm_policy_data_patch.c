@@ -9,10 +9,9 @@ OpenAPI_sm_policy_data_patch_t *OpenAPI_sm_policy_data_patch_create(
     OpenAPI_list_t* sm_policy_snssai_data
 )
 {
-    OpenAPI_sm_policy_data_patch_t *sm_policy_data_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_data_patch_t));
-    if (!sm_policy_data_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_data_patch_t *sm_policy_data_patch_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_data_patch_t));
+    ogs_assert(sm_policy_data_patch_local_var);
+
     sm_policy_data_patch_local_var->um_data = um_data;
     sm_policy_data_patch_local_var->sm_policy_snssai_data = sm_policy_snssai_data;
 

@@ -24,10 +24,9 @@ OpenAPI_monitoring_configuration_t *OpenAPI_monitoring_configuration_create(
     char *af_id
 )
 {
-    OpenAPI_monitoring_configuration_t *monitoring_configuration_local_var = OpenAPI_malloc(sizeof(OpenAPI_monitoring_configuration_t));
-    if (!monitoring_configuration_local_var) {
-        return NULL;
-    }
+    OpenAPI_monitoring_configuration_t *monitoring_configuration_local_var = ogs_malloc(sizeof(OpenAPI_monitoring_configuration_t));
+    ogs_assert(monitoring_configuration_local_var);
+
     monitoring_configuration_local_var->event_type = event_type;
     monitoring_configuration_local_var->is_immediate_flag = is_immediate_flag;
     monitoring_configuration_local_var->immediate_flag = immediate_flag;

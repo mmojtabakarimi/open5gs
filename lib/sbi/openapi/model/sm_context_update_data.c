@@ -65,10 +65,9 @@ OpenAPI_sm_context_update_data_t *OpenAPI_sm_context_update_data_create(
     OpenAPI_ddn_failure_subs_t *ddn_failure_subs
 )
 {
-    OpenAPI_sm_context_update_data_t *sm_context_update_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_update_data_t));
-    if (!sm_context_update_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_update_data_t *sm_context_update_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_update_data_t));
+    ogs_assert(sm_context_update_data_local_var);
+
     sm_context_update_data_local_var->pei = pei;
     sm_context_update_data_local_var->serving_nf_id = serving_nf_id;
     sm_context_update_data_local_var->guami = guami;

@@ -21,10 +21,9 @@ OpenAPI_dnn_info_t *OpenAPI_dnn_info_create(
     int same_smf_ind
 )
 {
-    OpenAPI_dnn_info_t *dnn_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_dnn_info_t));
-    if (!dnn_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_dnn_info_t *dnn_info_local_var = ogs_malloc(sizeof(OpenAPI_dnn_info_t));
+    ogs_assert(dnn_info_local_var);
+
     dnn_info_local_var->dnn = dnn;
     dnn_info_local_var->is_default_dnn_indicator = is_default_dnn_indicator;
     dnn_info_local_var->default_dnn_indicator = default_dnn_indicator;

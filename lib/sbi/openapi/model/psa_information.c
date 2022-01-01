@@ -11,10 +11,9 @@ OpenAPI_psa_information_t *OpenAPI_psa_information_create(
     char *psa_upf_id
 )
 {
-    OpenAPI_psa_information_t *psa_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_psa_information_t));
-    if (!psa_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_psa_information_t *psa_information_local_var = ogs_malloc(sizeof(OpenAPI_psa_information_t));
+    ogs_assert(psa_information_local_var);
+
     psa_information_local_var->psa_ind = psa_ind;
     psa_information_local_var->dnai_list = dnai_list;
     psa_information_local_var->ue_ipv6_prefix = ue_ipv6_prefix;

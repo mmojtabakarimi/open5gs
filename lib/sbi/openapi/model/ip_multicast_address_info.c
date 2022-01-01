@@ -11,10 +11,9 @@ OpenAPI_ip_multicast_address_info_t *OpenAPI_ip_multicast_address_info_create(
     char *ipv6_mul_addr
 )
 {
-    OpenAPI_ip_multicast_address_info_t *ip_multicast_address_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_ip_multicast_address_info_t));
-    if (!ip_multicast_address_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_ip_multicast_address_info_t *ip_multicast_address_info_local_var = ogs_malloc(sizeof(OpenAPI_ip_multicast_address_info_t));
+    ogs_assert(ip_multicast_address_info_local_var);
+
     ip_multicast_address_info_local_var->src_ipv4_addr = src_ipv4_addr;
     ip_multicast_address_info_local_var->ipv4_mul_addr = ipv4_mul_addr;
     ip_multicast_address_info_local_var->src_ipv6_addr = src_ipv6_addr;

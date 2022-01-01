@@ -10,10 +10,9 @@ OpenAPI_rg_authentication_info_t *OpenAPI_rg_authentication_info_create(
     char *supported_features
 )
 {
-    OpenAPI_rg_authentication_info_t *rg_authentication_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_rg_authentication_info_t));
-    if (!rg_authentication_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_rg_authentication_info_t *rg_authentication_info_local_var = ogs_malloc(sizeof(OpenAPI_rg_authentication_info_t));
+    ogs_assert(rg_authentication_info_local_var);
+
     rg_authentication_info_local_var->suci = suci;
     rg_authentication_info_local_var->authenticated_ind = authenticated_ind;
     rg_authentication_info_local_var->supported_features = supported_features;

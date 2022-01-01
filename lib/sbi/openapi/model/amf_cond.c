@@ -9,10 +9,9 @@ OpenAPI_amf_cond_t *OpenAPI_amf_cond_create(
     char *amf_region_id
 )
 {
-    OpenAPI_amf_cond_t *amf_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_cond_t));
-    if (!amf_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_cond_t *amf_cond_local_var = ogs_malloc(sizeof(OpenAPI_amf_cond_t));
+    ogs_assert(amf_cond_local_var);
+
     amf_cond_local_var->amf_set_id = amf_set_id;
     amf_cond_local_var->amf_region_id = amf_region_id;
 

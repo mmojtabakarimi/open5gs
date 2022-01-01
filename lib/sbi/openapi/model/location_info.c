@@ -11,10 +11,9 @@ OpenAPI_location_info_t *OpenAPI_location_info_create(
     char *supported_features
 )
 {
-    OpenAPI_location_info_t *location_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_location_info_t));
-    if (!location_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_location_info_t *location_info_local_var = ogs_malloc(sizeof(OpenAPI_location_info_t));
+    ogs_assert(location_info_local_var);
+
     location_info_local_var->supi = supi;
     location_info_local_var->gpsi = gpsi;
     location_info_local_var->registration_location_info_list = registration_location_info_list;

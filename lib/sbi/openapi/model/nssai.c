@@ -12,10 +12,9 @@ OpenAPI_nssai_t *OpenAPI_nssai_create(
     OpenAPI_list_t* additional_snssai_data
 )
 {
-    OpenAPI_nssai_t *nssai_local_var = OpenAPI_malloc(sizeof(OpenAPI_nssai_t));
-    if (!nssai_local_var) {
-        return NULL;
-    }
+    OpenAPI_nssai_t *nssai_local_var = ogs_malloc(sizeof(OpenAPI_nssai_t));
+    ogs_assert(nssai_local_var);
+
     nssai_local_var->supported_features = supported_features;
     nssai_local_var->default_single_nssais = default_single_nssais;
     nssai_local_var->single_nssais = single_nssais;

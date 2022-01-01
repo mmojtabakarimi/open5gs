@@ -14,10 +14,9 @@ OpenAPI_ue_n1_n2_info_subscription_create_data_t *OpenAPI_ue_n1_n2_info_subscrip
     OpenAPI_guami_t *old_guami
 )
 {
-    OpenAPI_ue_n1_n2_info_subscription_create_data_t *ue_n1_n2_info_subscription_create_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_n1_n2_info_subscription_create_data_t));
-    if (!ue_n1_n2_info_subscription_create_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_n1_n2_info_subscription_create_data_t *ue_n1_n2_info_subscription_create_data_local_var = ogs_malloc(sizeof(OpenAPI_ue_n1_n2_info_subscription_create_data_t));
+    ogs_assert(ue_n1_n2_info_subscription_create_data_local_var);
+
     ue_n1_n2_info_subscription_create_data_local_var->n2_information_class = n2_information_class;
     ue_n1_n2_info_subscription_create_data_local_var->n2_notify_callback_uri = n2_notify_callback_uri;
     ue_n1_n2_info_subscription_create_data_local_var->n1_message_class = n1_message_class;

@@ -20,10 +20,9 @@ OpenAPI_subscription_data_subscr_cond_t *OpenAPI_subscription_data_subscr_cond_c
     OpenAPI_list_t *tai_list
 )
 {
-    OpenAPI_subscription_data_subscr_cond_t *subscription_data_subscr_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_subscription_data_subscr_cond_t));
-    if (!subscription_data_subscr_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_subscription_data_subscr_cond_t *subscription_data_subscr_cond_local_var = ogs_malloc(sizeof(OpenAPI_subscription_data_subscr_cond_t));
+    ogs_assert(subscription_data_subscr_cond_local_var);
+
     subscription_data_subscr_cond_local_var->nf_instance_id = nf_instance_id;
     subscription_data_subscr_cond_local_var->nf_type = nf_type;
     subscription_data_subscr_cond_local_var->service_name = service_name;

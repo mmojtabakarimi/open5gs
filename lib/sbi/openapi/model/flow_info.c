@@ -9,10 +9,9 @@ OpenAPI_flow_info_t *OpenAPI_flow_info_create(
     OpenAPI_list_t *flow_descriptions
 )
 {
-    OpenAPI_flow_info_t *flow_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_flow_info_t));
-    if (!flow_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_flow_info_t *flow_info_local_var = ogs_malloc(sizeof(OpenAPI_flow_info_t));
+    ogs_assert(flow_info_local_var);
+
     flow_info_local_var->flow_id = flow_id;
     flow_info_local_var->flow_descriptions = flow_descriptions;
 

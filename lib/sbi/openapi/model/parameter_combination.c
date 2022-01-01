@@ -10,10 +10,9 @@ OpenAPI_parameter_combination_t *OpenAPI_parameter_combination_create(
     OpenAPI_snssai_t *snssai
 )
 {
-    OpenAPI_parameter_combination_t *parameter_combination_local_var = OpenAPI_malloc(sizeof(OpenAPI_parameter_combination_t));
-    if (!parameter_combination_local_var) {
-        return NULL;
-    }
+    OpenAPI_parameter_combination_t *parameter_combination_local_var = ogs_malloc(sizeof(OpenAPI_parameter_combination_t));
+    ogs_assert(parameter_combination_local_var);
+
     parameter_combination_local_var->supi = supi;
     parameter_combination_local_var->dnn = dnn;
     parameter_combination_local_var->snssai = snssai;

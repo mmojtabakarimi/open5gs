@@ -19,10 +19,9 @@ OpenAPI_sm_context_status_notification_t *OpenAPI_sm_context_status_notification
     char *alt_anchor_smf_id
 )
 {
-    OpenAPI_sm_context_status_notification_t *sm_context_status_notification_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_status_notification_t));
-    if (!sm_context_status_notification_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_status_notification_t *sm_context_status_notification_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_status_notification_t));
+    ogs_assert(sm_context_status_notification_local_var);
+
     sm_context_status_notification_local_var->status_info = status_info;
     sm_context_status_notification_local_var->small_data_rate_status = small_data_rate_status;
     sm_context_status_notification_local_var->apn_rate_status = apn_rate_status;

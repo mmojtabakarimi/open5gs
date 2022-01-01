@@ -15,10 +15,9 @@ OpenAPI_subscription_data_subscriptions_t *OpenAPI_subscription_data_subscriptio
     char *supported_features
 )
 {
-    OpenAPI_subscription_data_subscriptions_t *subscription_data_subscriptions_local_var = OpenAPI_malloc(sizeof(OpenAPI_subscription_data_subscriptions_t));
-    if (!subscription_data_subscriptions_local_var) {
-        return NULL;
-    }
+    OpenAPI_subscription_data_subscriptions_t *subscription_data_subscriptions_local_var = ogs_malloc(sizeof(OpenAPI_subscription_data_subscriptions_t));
+    ogs_assert(subscription_data_subscriptions_local_var);
+
     subscription_data_subscriptions_local_var->ue_id = ue_id;
     subscription_data_subscriptions_local_var->callback_reference = callback_reference;
     subscription_data_subscriptions_local_var->original_callback_reference = original_callback_reference;

@@ -10,10 +10,9 @@ OpenAPI_route_information_t *OpenAPI_route_information_create(
     int port_number
 )
 {
-    OpenAPI_route_information_t *route_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_route_information_t));
-    if (!route_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_route_information_t *route_information_local_var = ogs_malloc(sizeof(OpenAPI_route_information_t));
+    ogs_assert(route_information_local_var);
+
     route_information_local_var->ipv4_addr = ipv4_addr;
     route_information_local_var->ipv6_addr = ipv6_addr;
     route_information_local_var->port_number = port_number;

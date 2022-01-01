@@ -13,10 +13,9 @@ OpenAPI_charging_information_t *OpenAPI_charging_information_create(
     char *secondary_chf_instance_id
 )
 {
-    OpenAPI_charging_information_t *charging_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_charging_information_t));
-    if (!charging_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_charging_information_t *charging_information_local_var = ogs_malloc(sizeof(OpenAPI_charging_information_t));
+    ogs_assert(charging_information_local_var);
+
     charging_information_local_var->primary_chf_address = primary_chf_address;
     charging_information_local_var->secondary_chf_address = secondary_chf_address;
     charging_information_local_var->primary_chf_set_id = primary_chf_set_id;

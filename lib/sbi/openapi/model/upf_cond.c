@@ -33,10 +33,9 @@ OpenAPI_upf_cond_t *OpenAPI_upf_cond_create(
     OpenAPI_list_t *tai_list
 )
 {
-    OpenAPI_upf_cond_t *upf_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_upf_cond_t));
-    if (!upf_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_upf_cond_t *upf_cond_local_var = ogs_malloc(sizeof(OpenAPI_upf_cond_t));
+    ogs_assert(upf_cond_local_var);
+
     upf_cond_local_var->condition_type = condition_type;
     upf_cond_local_var->smf_serving_area = smf_serving_area;
     upf_cond_local_var->tai_list = tai_list;

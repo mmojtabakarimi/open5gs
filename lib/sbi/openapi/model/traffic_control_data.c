@@ -23,10 +23,9 @@ OpenAPI_traffic_control_data_t *OpenAPI_traffic_control_data_create(
     OpenAPI_multicast_access_control_t *mul_acc_ctrl
 )
 {
-    OpenAPI_traffic_control_data_t *traffic_control_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_traffic_control_data_t));
-    if (!traffic_control_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_traffic_control_data_t *traffic_control_data_local_var = ogs_malloc(sizeof(OpenAPI_traffic_control_data_t));
+    ogs_assert(traffic_control_data_local_var);
+
     traffic_control_data_local_var->tc_id = tc_id;
     traffic_control_data_local_var->flow_status = flow_status;
     traffic_control_data_local_var->redirect_info = redirect_info;

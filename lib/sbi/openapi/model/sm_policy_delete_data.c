@@ -15,10 +15,9 @@ OpenAPI_sm_policy_delete_data_t *OpenAPI_sm_policy_delete_data_create(
     OpenAPI_list_t *qos_mon_reports
 )
 {
-    OpenAPI_sm_policy_delete_data_t *sm_policy_delete_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_delete_data_t));
-    if (!sm_policy_delete_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_delete_data_t *sm_policy_delete_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_delete_data_t));
+    ogs_assert(sm_policy_delete_data_local_var);
+
     sm_policy_delete_data_local_var->user_location_info = user_location_info;
     sm_policy_delete_data_local_var->ue_time_zone = ue_time_zone;
     sm_policy_delete_data_local_var->serving_network = serving_network;

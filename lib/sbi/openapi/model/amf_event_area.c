@@ -11,10 +11,9 @@ OpenAPI_amf_event_area_t *OpenAPI_amf_event_area_create(
     char *nsi_id
 )
 {
-    OpenAPI_amf_event_area_t *amf_event_area_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_event_area_t));
-    if (!amf_event_area_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_event_area_t *amf_event_area_local_var = ogs_malloc(sizeof(OpenAPI_amf_event_area_t));
+    ogs_assert(amf_event_area_local_var);
+
     amf_event_area_local_var->presence_info = presence_info;
     amf_event_area_local_var->ladn_info = ladn_info;
     amf_event_area_local_var->s_nssai = s_nssai;

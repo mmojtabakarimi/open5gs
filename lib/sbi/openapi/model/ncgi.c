@@ -10,10 +10,9 @@ OpenAPI_ncgi_t *OpenAPI_ncgi_create(
     char *nid
 )
 {
-    OpenAPI_ncgi_t *ncgi_local_var = OpenAPI_malloc(sizeof(OpenAPI_ncgi_t));
-    if (!ncgi_local_var) {
-        return NULL;
-    }
+    OpenAPI_ncgi_t *ncgi_local_var = ogs_malloc(sizeof(OpenAPI_ncgi_t));
+    ogs_assert(ncgi_local_var);
+
     ncgi_local_var->plmn_id = plmn_id;
     ncgi_local_var->nr_cell_id = nr_cell_id;
     ncgi_local_var->nid = nid;

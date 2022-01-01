@@ -13,10 +13,9 @@ OpenAPI_non_ue_n2_info_subscription_create_data_t *OpenAPI_non_ue_n2_info_subscr
     char *supported_features
 )
 {
-    OpenAPI_non_ue_n2_info_subscription_create_data_t *non_ue_n2_info_subscription_create_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_non_ue_n2_info_subscription_create_data_t));
-    if (!non_ue_n2_info_subscription_create_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_non_ue_n2_info_subscription_create_data_t *non_ue_n2_info_subscription_create_data_local_var = ogs_malloc(sizeof(OpenAPI_non_ue_n2_info_subscription_create_data_t));
+    ogs_assert(non_ue_n2_info_subscription_create_data_local_var);
+
     non_ue_n2_info_subscription_create_data_local_var->global_ran_node_list = global_ran_node_list;
     non_ue_n2_info_subscription_create_data_local_var->an_type_list = an_type_list;
     non_ue_n2_info_subscription_create_data_local_var->n2_information_class = n2_information_class;

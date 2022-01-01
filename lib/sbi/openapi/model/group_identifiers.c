@@ -10,10 +10,9 @@ OpenAPI_group_identifiers_t *OpenAPI_group_identifiers_create(
     OpenAPI_list_t *ue_id_list
 )
 {
-    OpenAPI_group_identifiers_t *group_identifiers_local_var = OpenAPI_malloc(sizeof(OpenAPI_group_identifiers_t));
-    if (!group_identifiers_local_var) {
-        return NULL;
-    }
+    OpenAPI_group_identifiers_t *group_identifiers_local_var = ogs_malloc(sizeof(OpenAPI_group_identifiers_t));
+    ogs_assert(group_identifiers_local_var);
+
     group_identifiers_local_var->ext_group_id = ext_group_id;
     group_identifiers_local_var->int_group_id = int_group_id;
     group_identifiers_local_var->ue_id_list = ue_id_list;

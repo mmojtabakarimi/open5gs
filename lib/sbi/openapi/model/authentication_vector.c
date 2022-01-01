@@ -15,10 +15,9 @@ OpenAPI_authentication_vector_t *OpenAPI_authentication_vector_create(
     char *kausf
 )
 {
-    OpenAPI_authentication_vector_t *authentication_vector_local_var = OpenAPI_malloc(sizeof(OpenAPI_authentication_vector_t));
-    if (!authentication_vector_local_var) {
-        return NULL;
-    }
+    OpenAPI_authentication_vector_t *authentication_vector_local_var = ogs_malloc(sizeof(OpenAPI_authentication_vector_t));
+    ogs_assert(authentication_vector_local_var);
+
     authentication_vector_local_var->av_type = av_type;
     authentication_vector_local_var->rand = rand;
     authentication_vector_local_var->xres = xres;

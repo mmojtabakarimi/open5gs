@@ -11,10 +11,9 @@ OpenAPI_exposure_data_subscription_t *OpenAPI_exposure_data_subscription_create(
     char *supported_features
 )
 {
-    OpenAPI_exposure_data_subscription_t *exposure_data_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_exposure_data_subscription_t));
-    if (!exposure_data_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_exposure_data_subscription_t *exposure_data_subscription_local_var = ogs_malloc(sizeof(OpenAPI_exposure_data_subscription_t));
+    ogs_assert(exposure_data_subscription_local_var);
+
     exposure_data_subscription_local_var->notification_uri = notification_uri;
     exposure_data_subscription_local_var->monitored_resource_uris = monitored_resource_uris;
     exposure_data_subscription_local_var->expiry = expiry;

@@ -24,10 +24,9 @@ OpenAPI_smf_registration_t *OpenAPI_smf_registration_create(
     OpenAPI_context_info_t *context_info
 )
 {
-    OpenAPI_smf_registration_t *smf_registration_local_var = OpenAPI_malloc(sizeof(OpenAPI_smf_registration_t));
-    if (!smf_registration_local_var) {
-        return NULL;
-    }
+    OpenAPI_smf_registration_t *smf_registration_local_var = ogs_malloc(sizeof(OpenAPI_smf_registration_t));
+    ogs_assert(smf_registration_local_var);
+
     smf_registration_local_var->smf_instance_id = smf_instance_id;
     smf_registration_local_var->smf_set_id = smf_set_id;
     smf_registration_local_var->supported_features = supported_features;

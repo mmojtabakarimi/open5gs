@@ -12,10 +12,9 @@ OpenAPI_emergency_info_t *OpenAPI_emergency_info_create(
     int epdg_ind
 )
 {
-    OpenAPI_emergency_info_t *emergency_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_emergency_info_t));
-    if (!emergency_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_emergency_info_t *emergency_info_local_var = ogs_malloc(sizeof(OpenAPI_emergency_info_t));
+    ogs_assert(emergency_info_local_var);
+
     emergency_info_local_var->pgw_fqdn = pgw_fqdn;
     emergency_info_local_var->pgw_ip_address = pgw_ip_address;
     emergency_info_local_var->smf_instance_id = smf_instance_id;

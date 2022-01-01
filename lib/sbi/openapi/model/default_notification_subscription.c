@@ -13,10 +13,9 @@ OpenAPI_default_notification_subscription_t *OpenAPI_default_notification_subscr
     char *binding
 )
 {
-    OpenAPI_default_notification_subscription_t *default_notification_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_default_notification_subscription_t));
-    if (!default_notification_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_default_notification_subscription_t *default_notification_subscription_local_var = ogs_malloc(sizeof(OpenAPI_default_notification_subscription_t));
+    ogs_assert(default_notification_subscription_local_var);
+
     default_notification_subscription_local_var->notification_type = notification_type;
     default_notification_subscription_local_var->callback_uri = callback_uri;
     default_notification_subscription_local_var->n1_message_class = n1_message_class;

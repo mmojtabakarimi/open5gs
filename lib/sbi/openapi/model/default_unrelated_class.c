@@ -12,10 +12,9 @@ OpenAPI_default_unrelated_class_t *OpenAPI_default_unrelated_class_create(
     OpenAPI_list_t *code_word_list
 )
 {
-    OpenAPI_default_unrelated_class_t *default_unrelated_class_local_var = OpenAPI_malloc(sizeof(OpenAPI_default_unrelated_class_t));
-    if (!default_unrelated_class_local_var) {
-        return NULL;
-    }
+    OpenAPI_default_unrelated_class_t *default_unrelated_class_local_var = ogs_malloc(sizeof(OpenAPI_default_unrelated_class_t));
+    ogs_assert(default_unrelated_class_local_var);
+
     default_unrelated_class_local_var->allowed_geographic_area = allowed_geographic_area;
     default_unrelated_class_local_var->privacy_check_related_action = privacy_check_related_action;
     default_unrelated_class_local_var->code_word_ind = code_word_ind;

@@ -14,10 +14,9 @@ OpenAPI_pws_information_t *OpenAPI_pws_information_create(
     char *omc_id
 )
 {
-    OpenAPI_pws_information_t *pws_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_pws_information_t));
-    if (!pws_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_pws_information_t *pws_information_local_var = ogs_malloc(sizeof(OpenAPI_pws_information_t));
+    ogs_assert(pws_information_local_var);
+
     pws_information_local_var->message_identifier = message_identifier;
     pws_information_local_var->serial_number = serial_number;
     pws_information_local_var->pws_container = pws_container;

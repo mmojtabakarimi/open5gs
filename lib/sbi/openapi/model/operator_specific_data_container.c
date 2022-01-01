@@ -11,10 +11,9 @@ OpenAPI_operator_specific_data_container_t *OpenAPI_operator_specific_data_conta
     char *supported_features
 )
 {
-    OpenAPI_operator_specific_data_container_t *operator_specific_data_container_local_var = OpenAPI_malloc(sizeof(OpenAPI_operator_specific_data_container_t));
-    if (!operator_specific_data_container_local_var) {
-        return NULL;
-    }
+    OpenAPI_operator_specific_data_container_t *operator_specific_data_container_local_var = ogs_malloc(sizeof(OpenAPI_operator_specific_data_container_t));
+    ogs_assert(operator_specific_data_container_local_var);
+
     operator_specific_data_container_local_var->data_type = data_type;
     operator_specific_data_container_local_var->data_type_definition = data_type_definition;
     operator_specific_data_container_local_var->value = value;

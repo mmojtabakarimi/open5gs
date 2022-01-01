@@ -32,10 +32,9 @@ OpenAPI_mm_context_t *OpenAPI_mm_context_create(
     OpenAPI_list_t *pending_nssai_mapping_list
 )
 {
-    OpenAPI_mm_context_t *mm_context_local_var = OpenAPI_malloc(sizeof(OpenAPI_mm_context_t));
-    if (!mm_context_local_var) {
-        return NULL;
-    }
+    OpenAPI_mm_context_t *mm_context_local_var = ogs_malloc(sizeof(OpenAPI_mm_context_t));
+    ogs_assert(mm_context_local_var);
+
     mm_context_local_var->access_type = access_type;
     mm_context_local_var->nas_security_mode = nas_security_mode;
     mm_context_local_var->eps_nas_security_mode = eps_nas_security_mode;

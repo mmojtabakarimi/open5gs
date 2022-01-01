@@ -12,10 +12,9 @@ OpenAPI_ddd_traffic_descriptor_t *OpenAPI_ddd_traffic_descriptor_create(
     char *mac_addr
 )
 {
-    OpenAPI_ddd_traffic_descriptor_t *ddd_traffic_descriptor_local_var = OpenAPI_malloc(sizeof(OpenAPI_ddd_traffic_descriptor_t));
-    if (!ddd_traffic_descriptor_local_var) {
-        return NULL;
-    }
+    OpenAPI_ddd_traffic_descriptor_t *ddd_traffic_descriptor_local_var = ogs_malloc(sizeof(OpenAPI_ddd_traffic_descriptor_t));
+    ogs_assert(ddd_traffic_descriptor_local_var);
+
     ddd_traffic_descriptor_local_var->ipv4_addr = ipv4_addr;
     ddd_traffic_descriptor_local_var->ipv6_addr = ipv6_addr;
     ddd_traffic_descriptor_local_var->is_port_number = is_port_number;

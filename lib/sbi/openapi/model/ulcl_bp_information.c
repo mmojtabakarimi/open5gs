@@ -8,10 +8,9 @@ OpenAPI_ulcl_bp_information_t *OpenAPI_ulcl_bp_information_create(
     char *ulcl_bp_upf_id
 )
 {
-    OpenAPI_ulcl_bp_information_t *ulcl_bp_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_ulcl_bp_information_t));
-    if (!ulcl_bp_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_ulcl_bp_information_t *ulcl_bp_information_local_var = ogs_malloc(sizeof(OpenAPI_ulcl_bp_information_t));
+    ogs_assert(ulcl_bp_information_local_var);
+
     ulcl_bp_information_local_var->ulcl_bp_upf_id = ulcl_bp_upf_id;
 
     return ulcl_bp_information_local_var;

@@ -14,10 +14,9 @@ OpenAPI_tsn_bridge_info_t *OpenAPI_tsn_bridge_info_create(
     int dstt_resid_time
 )
 {
-    OpenAPI_tsn_bridge_info_t *tsn_bridge_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_tsn_bridge_info_t));
-    if (!tsn_bridge_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_tsn_bridge_info_t *tsn_bridge_info_local_var = ogs_malloc(sizeof(OpenAPI_tsn_bridge_info_t));
+    ogs_assert(tsn_bridge_info_local_var);
+
     tsn_bridge_info_local_var->is_bridge_id = is_bridge_id;
     tsn_bridge_info_local_var->bridge_id = bridge_id;
     tsn_bridge_info_local_var->dstt_addr = dstt_addr;

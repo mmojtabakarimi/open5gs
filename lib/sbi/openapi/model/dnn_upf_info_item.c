@@ -13,10 +13,9 @@ OpenAPI_dnn_upf_info_item_t *OpenAPI_dnn_upf_info_item_create(
     OpenAPI_list_t* dnai_nw_instance_list
 )
 {
-    OpenAPI_dnn_upf_info_item_t *dnn_upf_info_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_dnn_upf_info_item_t));
-    if (!dnn_upf_info_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_dnn_upf_info_item_t *dnn_upf_info_item_local_var = ogs_malloc(sizeof(OpenAPI_dnn_upf_info_item_t));
+    ogs_assert(dnn_upf_info_item_local_var);
+
     dnn_upf_info_item_local_var->dnn = dnn;
     dnn_upf_info_item_local_var->dnai_list = dnai_list;
     dnn_upf_info_item_local_var->pdu_session_types = pdu_session_types;

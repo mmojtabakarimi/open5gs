@@ -9,10 +9,9 @@ OpenAPI_cag_ack_data_t *OpenAPI_cag_ack_data_create(
     OpenAPI_ue_update_status_e ue_update_status
 )
 {
-    OpenAPI_cag_ack_data_t *cag_ack_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_cag_ack_data_t));
-    if (!cag_ack_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_cag_ack_data_t *cag_ack_data_local_var = ogs_malloc(sizeof(OpenAPI_cag_ack_data_t));
+    ogs_assert(cag_ack_data_local_var);
+
     cag_ack_data_local_var->provisioning_time = provisioning_time;
     cag_ack_data_local_var->ue_update_status = ue_update_status;
 

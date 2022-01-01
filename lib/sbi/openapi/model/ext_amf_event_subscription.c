@@ -23,10 +23,9 @@ OpenAPI_ext_amf_event_subscription_t *OpenAPI_ext_amf_event_subscription_create(
     OpenAPI_nf_type_e subscribing_nf_type
 )
 {
-    OpenAPI_ext_amf_event_subscription_t *ext_amf_event_subscription_local_var = OpenAPI_malloc(sizeof(OpenAPI_ext_amf_event_subscription_t));
-    if (!ext_amf_event_subscription_local_var) {
-        return NULL;
-    }
+    OpenAPI_ext_amf_event_subscription_t *ext_amf_event_subscription_local_var = ogs_malloc(sizeof(OpenAPI_ext_amf_event_subscription_t));
+    ogs_assert(ext_amf_event_subscription_local_var);
+
     ext_amf_event_subscription_local_var->event_list = event_list;
     ext_amf_event_subscription_local_var->event_notify_uri = event_notify_uri;
     ext_amf_event_subscription_local_var->notify_correlation_id = notify_correlation_id;

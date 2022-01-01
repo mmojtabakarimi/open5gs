@@ -9,10 +9,9 @@ OpenAPI_amf_status_change_subscription_data_t *OpenAPI_amf_status_change_subscri
     OpenAPI_list_t *guami_list
 )
 {
-    OpenAPI_amf_status_change_subscription_data_t *amf_status_change_subscription_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_amf_status_change_subscription_data_t));
-    if (!amf_status_change_subscription_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_amf_status_change_subscription_data_t *amf_status_change_subscription_data_local_var = ogs_malloc(sizeof(OpenAPI_amf_status_change_subscription_data_t));
+    ogs_assert(amf_status_change_subscription_data_local_var);
+
     amf_status_change_subscription_data_local_var->amf_status_uri = amf_status_uri;
     amf_status_change_subscription_data_local_var->guami_list = guami_list;
 

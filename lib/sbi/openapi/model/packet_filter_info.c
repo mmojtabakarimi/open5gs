@@ -13,10 +13,9 @@ OpenAPI_packet_filter_info_t *OpenAPI_packet_filter_info_create(
     OpenAPI_flow_direction_e flow_direction
 )
 {
-    OpenAPI_packet_filter_info_t *packet_filter_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_packet_filter_info_t));
-    if (!packet_filter_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_packet_filter_info_t *packet_filter_info_local_var = ogs_malloc(sizeof(OpenAPI_packet_filter_info_t));
+    ogs_assert(packet_filter_info_local_var);
+
     packet_filter_info_local_var->pack_filt_id = pack_filt_id;
     packet_filter_info_local_var->pack_filt_cont = pack_filt_cont;
     packet_filter_info_local_var->tos_traffic_class = tos_traffic_class;

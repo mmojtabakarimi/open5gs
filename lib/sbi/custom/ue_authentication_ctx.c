@@ -12,10 +12,9 @@ OpenAPI_ue_authentication_ctx_t *OpenAPI_ue_authentication_ctx_create(
     char *serving_network_name
 )
 {
-    OpenAPI_ue_authentication_ctx_t *ue_authentication_ctx_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_authentication_ctx_t));
-    if (!ue_authentication_ctx_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_authentication_ctx_t *ue_authentication_ctx_local_var = ogs_malloc(sizeof(OpenAPI_ue_authentication_ctx_t));
+    ogs_assert(ue_authentication_ctx_local_var);
+
     ue_authentication_ctx_local_var->auth_type = auth_type;
     ue_authentication_ctx_local_var->_5g_auth_data = _5g_auth_data;
     ue_authentication_ctx_local_var->eap_payload = eap_payload;

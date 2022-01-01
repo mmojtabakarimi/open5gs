@@ -11,10 +11,9 @@ OpenAPI_pp_dl_packet_count_ext_t *OpenAPI_pp_dl_packet_count_ext_create(
     char *mtc_provider_information
 )
 {
-    OpenAPI_pp_dl_packet_count_ext_t *pp_dl_packet_count_ext_local_var = OpenAPI_malloc(sizeof(OpenAPI_pp_dl_packet_count_ext_t));
-    if (!pp_dl_packet_count_ext_local_var) {
-        return NULL;
-    }
+    OpenAPI_pp_dl_packet_count_ext_t *pp_dl_packet_count_ext_local_var = ogs_malloc(sizeof(OpenAPI_pp_dl_packet_count_ext_t));
+    ogs_assert(pp_dl_packet_count_ext_local_var);
+
     pp_dl_packet_count_ext_local_var->af_instance_id = af_instance_id;
     pp_dl_packet_count_ext_local_var->reference_id = reference_id;
     pp_dl_packet_count_ext_local_var->validity_time = validity_time;

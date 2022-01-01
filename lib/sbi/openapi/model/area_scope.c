@@ -11,10 +11,9 @@ OpenAPI_area_scope_t *OpenAPI_area_scope_create(
     OpenAPI_list_t* tac_info_per_plmn
 )
 {
-    OpenAPI_area_scope_t *area_scope_local_var = OpenAPI_malloc(sizeof(OpenAPI_area_scope_t));
-    if (!area_scope_local_var) {
-        return NULL;
-    }
+    OpenAPI_area_scope_t *area_scope_local_var = ogs_malloc(sizeof(OpenAPI_area_scope_t));
+    ogs_assert(area_scope_local_var);
+
     area_scope_local_var->eutra_cell_id_list = eutra_cell_id_list;
     area_scope_local_var->nr_cell_id_list = nr_cell_id_list;
     area_scope_local_var->tac_list = tac_list;

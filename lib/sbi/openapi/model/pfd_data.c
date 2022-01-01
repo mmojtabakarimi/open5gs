@@ -9,10 +9,9 @@ OpenAPI_pfd_data_t *OpenAPI_pfd_data_create(
     OpenAPI_list_t *af_ids
 )
 {
-    OpenAPI_pfd_data_t *pfd_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pfd_data_t));
-    if (!pfd_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pfd_data_t *pfd_data_local_var = ogs_malloc(sizeof(OpenAPI_pfd_data_t));
+    ogs_assert(pfd_data_local_var);
+
     pfd_data_local_var->app_ids = app_ids;
     pfd_data_local_var->af_ids = af_ids;
 

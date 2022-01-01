@@ -19,10 +19,9 @@ OpenAPI_problem_details_t *OpenAPI_problem_details_create(
     char *nrf_id
 )
 {
-    OpenAPI_problem_details_t *problem_details_local_var = OpenAPI_malloc(sizeof(OpenAPI_problem_details_t));
-    if (!problem_details_local_var) {
-        return NULL;
-    }
+    OpenAPI_problem_details_t *problem_details_local_var = ogs_malloc(sizeof(OpenAPI_problem_details_t));
+    ogs_assert(problem_details_local_var);
+
     problem_details_local_var->type = type;
     problem_details_local_var->title = title;
     problem_details_local_var->is_status = is_status;

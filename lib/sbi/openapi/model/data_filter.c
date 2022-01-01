@@ -16,10 +16,9 @@ OpenAPI_data_filter_t *OpenAPI_data_filter_create(
     OpenAPI_list_t *ue_macs
 )
 {
-    OpenAPI_data_filter_t *data_filter_local_var = OpenAPI_malloc(sizeof(OpenAPI_data_filter_t));
-    if (!data_filter_local_var) {
-        return NULL;
-    }
+    OpenAPI_data_filter_t *data_filter_local_var = ogs_malloc(sizeof(OpenAPI_data_filter_t));
+    ogs_assert(data_filter_local_var);
+
     data_filter_local_var->data_ind = data_ind;
     data_filter_local_var->dnns = dnns;
     data_filter_local_var->snssais = snssais;

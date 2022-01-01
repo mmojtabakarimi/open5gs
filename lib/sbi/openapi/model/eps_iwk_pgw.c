@@ -9,10 +9,9 @@ OpenAPI_eps_iwk_pgw_t *OpenAPI_eps_iwk_pgw_create(
     char *smf_instance_id
 )
 {
-    OpenAPI_eps_iwk_pgw_t *eps_iwk_pgw_local_var = OpenAPI_malloc(sizeof(OpenAPI_eps_iwk_pgw_t));
-    if (!eps_iwk_pgw_local_var) {
-        return NULL;
-    }
+    OpenAPI_eps_iwk_pgw_t *eps_iwk_pgw_local_var = ogs_malloc(sizeof(OpenAPI_eps_iwk_pgw_t));
+    ogs_assert(eps_iwk_pgw_local_var);
+
     eps_iwk_pgw_local_var->pgw_fqdn = pgw_fqdn;
     eps_iwk_pgw_local_var->smf_instance_id = smf_instance_id;
 

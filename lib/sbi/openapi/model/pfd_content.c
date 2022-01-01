@@ -12,10 +12,9 @@ OpenAPI_pfd_content_t *OpenAPI_pfd_content_create(
     OpenAPI_domain_name_protocol_t *dn_protocol
 )
 {
-    OpenAPI_pfd_content_t *pfd_content_local_var = OpenAPI_malloc(sizeof(OpenAPI_pfd_content_t));
-    if (!pfd_content_local_var) {
-        return NULL;
-    }
+    OpenAPI_pfd_content_t *pfd_content_local_var = ogs_malloc(sizeof(OpenAPI_pfd_content_t));
+    ogs_assert(pfd_content_local_var);
+
     pfd_content_local_var->pfd_id = pfd_id;
     pfd_content_local_var->flow_descriptions = flow_descriptions;
     pfd_content_local_var->urls = urls;

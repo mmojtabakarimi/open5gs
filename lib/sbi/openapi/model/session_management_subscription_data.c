@@ -18,10 +18,9 @@ OpenAPI_session_management_subscription_data_t *OpenAPI_session_management_subsc
     char *_3gpp_charging_characteristics
 )
 {
-    OpenAPI_session_management_subscription_data_t *session_management_subscription_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_session_management_subscription_data_t));
-    if (!session_management_subscription_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_session_management_subscription_data_t *session_management_subscription_data_local_var = ogs_malloc(sizeof(OpenAPI_session_management_subscription_data_t));
+    ogs_assert(session_management_subscription_data_local_var);
+
     session_management_subscription_data_local_var->single_nssai = single_nssai;
     session_management_subscription_data_local_var->dnn_configurations = dnn_configurations;
     session_management_subscription_data_local_var->internal_group_ids = internal_group_ids;

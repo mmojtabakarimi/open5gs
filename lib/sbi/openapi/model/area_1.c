@@ -9,10 +9,9 @@ OpenAPI_area_1_t *OpenAPI_area_1_create(
     char *area_code
 )
 {
-    OpenAPI_area_1_t *area_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_area_1_t));
-    if (!area_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_area_1_t *area_1_local_var = ogs_malloc(sizeof(OpenAPI_area_1_t));
+    ogs_assert(area_1_local_var);
+
     area_1_local_var->tacs = tacs;
     area_1_local_var->area_code = area_code;
 

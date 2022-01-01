@@ -13,10 +13,9 @@ OpenAPI_acknowledge_info_t *OpenAPI_acknowledge_info_create(
     int ue_not_reachable
 )
 {
-    OpenAPI_acknowledge_info_t *acknowledge_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_acknowledge_info_t));
-    if (!acknowledge_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_acknowledge_info_t *acknowledge_info_local_var = ogs_malloc(sizeof(OpenAPI_acknowledge_info_t));
+    ogs_assert(acknowledge_info_local_var);
+
     acknowledge_info_local_var->sor_mac_iue = sor_mac_iue;
     acknowledge_info_local_var->upu_mac_iue = upu_mac_iue;
     acknowledge_info_local_var->secured_packet = secured_packet;

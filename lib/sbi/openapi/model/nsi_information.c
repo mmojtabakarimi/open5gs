@@ -11,10 +11,9 @@ OpenAPI_nsi_information_t *OpenAPI_nsi_information_create(
     char *nrf_access_token_uri
 )
 {
-    OpenAPI_nsi_information_t *nsi_information_local_var = OpenAPI_malloc(sizeof(OpenAPI_nsi_information_t));
-    if (!nsi_information_local_var) {
-        return NULL;
-    }
+    OpenAPI_nsi_information_t *nsi_information_local_var = ogs_malloc(sizeof(OpenAPI_nsi_information_t));
+    ogs_assert(nsi_information_local_var);
+
     nsi_information_local_var->nrf_id = nrf_id;
     nsi_information_local_var->nsi_id = nsi_id;
     nsi_information_local_var->nrf_nf_mgt_uri = nrf_nf_mgt_uri;

@@ -81,10 +81,9 @@ OpenAPI_pdu_session_create_data_t *OpenAPI_pdu_session_create_data_create(
     OpenAPI_vplmn_qos_t *vplmn_qos
 )
 {
-    OpenAPI_pdu_session_create_data_t *pdu_session_create_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_pdu_session_create_data_t));
-    if (!pdu_session_create_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_pdu_session_create_data_t *pdu_session_create_data_local_var = ogs_malloc(sizeof(OpenAPI_pdu_session_create_data_t));
+    ogs_assert(pdu_session_create_data_local_var);
+
     pdu_session_create_data_local_var->supi = supi;
     pdu_session_create_data_local_var->is_unauthenticated_supi = is_unauthenticated_supi;
     pdu_session_create_data_local_var->unauthenticated_supi = unauthenticated_supi;

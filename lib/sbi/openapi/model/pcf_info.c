@@ -15,10 +15,9 @@ OpenAPI_pcf_info_t *OpenAPI_pcf_info_create(
     int v2x_support_ind
 )
 {
-    OpenAPI_pcf_info_t *pcf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcf_info_t));
-    if (!pcf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcf_info_t *pcf_info_local_var = ogs_malloc(sizeof(OpenAPI_pcf_info_t));
+    ogs_assert(pcf_info_local_var);
+
     pcf_info_local_var->group_id = group_id;
     pcf_info_local_var->dnn_list = dnn_list;
     pcf_info_local_var->supi_ranges = supi_ranges;

@@ -28,10 +28,9 @@ OpenAPI_usage_monitoring_data_t *OpenAPI_usage_monitoring_data_create(
     OpenAPI_list_t *ex_usage_pcc_rule_ids
 )
 {
-    OpenAPI_usage_monitoring_data_t *usage_monitoring_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_usage_monitoring_data_t));
-    if (!usage_monitoring_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_usage_monitoring_data_t *usage_monitoring_data_local_var = ogs_malloc(sizeof(OpenAPI_usage_monitoring_data_t));
+    ogs_assert(usage_monitoring_data_local_var);
+
     usage_monitoring_data_local_var->um_id = um_id;
     usage_monitoring_data_local_var->is_volume_threshold = is_volume_threshold;
     usage_monitoring_data_local_var->volume_threshold = volume_threshold;

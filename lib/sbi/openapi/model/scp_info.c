@@ -18,10 +18,9 @@ OpenAPI_scp_info_t *OpenAPI_scp_info_create(
     OpenAPI_ip_reachability_e ip_reachability
 )
 {
-    OpenAPI_scp_info_t *scp_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_scp_info_t));
-    if (!scp_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_scp_info_t *scp_info_local_var = ogs_malloc(sizeof(OpenAPI_scp_info_t));
+    ogs_assert(scp_info_local_var);
+
     scp_info_local_var->scp_domain_info_list = scp_domain_info_list;
     scp_info_local_var->scp_prefix = scp_prefix;
     scp_info_local_var->scp_ports = scp_ports;

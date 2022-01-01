@@ -9,10 +9,9 @@ OpenAPI_ptw_parameters_1_t *OpenAPI_ptw_parameters_1_create(
     char *ptw_value
 )
 {
-    OpenAPI_ptw_parameters_1_t *ptw_parameters_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_ptw_parameters_1_t));
-    if (!ptw_parameters_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_ptw_parameters_1_t *ptw_parameters_1_local_var = ogs_malloc(sizeof(OpenAPI_ptw_parameters_1_t));
+    ogs_assert(ptw_parameters_1_local_var);
+
     ptw_parameters_1_local_var->operation_mode = operation_mode;
     ptw_parameters_1_local_var->ptw_value = ptw_value;
 

@@ -11,10 +11,9 @@ OpenAPI_n1_message_container_t *OpenAPI_n1_message_container_create(
     char *service_instance_id
 )
 {
-    OpenAPI_n1_message_container_t *n1_message_container_local_var = OpenAPI_malloc(sizeof(OpenAPI_n1_message_container_t));
-    if (!n1_message_container_local_var) {
-        return NULL;
-    }
+    OpenAPI_n1_message_container_t *n1_message_container_local_var = ogs_malloc(sizeof(OpenAPI_n1_message_container_t));
+    ogs_assert(n1_message_container_local_var);
+
     n1_message_container_local_var->n1_message_class = n1_message_class;
     n1_message_container_local_var->n1_message_content = n1_message_content;
     n1_message_container_local_var->nf_id = nf_id;

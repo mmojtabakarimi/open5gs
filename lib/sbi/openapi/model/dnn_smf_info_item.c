@@ -8,10 +8,9 @@ OpenAPI_dnn_smf_info_item_t *OpenAPI_dnn_smf_info_item_create(
     char *dnn
 )
 {
-    OpenAPI_dnn_smf_info_item_t *dnn_smf_info_item_local_var = OpenAPI_malloc(sizeof(OpenAPI_dnn_smf_info_item_t));
-    if (!dnn_smf_info_item_local_var) {
-        return NULL;
-    }
+    OpenAPI_dnn_smf_info_item_t *dnn_smf_info_item_local_var = ogs_malloc(sizeof(OpenAPI_dnn_smf_info_item_t));
+    ogs_assert(dnn_smf_info_item_local_var);
+
     dnn_smf_info_item_local_var->dnn = dnn;
 
     return dnn_smf_info_item_local_var;

@@ -14,10 +14,9 @@ OpenAPI_pcscf_info_t *OpenAPI_pcscf_info_create(
     OpenAPI_list_t *served_ipv6_prefix_ranges
 )
 {
-    OpenAPI_pcscf_info_t *pcscf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcscf_info_t));
-    if (!pcscf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcscf_info_t *pcscf_info_local_var = ogs_malloc(sizeof(OpenAPI_pcscf_info_t));
+    ogs_assert(pcscf_info_local_var);
+
     pcscf_info_local_var->access_type = access_type;
     pcscf_info_local_var->dnn_list = dnn_list;
     pcscf_info_local_var->gm_fqdn = gm_fqdn;

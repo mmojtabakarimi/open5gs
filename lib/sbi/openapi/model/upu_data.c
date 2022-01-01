@@ -11,10 +11,9 @@ OpenAPI_upu_data_t *OpenAPI_upu_data_create(
     char *upu_mac_iue
 )
 {
-    OpenAPI_upu_data_t *upu_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_upu_data_t));
-    if (!upu_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_upu_data_t *upu_data_local_var = ogs_malloc(sizeof(OpenAPI_upu_data_t));
+    ogs_assert(upu_data_local_var);
+
     upu_data_local_var->provisioning_time = provisioning_time;
     upu_data_local_var->ue_update_status = ue_update_status;
     upu_data_local_var->upu_xmac_iue = upu_xmac_iue;

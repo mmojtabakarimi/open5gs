@@ -15,10 +15,9 @@ OpenAPI_hsmf_update_error_t *OpenAPI_hsmf_update_error_create(
     char *recovery_time
 )
 {
-    OpenAPI_hsmf_update_error_t *hsmf_update_error_local_var = OpenAPI_malloc(sizeof(OpenAPI_hsmf_update_error_t));
-    if (!hsmf_update_error_local_var) {
-        return NULL;
-    }
+    OpenAPI_hsmf_update_error_t *hsmf_update_error_local_var = ogs_malloc(sizeof(OpenAPI_hsmf_update_error_t));
+    ogs_assert(hsmf_update_error_local_var);
+
     hsmf_update_error_local_var->error = error;
     hsmf_update_error_local_var->is_pti = is_pti;
     hsmf_update_error_local_var->pti = pti;

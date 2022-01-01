@@ -10,10 +10,9 @@ OpenAPI_identity_range_t *OpenAPI_identity_range_create(
     char *pattern
 )
 {
-    OpenAPI_identity_range_t *identity_range_local_var = OpenAPI_malloc(sizeof(OpenAPI_identity_range_t));
-    if (!identity_range_local_var) {
-        return NULL;
-    }
+    OpenAPI_identity_range_t *identity_range_local_var = ogs_malloc(sizeof(OpenAPI_identity_range_t));
+    ogs_assert(identity_range_local_var);
+
     identity_range_local_var->start = start;
     identity_range_local_var->end = end;
     identity_range_local_var->pattern = pattern;

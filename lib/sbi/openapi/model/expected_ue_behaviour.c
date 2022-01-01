@@ -21,10 +21,9 @@ OpenAPI_expected_ue_behaviour_t *OpenAPI_expected_ue_behaviour_create(
     char *mtc_provider_information
 )
 {
-    OpenAPI_expected_ue_behaviour_t *expected_ue_behaviour_local_var = OpenAPI_malloc(sizeof(OpenAPI_expected_ue_behaviour_t));
-    if (!expected_ue_behaviour_local_var) {
-        return NULL;
-    }
+    OpenAPI_expected_ue_behaviour_t *expected_ue_behaviour_local_var = ogs_malloc(sizeof(OpenAPI_expected_ue_behaviour_t));
+    ogs_assert(expected_ue_behaviour_local_var);
+
     expected_ue_behaviour_local_var->af_instance_id = af_instance_id;
     expected_ue_behaviour_local_var->reference_id = reference_id;
     expected_ue_behaviour_local_var->stationary_indication = stationary_indication;

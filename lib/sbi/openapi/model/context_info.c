@@ -8,10 +8,9 @@ OpenAPI_context_info_t *OpenAPI_context_info_create(
     OpenAPI_list_t *orig_headers
 )
 {
-    OpenAPI_context_info_t *context_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_context_info_t));
-    if (!context_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_context_info_t *context_info_local_var = ogs_malloc(sizeof(OpenAPI_context_info_t));
+    ogs_assert(context_info_local_var);
+
     context_info_local_var->orig_headers = orig_headers;
 
     return context_info_local_var;

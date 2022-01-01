@@ -8,10 +8,9 @@ OpenAPI_inline_response_200_t *OpenAPI_inline_response_200_create(
     OpenAPI_list_t* _links
 )
 {
-    OpenAPI_inline_response_200_t *inline_response_200_local_var = OpenAPI_malloc(sizeof(OpenAPI_inline_response_200_t));
-    if (!inline_response_200_local_var) {
-        return NULL;
-    }
+    OpenAPI_inline_response_200_t *inline_response_200_local_var = ogs_malloc(sizeof(OpenAPI_inline_response_200_t));
+    ogs_assert(inline_response_200_local_var);
+
     inline_response_200_local_var->_links = _links;
 
     return inline_response_200_local_var;

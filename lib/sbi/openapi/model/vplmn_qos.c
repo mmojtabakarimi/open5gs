@@ -15,10 +15,9 @@ OpenAPI_vplmn_qos_t *OpenAPI_vplmn_qos_create(
     char *gua_fbr_ul
 )
 {
-    OpenAPI_vplmn_qos_t *vplmn_qos_local_var = OpenAPI_malloc(sizeof(OpenAPI_vplmn_qos_t));
-    if (!vplmn_qos_local_var) {
-        return NULL;
-    }
+    OpenAPI_vplmn_qos_t *vplmn_qos_local_var = ogs_malloc(sizeof(OpenAPI_vplmn_qos_t));
+    ogs_assert(vplmn_qos_local_var);
+
     vplmn_qos_local_var->is__5qi = is__5qi;
     vplmn_qos_local_var->_5qi = _5qi;
     vplmn_qos_local_var->arp = arp;

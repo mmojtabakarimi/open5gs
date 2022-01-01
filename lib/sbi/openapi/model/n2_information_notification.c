@@ -20,10 +20,9 @@ OpenAPI_n2_information_notification_t *OpenAPI_n2_information_notification_creat
     int notify_source_ng_ran
 )
 {
-    OpenAPI_n2_information_notification_t *n2_information_notification_local_var = OpenAPI_malloc(sizeof(OpenAPI_n2_information_notification_t));
-    if (!n2_information_notification_local_var) {
-        return NULL;
-    }
+    OpenAPI_n2_information_notification_t *n2_information_notification_local_var = ogs_malloc(sizeof(OpenAPI_n2_information_notification_t));
+    ogs_assert(n2_information_notification_local_var);
+
     n2_information_notification_local_var->n2_notify_subscription_id = n2_notify_subscription_id;
     n2_information_notification_local_var->n2_info_container = n2_info_container;
     n2_information_notification_local_var->to_release_session_list = to_release_session_list;

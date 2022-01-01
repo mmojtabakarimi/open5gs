@@ -30,10 +30,9 @@ OpenAPI_events_notification_t *OpenAPI_events_notification_create(
     OpenAPI_list_t *tsn_port_man_cont_nwtts
 )
 {
-    OpenAPI_events_notification_t *events_notification_local_var = OpenAPI_malloc(sizeof(OpenAPI_events_notification_t));
-    if (!events_notification_local_var) {
-        return NULL;
-    }
+    OpenAPI_events_notification_t *events_notification_local_var = ogs_malloc(sizeof(OpenAPI_events_notification_t));
+    ogs_assert(events_notification_local_var);
+
     events_notification_local_var->access_type = access_type;
     events_notification_local_var->add_access_info = add_access_info;
     events_notification_local_var->rel_access_info = rel_access_info;

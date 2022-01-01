@@ -31,10 +31,9 @@ OpenAPI_pcf_binding_t *OpenAPI_pcf_binding_create(
     OpenAPI_list_t *ipv6_frame_route_list
 )
 {
-    OpenAPI_pcf_binding_t *pcf_binding_local_var = OpenAPI_malloc(sizeof(OpenAPI_pcf_binding_t));
-    if (!pcf_binding_local_var) {
-        return NULL;
-    }
+    OpenAPI_pcf_binding_t *pcf_binding_local_var = ogs_malloc(sizeof(OpenAPI_pcf_binding_t));
+    ogs_assert(pcf_binding_local_var);
+
     pcf_binding_local_var->supi = supi;
     pcf_binding_local_var->gpsi = gpsi;
     pcf_binding_local_var->ipv4_addr = ipv4_addr;

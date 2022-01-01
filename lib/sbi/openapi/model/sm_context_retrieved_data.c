@@ -13,10 +13,9 @@ OpenAPI_sm_context_retrieved_data_t *OpenAPI_sm_context_retrieved_data_create(
     int dl_data_waiting_ind
 )
 {
-    OpenAPI_sm_context_retrieved_data_t *sm_context_retrieved_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_retrieved_data_t));
-    if (!sm_context_retrieved_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_retrieved_data_t *sm_context_retrieved_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_retrieved_data_t));
+    ogs_assert(sm_context_retrieved_data_local_var);
+
     sm_context_retrieved_data_local_var->ue_eps_pdn_connection = ue_eps_pdn_connection;
     sm_context_retrieved_data_local_var->sm_context = sm_context;
     sm_context_retrieved_data_local_var->small_data_rate_status = small_data_rate_status;

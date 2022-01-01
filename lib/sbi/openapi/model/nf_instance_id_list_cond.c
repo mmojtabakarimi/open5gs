@@ -8,10 +8,9 @@ OpenAPI_nf_instance_id_list_cond_t *OpenAPI_nf_instance_id_list_cond_create(
     OpenAPI_list_t *nf_instance_id_list
 )
 {
-    OpenAPI_nf_instance_id_list_cond_t *nf_instance_id_list_cond_local_var = OpenAPI_malloc(sizeof(OpenAPI_nf_instance_id_list_cond_t));
-    if (!nf_instance_id_list_cond_local_var) {
-        return NULL;
-    }
+    OpenAPI_nf_instance_id_list_cond_t *nf_instance_id_list_cond_local_var = ogs_malloc(sizeof(OpenAPI_nf_instance_id_list_cond_t));
+    ogs_assert(nf_instance_id_list_cond_local_var);
+
     nf_instance_id_list_cond_local_var->nf_instance_id_list = nf_instance_id_list;
 
     return nf_instance_id_list_cond_local_var;

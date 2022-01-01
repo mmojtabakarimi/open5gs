@@ -42,10 +42,9 @@ OpenAPI_sm_policy_decision_t *OpenAPI_sm_policy_decision_create(
     int red_sess_indication
 )
 {
-    OpenAPI_sm_policy_decision_t *sm_policy_decision_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_decision_t));
-    if (!sm_policy_decision_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_decision_t *sm_policy_decision_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_decision_t));
+    ogs_assert(sm_policy_decision_local_var);
+
     sm_policy_decision_local_var->sess_rules = sess_rules;
     sm_policy_decision_local_var->pcc_rules = pcc_rules;
     sm_policy_decision_local_var->is_pcscf_rest_indication = is_pcscf_rest_indication;

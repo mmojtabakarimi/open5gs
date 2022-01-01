@@ -10,10 +10,9 @@ OpenAPI_route_to_location_t *OpenAPI_route_to_location_create(
     char *route_prof_id
 )
 {
-    OpenAPI_route_to_location_t *route_to_location_local_var = OpenAPI_malloc(sizeof(OpenAPI_route_to_location_t));
-    if (!route_to_location_local_var) {
-        return NULL;
-    }
+    OpenAPI_route_to_location_t *route_to_location_local_var = ogs_malloc(sizeof(OpenAPI_route_to_location_t));
+    ogs_assert(route_to_location_local_var);
+
     route_to_location_local_var->dnai = dnai;
     route_to_location_local_var->route_info = route_info;
     route_to_location_local_var->route_prof_id = route_prof_id;

@@ -11,10 +11,9 @@ OpenAPI_datalink_reporting_configuration_t *OpenAPI_datalink_reporting_configura
     OpenAPI_list_t *ddd_status_list
 )
 {
-    OpenAPI_datalink_reporting_configuration_t *datalink_reporting_configuration_local_var = OpenAPI_malloc(sizeof(OpenAPI_datalink_reporting_configuration_t));
-    if (!datalink_reporting_configuration_local_var) {
-        return NULL;
-    }
+    OpenAPI_datalink_reporting_configuration_t *datalink_reporting_configuration_local_var = ogs_malloc(sizeof(OpenAPI_datalink_reporting_configuration_t));
+    ogs_assert(datalink_reporting_configuration_local_var);
+
     datalink_reporting_configuration_local_var->ddd_traffic_des = ddd_traffic_des;
     datalink_reporting_configuration_local_var->dnn = dnn;
     datalink_reporting_configuration_local_var->slice = slice;

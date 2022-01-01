@@ -19,10 +19,9 @@ OpenAPI_n3ga_location_t *OpenAPI_n3ga_location_create(
     char *gci
 )
 {
-    OpenAPI_n3ga_location_t *n3ga_location_local_var = OpenAPI_malloc(sizeof(OpenAPI_n3ga_location_t));
-    if (!n3ga_location_local_var) {
-        return NULL;
-    }
+    OpenAPI_n3ga_location_t *n3ga_location_local_var = ogs_malloc(sizeof(OpenAPI_n3ga_location_t));
+    ogs_assert(n3ga_location_local_var);
+
     n3ga_location_local_var->n3gpp_tai = n3gpp_tai;
     n3ga_location_local_var->n3_iwf_id = n3_iwf_id;
     n3ga_location_local_var->ue_ipv4_addr = ue_ipv4_addr;

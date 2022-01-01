@@ -8,10 +8,9 @@ OpenAPI_options_response_t *OpenAPI_options_response_create(
     char *supported_features
 )
 {
-    OpenAPI_options_response_t *options_response_local_var = OpenAPI_malloc(sizeof(OpenAPI_options_response_t));
-    if (!options_response_local_var) {
-        return NULL;
-    }
+    OpenAPI_options_response_t *options_response_local_var = ogs_malloc(sizeof(OpenAPI_options_response_t));
+    ogs_assert(options_response_local_var);
+
     options_response_local_var->supported_features = supported_features;
 
     return options_response_local_var;

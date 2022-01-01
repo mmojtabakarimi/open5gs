@@ -98,10 +98,9 @@ OpenAPI_sm_context_create_data_t *OpenAPI_sm_context_create_data_create(
     int ran_unchanged_ind
 )
 {
-    OpenAPI_sm_context_create_data_t *sm_context_create_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_create_data_t));
-    if (!sm_context_create_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_create_data_t *sm_context_create_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_create_data_t));
+    ogs_assert(sm_context_create_data_local_var);
+
     sm_context_create_data_local_var->supi = supi;
     sm_context_create_data_local_var->is_unauthenticated_supi = is_unauthenticated_supi;
     sm_context_create_data_local_var->unauthenticated_supi = unauthenticated_supi;

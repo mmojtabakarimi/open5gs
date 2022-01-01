@@ -9,10 +9,9 @@ OpenAPI_confirmation_data_t *OpenAPI_confirmation_data_create(
     char *supported_features
 )
 {
-    OpenAPI_confirmation_data_t *confirmation_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_confirmation_data_t));
-    if (!confirmation_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_confirmation_data_t *confirmation_data_local_var = ogs_malloc(sizeof(OpenAPI_confirmation_data_t));
+    ogs_assert(confirmation_data_local_var);
+
     confirmation_data_local_var->res_star = res_star;
     confirmation_data_local_var->supported_features = supported_features;
 

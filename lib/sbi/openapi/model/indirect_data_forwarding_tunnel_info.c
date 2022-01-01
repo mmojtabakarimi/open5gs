@@ -14,10 +14,9 @@ OpenAPI_indirect_data_forwarding_tunnel_info_t *OpenAPI_indirect_data_forwarding
     int additional_tnl_nb
 )
 {
-    OpenAPI_indirect_data_forwarding_tunnel_info_t *indirect_data_forwarding_tunnel_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_indirect_data_forwarding_tunnel_info_t));
-    if (!indirect_data_forwarding_tunnel_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_indirect_data_forwarding_tunnel_info_t *indirect_data_forwarding_tunnel_info_local_var = ogs_malloc(sizeof(OpenAPI_indirect_data_forwarding_tunnel_info_t));
+    ogs_assert(indirect_data_forwarding_tunnel_info_local_var);
+
     indirect_data_forwarding_tunnel_info_local_var->ipv4_addr = ipv4_addr;
     indirect_data_forwarding_tunnel_info_local_var->ipv6_addr = ipv6_addr;
     indirect_data_forwarding_tunnel_info_local_var->gtp_teid = gtp_teid;

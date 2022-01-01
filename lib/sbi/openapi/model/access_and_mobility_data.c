@@ -28,10 +28,9 @@ OpenAPI_access_and_mobility_data_t *OpenAPI_access_and_mobility_data_create(
     char *supp_feat
 )
 {
-    OpenAPI_access_and_mobility_data_t *access_and_mobility_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_access_and_mobility_data_t));
-    if (!access_and_mobility_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_access_and_mobility_data_t *access_and_mobility_data_local_var = ogs_malloc(sizeof(OpenAPI_access_and_mobility_data_t));
+    ogs_assert(access_and_mobility_data_local_var);
+
     access_and_mobility_data_local_var->location = location;
     access_and_mobility_data_local_var->location_ts = location_ts;
     access_and_mobility_data_local_var->time_zone = time_zone;

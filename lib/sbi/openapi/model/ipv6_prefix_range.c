@@ -9,10 +9,9 @@ OpenAPI_ipv6_prefix_range_t *OpenAPI_ipv6_prefix_range_create(
     char *end
 )
 {
-    OpenAPI_ipv6_prefix_range_t *ipv6_prefix_range_local_var = OpenAPI_malloc(sizeof(OpenAPI_ipv6_prefix_range_t));
-    if (!ipv6_prefix_range_local_var) {
-        return NULL;
-    }
+    OpenAPI_ipv6_prefix_range_t *ipv6_prefix_range_local_var = ogs_malloc(sizeof(OpenAPI_ipv6_prefix_range_t));
+    ogs_assert(ipv6_prefix_range_local_var);
+
     ipv6_prefix_range_local_var->start = start;
     ipv6_prefix_range_local_var->end = end;
 

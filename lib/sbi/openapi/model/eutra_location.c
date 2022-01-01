@@ -20,10 +20,9 @@ OpenAPI_eutra_location_t *OpenAPI_eutra_location_create(
     OpenAPI_global_ran_node_id_t *global_enb_id
 )
 {
-    OpenAPI_eutra_location_t *eutra_location_local_var = OpenAPI_malloc(sizeof(OpenAPI_eutra_location_t));
-    if (!eutra_location_local_var) {
-        return NULL;
-    }
+    OpenAPI_eutra_location_t *eutra_location_local_var = ogs_malloc(sizeof(OpenAPI_eutra_location_t));
+    ogs_assert(eutra_location_local_var);
+
     eutra_location_local_var->tai = tai;
     eutra_location_local_var->is_ignore_tai = is_ignore_tai;
     eutra_location_local_var->ignore_tai = ignore_tai;

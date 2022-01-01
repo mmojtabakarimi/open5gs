@@ -28,10 +28,9 @@ OpenAPI_sm_context_updated_data_t *OpenAPI_sm_context_updated_data_create(
     char *selected_old_smf_id
 )
 {
-    OpenAPI_sm_context_updated_data_t *sm_context_updated_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_updated_data_t));
-    if (!sm_context_updated_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_updated_data_t *sm_context_updated_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_updated_data_t));
+    ogs_assert(sm_context_updated_data_local_var);
+
     sm_context_updated_data_local_var->up_cnx_state = up_cnx_state;
     sm_context_updated_data_local_var->ho_state = ho_state;
     sm_context_updated_data_local_var->release_ebi_list = release_ebi_list;

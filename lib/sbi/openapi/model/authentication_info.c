@@ -18,10 +18,9 @@ OpenAPI_authentication_info_t *OpenAPI_authentication_info_create(
     char *supported_features
 )
 {
-    OpenAPI_authentication_info_t *authentication_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_authentication_info_t));
-    if (!authentication_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_authentication_info_t *authentication_info_local_var = ogs_malloc(sizeof(OpenAPI_authentication_info_t));
+    ogs_assert(authentication_info_local_var);
+
     authentication_info_local_var->supi_or_suci = supi_or_suci;
     authentication_info_local_var->serving_network_name = serving_network_name;
     authentication_info_local_var->resynchronization_info = resynchronization_info;

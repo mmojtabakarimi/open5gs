@@ -10,10 +10,9 @@ OpenAPI_user_identifier_t *OpenAPI_user_identifier_create(
     char *validity_time
 )
 {
-    OpenAPI_user_identifier_t *user_identifier_local_var = OpenAPI_malloc(sizeof(OpenAPI_user_identifier_t));
-    if (!user_identifier_local_var) {
-        return NULL;
-    }
+    OpenAPI_user_identifier_t *user_identifier_local_var = ogs_malloc(sizeof(OpenAPI_user_identifier_t));
+    ogs_assert(user_identifier_local_var);
+
     user_identifier_local_var->supi = supi;
     user_identifier_local_var->gpsi = gpsi;
     user_identifier_local_var->validity_time = validity_time;

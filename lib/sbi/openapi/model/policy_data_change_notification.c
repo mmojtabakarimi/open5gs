@@ -24,10 +24,9 @@ OpenAPI_policy_data_change_notification_t *OpenAPI_policy_data_change_notificati
     OpenAPI_list_t *reported_fragments
 )
 {
-    OpenAPI_policy_data_change_notification_t *policy_data_change_notification_local_var = OpenAPI_malloc(sizeof(OpenAPI_policy_data_change_notification_t));
-    if (!policy_data_change_notification_local_var) {
-        return NULL;
-    }
+    OpenAPI_policy_data_change_notification_t *policy_data_change_notification_local_var = ogs_malloc(sizeof(OpenAPI_policy_data_change_notification_t));
+    ogs_assert(policy_data_change_notification_local_var);
+
     policy_data_change_notification_local_var->am_policy_data = am_policy_data;
     policy_data_change_notification_local_var->ue_policy_set = ue_policy_set;
     policy_data_change_notification_local_var->plmn_ue_policy_set = plmn_ue_policy_set;

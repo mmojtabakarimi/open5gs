@@ -12,10 +12,9 @@ OpenAPI_av_eps_aka_t *OpenAPI_av_eps_aka_create(
     char *kasme
 )
 {
-    OpenAPI_av_eps_aka_t *av_eps_aka_local_var = OpenAPI_malloc(sizeof(OpenAPI_av_eps_aka_t));
-    if (!av_eps_aka_local_var) {
-        return NULL;
-    }
+    OpenAPI_av_eps_aka_t *av_eps_aka_local_var = ogs_malloc(sizeof(OpenAPI_av_eps_aka_t));
+    ogs_assert(av_eps_aka_local_var);
+
     av_eps_aka_local_var->av_type = av_type;
     av_eps_aka_local_var->rand = rand;
     av_eps_aka_local_var->xres = xres;

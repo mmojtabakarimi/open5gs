@@ -14,10 +14,9 @@ OpenAPI_traffic_influ_sub_t *OpenAPI_traffic_influ_sub_create(
     char *supported_features
 )
 {
-    OpenAPI_traffic_influ_sub_t *traffic_influ_sub_local_var = OpenAPI_malloc(sizeof(OpenAPI_traffic_influ_sub_t));
-    if (!traffic_influ_sub_local_var) {
-        return NULL;
-    }
+    OpenAPI_traffic_influ_sub_t *traffic_influ_sub_local_var = ogs_malloc(sizeof(OpenAPI_traffic_influ_sub_t));
+    ogs_assert(traffic_influ_sub_local_var);
+
     traffic_influ_sub_local_var->dnns = dnns;
     traffic_influ_sub_local_var->snssais = snssais;
     traffic_influ_sub_local_var->internal_group_ids = internal_group_ids;

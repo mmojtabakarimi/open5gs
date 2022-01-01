@@ -13,10 +13,9 @@ OpenAPI_alternative_qos_profile_t *OpenAPI_alternative_qos_profile_create(
     char *packet_err_rate
 )
 {
-    OpenAPI_alternative_qos_profile_t *alternative_qos_profile_local_var = OpenAPI_malloc(sizeof(OpenAPI_alternative_qos_profile_t));
-    if (!alternative_qos_profile_local_var) {
-        return NULL;
-    }
+    OpenAPI_alternative_qos_profile_t *alternative_qos_profile_local_var = ogs_malloc(sizeof(OpenAPI_alternative_qos_profile_t));
+    ogs_assert(alternative_qos_profile_local_var);
+
     alternative_qos_profile_local_var->index = index;
     alternative_qos_profile_local_var->gua_fbr_dl = gua_fbr_dl;
     alternative_qos_profile_local_var->gua_fbr_ul = gua_fbr_ul;

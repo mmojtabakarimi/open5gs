@@ -13,10 +13,9 @@ OpenAPI_usage_mon_data_t *OpenAPI_usage_mon_data_create(
     char *supp_feat
 )
 {
-    OpenAPI_usage_mon_data_t *usage_mon_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_usage_mon_data_t));
-    if (!usage_mon_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_usage_mon_data_t *usage_mon_data_local_var = ogs_malloc(sizeof(OpenAPI_usage_mon_data_t));
+    ogs_assert(usage_mon_data_local_var);
+
     usage_mon_data_local_var->limit_id = limit_id;
     usage_mon_data_local_var->scopes = scopes;
     usage_mon_data_local_var->um_level = um_level;

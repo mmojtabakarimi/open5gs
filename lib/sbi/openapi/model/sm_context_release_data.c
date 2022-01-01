@@ -20,10 +20,9 @@ OpenAPI_sm_context_release_data_t *OpenAPI_sm_context_release_data_create(
     int ismf_release_only
 )
 {
-    OpenAPI_sm_context_release_data_t *sm_context_release_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_context_release_data_t));
-    if (!sm_context_release_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_context_release_data_t *sm_context_release_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_context_release_data_t));
+    ogs_assert(sm_context_release_data_local_var);
+
     sm_context_release_data_local_var->cause = cause;
     sm_context_release_data_local_var->ng_ap_cause = ng_ap_cause;
     sm_context_release_data_local_var->is__5g_mm_cause_value = is__5g_mm_cause_value;

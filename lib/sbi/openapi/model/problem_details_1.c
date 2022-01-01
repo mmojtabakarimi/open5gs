@@ -15,10 +15,9 @@ OpenAPI_problem_details_1_t *OpenAPI_problem_details_1_create(
     OpenAPI_list_t *invalid_params
 )
 {
-    OpenAPI_problem_details_1_t *problem_details_1_local_var = OpenAPI_malloc(sizeof(OpenAPI_problem_details_1_t));
-    if (!problem_details_1_local_var) {
-        return NULL;
-    }
+    OpenAPI_problem_details_1_t *problem_details_1_local_var = ogs_malloc(sizeof(OpenAPI_problem_details_1_t));
+    ogs_assert(problem_details_1_local_var);
+
     problem_details_1_local_var->type = type;
     problem_details_1_local_var->title = title;
     problem_details_1_local_var->is_status = is_status;

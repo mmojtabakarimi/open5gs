@@ -38,10 +38,9 @@ OpenAPI_qos_data_t *OpenAPI_qos_data_create(
     char *packet_error_rate
 )
 {
-    OpenAPI_qos_data_t *qos_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_qos_data_t));
-    if (!qos_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_qos_data_t *qos_data_local_var = ogs_malloc(sizeof(OpenAPI_qos_data_t));
+    ogs_assert(qos_data_local_var);
+
     qos_data_local_var->qos_id = qos_id;
     qos_data_local_var->is__5qi = is__5qi;
     qos_data_local_var->_5qi = _5qi;

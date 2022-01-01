@@ -55,10 +55,9 @@ OpenAPI_sm_policy_context_data_t *OpenAPI_sm_policy_context_data_create(
     OpenAPI_list_t *ipv6_frame_route_list
 )
 {
-    OpenAPI_sm_policy_context_data_t *sm_policy_context_data_local_var = OpenAPI_malloc(sizeof(OpenAPI_sm_policy_context_data_t));
-    if (!sm_policy_context_data_local_var) {
-        return NULL;
-    }
+    OpenAPI_sm_policy_context_data_t *sm_policy_context_data_local_var = ogs_malloc(sizeof(OpenAPI_sm_policy_context_data_t));
+    ogs_assert(sm_policy_context_data_local_var);
+
     sm_policy_context_data_local_var->acc_net_ch_id = acc_net_ch_id;
     sm_policy_context_data_local_var->charg_entity_addr = charg_entity_addr;
     sm_policy_context_data_local_var->gpsi = gpsi;

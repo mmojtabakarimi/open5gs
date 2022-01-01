@@ -10,10 +10,9 @@ OpenAPI_w_agf_info_t *OpenAPI_w_agf_info_create(
     char *endpoint_fqdn
 )
 {
-    OpenAPI_w_agf_info_t *w_agf_info_local_var = OpenAPI_malloc(sizeof(OpenAPI_w_agf_info_t));
-    if (!w_agf_info_local_var) {
-        return NULL;
-    }
+    OpenAPI_w_agf_info_t *w_agf_info_local_var = ogs_malloc(sizeof(OpenAPI_w_agf_info_t));
+    ogs_assert(w_agf_info_local_var);
+
     w_agf_info_local_var->ipv4_endpoint_addresses = ipv4_endpoint_addresses;
     w_agf_info_local_var->ipv6_endpoint_addresses = ipv6_endpoint_addresses;
     w_agf_info_local_var->endpoint_fqdn = endpoint_fqdn;

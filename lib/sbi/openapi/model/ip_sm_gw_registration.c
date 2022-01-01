@@ -11,10 +11,9 @@ OpenAPI_ip_sm_gw_registration_t *OpenAPI_ip_sm_gw_registration_create(
     int unri_indicator
 )
 {
-    OpenAPI_ip_sm_gw_registration_t *ip_sm_gw_registration_local_var = OpenAPI_malloc(sizeof(OpenAPI_ip_sm_gw_registration_t));
-    if (!ip_sm_gw_registration_local_var) {
-        return NULL;
-    }
+    OpenAPI_ip_sm_gw_registration_t *ip_sm_gw_registration_local_var = ogs_malloc(sizeof(OpenAPI_ip_sm_gw_registration_t));
+    ogs_assert(ip_sm_gw_registration_local_var);
+
     ip_sm_gw_registration_local_var->ip_sm_gw_map_address = ip_sm_gw_map_address;
     ip_sm_gw_registration_local_var->ip_sm_gw_diameter_address = ip_sm_gw_diameter_address;
     ip_sm_gw_registration_local_var->is_unri_indicator = is_unri_indicator;

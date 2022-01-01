@@ -13,10 +13,9 @@ OpenAPI_ue_policy_set_patch_t *OpenAPI_ue_policy_set_patch_create(
     OpenAPI_list_t *os_ids
 )
 {
-    OpenAPI_ue_policy_set_patch_t *ue_policy_set_patch_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_policy_set_patch_t));
-    if (!ue_policy_set_patch_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_policy_set_patch_t *ue_policy_set_patch_local_var = ogs_malloc(sizeof(OpenAPI_ue_policy_set_patch_t));
+    ogs_assert(ue_policy_set_patch_local_var);
+
     ue_policy_set_patch_local_var->ue_policy_sections = ue_policy_sections;
     ue_policy_set_patch_local_var->upsis = upsis;
     ue_policy_set_patch_local_var->is_andsp_ind = is_andsp_ind;

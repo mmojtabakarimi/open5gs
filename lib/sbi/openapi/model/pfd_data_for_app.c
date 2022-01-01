@@ -10,10 +10,9 @@ OpenAPI_pfd_data_for_app_t *OpenAPI_pfd_data_for_app_create(
     char *caching_time
 )
 {
-    OpenAPI_pfd_data_for_app_t *pfd_data_for_app_local_var = OpenAPI_malloc(sizeof(OpenAPI_pfd_data_for_app_t));
-    if (!pfd_data_for_app_local_var) {
-        return NULL;
-    }
+    OpenAPI_pfd_data_for_app_t *pfd_data_for_app_local_var = ogs_malloc(sizeof(OpenAPI_pfd_data_for_app_t));
+    ogs_assert(pfd_data_for_app_local_var);
+
     pfd_data_for_app_local_var->application_id = application_id;
     pfd_data_for_app_local_var->pfds = pfds;
     pfd_data_for_app_local_var->caching_time = caching_time;

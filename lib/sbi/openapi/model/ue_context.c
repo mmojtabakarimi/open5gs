@@ -66,10 +66,9 @@ OpenAPI_ue_context_t *OpenAPI_ue_context_create(
     int iab_operation_allowed
 )
 {
-    OpenAPI_ue_context_t *ue_context_local_var = OpenAPI_malloc(sizeof(OpenAPI_ue_context_t));
-    if (!ue_context_local_var) {
-        return NULL;
-    }
+    OpenAPI_ue_context_t *ue_context_local_var = ogs_malloc(sizeof(OpenAPI_ue_context_t));
+    ogs_assert(ue_context_local_var);
+
     ue_context_local_var->supi = supi;
     ue_context_local_var->is_supi_unauth_ind = is_supi_unauth_ind;
     ue_context_local_var->supi_unauth_ind = supi_unauth_ind;

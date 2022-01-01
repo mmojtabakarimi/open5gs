@@ -13,10 +13,9 @@ OpenAPI_av_ims_gba_eap_aka_t *OpenAPI_av_ims_gba_eap_aka_create(
     char *ik
 )
 {
-    OpenAPI_av_ims_gba_eap_aka_t *av_ims_gba_eap_aka_local_var = OpenAPI_malloc(sizeof(OpenAPI_av_ims_gba_eap_aka_t));
-    if (!av_ims_gba_eap_aka_local_var) {
-        return NULL;
-    }
+    OpenAPI_av_ims_gba_eap_aka_t *av_ims_gba_eap_aka_local_var = ogs_malloc(sizeof(OpenAPI_av_ims_gba_eap_aka_t));
+    ogs_assert(av_ims_gba_eap_aka_local_var);
+
     av_ims_gba_eap_aka_local_var->av_type = av_type;
     av_ims_gba_eap_aka_local_var->rand = rand;
     av_ims_gba_eap_aka_local_var->xres = xres;

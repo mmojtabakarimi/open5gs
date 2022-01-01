@@ -41,10 +41,9 @@ OpenAPI_civic_address_t *OpenAPI_civic_address_create(
     char *provided_by
 )
 {
-    OpenAPI_civic_address_t *civic_address_local_var = OpenAPI_malloc(sizeof(OpenAPI_civic_address_t));
-    if (!civic_address_local_var) {
-        return NULL;
-    }
+    OpenAPI_civic_address_t *civic_address_local_var = ogs_malloc(sizeof(OpenAPI_civic_address_t));
+    ogs_assert(civic_address_local_var);
+
     civic_address_local_var->country = country;
     civic_address_local_var->a1 = a1;
     civic_address_local_var->a2 = a2;

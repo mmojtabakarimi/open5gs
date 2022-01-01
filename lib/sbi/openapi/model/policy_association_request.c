@@ -34,10 +34,9 @@ OpenAPI_policy_association_request_t *OpenAPI_policy_association_request_create(
     char *supp_feat
 )
 {
-    OpenAPI_policy_association_request_t *policy_association_request_local_var = OpenAPI_malloc(sizeof(OpenAPI_policy_association_request_t));
-    if (!policy_association_request_local_var) {
-        return NULL;
-    }
+    OpenAPI_policy_association_request_t *policy_association_request_local_var = ogs_malloc(sizeof(OpenAPI_policy_association_request_t));
+    ogs_assert(policy_association_request_local_var);
+
     policy_association_request_local_var->notification_uri = notification_uri;
     policy_association_request_local_var->alt_notif_ipv4_addrs = alt_notif_ipv4_addrs;
     policy_association_request_local_var->alt_notif_ipv6_addrs = alt_notif_ipv6_addrs;
