@@ -381,15 +381,14 @@ void amf_state_operational(ogs_fsm_t *s, amf_event_t *e)
             sbi_xact = e->sbi.data;
             ogs_assert(sbi_xact);
 
-            sess = (amf_sess_t *)sbi_xact->sbi_object;
-            ogs_assert(sess);
-
             state = sbi_xact->state;
 
             ogs_sbi_xact_remove(sbi_xact);
 
+            sess = (amf_sess_t *)sbi_xact->sbi_object;
+            ogs_assert(sess);
             sess = amf_sess_cycle(sess);
-
+            if (!sess) {
             /*
              * 1. If AMF-UE context is duplicated in Identity-Response,
              *    OLD AMF-UE's all session contexts are removed.
@@ -409,10 +408,22 @@ void amf_state_operational(ogs_fsm_t *s, amf_event_t *e)
              *               No Session Context
              *               Assertion
              *
+             * OR
+             *
+             * In ./tests/vonr/af-test/test3_func()
+             * 1. Send PDU session establishment request
+             * 2. Receive PDU session establishment accept
+             * 3. Send PDUSessionResourceSetupResponse
+             * 4. Send De-registration request
+             * 5. SMF->AMF : RESPONSE /nsmf-pdusession/v1/sm-contexts/3/release
+             * 6. SMF->AMF : RESPONSE /nsmf-pdusession/v1/sm-contexts/1/modify
+             *
              * IF THIS HAPPENS IN THE REAL WORLD,
              * I WILL MODIFY THE ASSERTS BELOW.
              */
-            ogs_assert(sess);
+                ogs_error("Session has already been removed");
+                break;
+            }
 
             amf_ue = sess->amf_ue;
             ogs_assert(amf_ue);
