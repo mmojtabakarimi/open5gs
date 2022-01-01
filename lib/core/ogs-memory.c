@@ -34,9 +34,6 @@ void ogs_mem_init(void)
 {
     ogs_thread_mutex_init(&mutex);
 
-#if 0 /* TODO */
-    talloc_enable_leak_report_full();
-#endif
     talloc_enable_null_tracking();
 
 #define TALLOC_MEMSIZE 1
