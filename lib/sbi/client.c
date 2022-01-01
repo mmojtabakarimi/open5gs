@@ -524,9 +524,10 @@ static size_t write_cb(void *contents, size_t size, size_t nmemb, void *data)
     ogs_assert(conn);
 
     realsize = size * nmemb;
-    ptr = ogs_realloc_or_assert(conn->memory, conn->size + realsize + 1);
+    ptr = ogs_realloc(conn->memory, conn->size + realsize + 1);
     if(!ptr) {
         ogs_fatal("not enough memory (realloc returned NULL)");
+        ogs_assert_if_reached();
         return 0;
     }
 

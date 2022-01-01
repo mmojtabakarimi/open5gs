@@ -61,7 +61,9 @@ struct ogs_hash_t {
 
 static ogs_hash_entry_t **alloc_array(ogs_hash_t *ht, unsigned int max)
 {
-   return ogs_calloc_or_assert(1, sizeof(*ht->array) * (max + 1));
+    ogs_hash_entry_t **ptr = ogs_calloc(1, sizeof(*ht->array) * (max + 1));
+    ogs_assert(ptr);
+    return ptr;
 }
 
 ogs_hash_t *ogs_hash_make()
