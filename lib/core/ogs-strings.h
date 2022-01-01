@@ -82,17 +82,11 @@ char *ogs_slprintf(char *str, char *last, const char *format, ...)
         ogs_assert(__dST); \
     } while(0)
 
-#define ogs_strdup(s) ogs_strdup_debug(s, OGS_FILE_LINE, false)
-#define ogs_strdup_or_assert(s) ogs_strdup_debug(s, OGS_FILE_LINE, true)
-char *ogs_strdup_debug(const char *s, const char *file_line, bool abort);
-#define ogs_strndup(s, n) ogs_strndup_debug(s, n, OGS_FILE_LINE, false)
-#define ogs_strndup_or_assert(s, n) ogs_strndup_debug(s, n, OGS_FILE_LINE, true)
+char *ogs_strdup_debug(const char *s, const char *file_line);
 char *ogs_strndup_debug
-    (const char *s, size_t n, const char *file_line, bool abort);
-#define ogs_memdup(m, n) ogs_memdup_debug(m, n, OGS_FILE_LINE, false)
-#define ogs_memdup_or_assert(m, n) ogs_memdup_debug(m, n, OGS_FILE_LINE, true)
+    (const char *s, size_t n, const char *file_line);
 void *ogs_memdup_debug
-    (const void *m, size_t n, const char *file_line, bool abort);
+    (const void *m, size_t n, const char *file_line);
 
 char *ogs_cpystrn(char *dst, const char *src, size_t dst_size);
 
@@ -106,20 +100,48 @@ char *ogs_cpystrn(char *dst, const char *src, size_t dst_size);
  *
  * https://github.com/babelouest/orcania.git
  */
-#define ogs_msprintf(...) ogs_msprintf_debug(OGS_FILE_LINE, false, __VA_ARGS__)
-#define ogs_msprintf_or_assert(...) \
-    ogs_msprintf_debug(OGS_FILE_LINE, true, __VA_ARGS__)
 char *ogs_msprintf_debug
-    (const char *file_line, bool abort, const char *message, ...)
-    OGS_GNUC_PRINTF(3, 4);
-#define ogs_mstrcatf(source, ...) \
-    ogs_mstrcatf_debug(source, OGS_FILE_LINE, false, __VA_ARGS__)
-#define ogs_mstrcatf_or_assert(source, ...) \
-    ogs_mstrcatf_debug(source,  OGS_FILE_LINE, true, __VA_ARGS__)
+    (const char *file_line, const char *message, ...)
+    OGS_GNUC_PRINTF(2, 3);
 char *ogs_mstrcatf_debug(
-        char *source, const char *file_line, bool abort,
-        const char *message, ...)
-    OGS_GNUC_PRINTF(4, 5);
+        char *source, const char *file_line, const char *message, ...)
+    OGS_GNUC_PRINTF(3, 4);
+
+char *ogs_talloc_strdup(const void *t, const char *p);
+char *ogs_talloc_strndup(const void *t, const char *p, size_t n);
+void *ogs_talloc_memdup(const void *t, const void *p, size_t size);
+
+#if OGS_USE_TALLOC
+
+/*****************************************
+ * Memory Pool - Use talloc library
+ *****************************************/
+
+#define ogs_strdup(p) \
+    ogs_talloc_strdup(__ogs_talloc_core, p, __location__)
+#define ogs_strndup(p, n) \
+    ogs_talloc_strndup(__ogs_talloc_core, p, n, __location__)
+#define ogs_memdup(p, size) \
+    ogs_talloc_memdup(__ogs_talloc_core, p, size, __location__)
+#define ogs_msprintf(...) ogs_msprintf_debug(OGS_FILE_LINE, __VA_ARGS__)
+#define ogs_mstrcatf(source, ...) \
+    ogs_mstrcatf_debug(source, OGS_FILE_LINE, __VA_ARGS__)
+
+#else
+
+/*****************************************
+ * Memory Pool - Use pkbuf library
+ *****************************************/
+
+#define ogs_strdup(s) ogs_strdup_debug(s, OGS_FILE_LINE)
+#define ogs_strndup(s, n) ogs_strndup_debug(s, n, OGS_FILE_LINE)
+#define ogs_memdup(m, n) ogs_memdup_debug(m, n, OGS_FILE_LINE)
+#define ogs_msprintf(...) ogs_msprintf_debug(OGS_FILE_LINE, __VA_ARGS__)
+#define ogs_mstrcatf(source, ...) \
+    ogs_mstrcatf_debug(source, OGS_FILE_LINE, __VA_ARGS__)
+
+#endif
+
 
 char *ogs_trimwhitespace(char *str);
 

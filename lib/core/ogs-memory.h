@@ -33,6 +33,8 @@ extern "C" {
 void ogs_mem_init(void);
 void ogs_mem_final(void);
 
+void *ogs_mem_get_mutex(void);
+
 #define OGS_MEM_CLEAR(__dATA) \
     do { \
         if ((__dATA)) { \

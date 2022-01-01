@@ -58,6 +58,11 @@ void ogs_mem_final(void)
     ogs_thread_mutex_destroy(&mutex);
 }
 
+void *ogs_mem_get_mutex(void)
+{
+    return &mutex;
+}
+
 void *ogs_talloc_size(const void *ctx, size_t size, const char *name)
 {
     void *ptr = NULL;
@@ -113,6 +118,10 @@ int ogs_talloc_free(void *ptr, const char *location)
 
     return ret;
 }
+
+/*****************************************
+ * Memory Pool - Use pkbuf library
+ *****************************************/
 
 void *ogs_malloc_debug(size_t size, const char *file_line, bool abort)
 {
