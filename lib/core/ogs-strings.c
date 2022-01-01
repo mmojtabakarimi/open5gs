@@ -253,7 +253,7 @@ char *ogs_strndup_debug(
     end = memchr(s, '\0', n);
     if (end != NULL)
         n = end - s;
-    res = ogs_malloc_debug(n + 1, file_line, false);
+    res = ogs_malloc_debug(n + 1, file_line);
     ogs_expect_or_return_val(res, res);
     memcpy(res, s, n);
     res[n] = '\0';
@@ -268,7 +268,7 @@ void *ogs_memdup_debug(
     if (m == NULL)
         return NULL;
 
-    res = ogs_malloc_debug(n, file_line, false);
+    res = ogs_malloc_debug(n, file_line);
     ogs_expect_or_return_val(res, res);
     memcpy(res, m, n);
     return res;
@@ -296,7 +296,7 @@ char *ogs_msprintf_debug(
                                     in some architectures,
                                     vsnprintf can modify argp */
         out_len = vsnprintf(NULL, 0, message, argp);
-        out = ogs_malloc_debug(out_len + sizeof(char), file_line, false);
+        out = ogs_malloc_debug(out_len + sizeof(char), file_line);
         if (out == NULL) {
             va_end(argp);
             va_end(argp_cpy);
@@ -340,7 +340,7 @@ char *ogs_mstrcatf_debug(
                                         in some architectures,
                                         vsnprintf can modify argp */
             out_len = vsnprintf(NULL, 0, message, argp);
-            out = ogs_malloc_debug(out_len+sizeof(char), file_line, false);
+            out = ogs_malloc_debug(out_len+sizeof(char), file_line);
             if (out != NULL) {
                 vsnprintf(out, (out_len+sizeof(char)), message, argp_cpy);
             }

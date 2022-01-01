@@ -26,7 +26,6 @@
  * Memory Pool - Use talloc library
  *****************************************/
 
-void *__ogs_talloc_asn1c;
 void *__ogs_talloc_core;
 
 static ogs_thread_mutex_t mutex;
@@ -119,7 +118,7 @@ int ogs_talloc_free(void *ptr, const char *location)
  * Memory Pool - Use pkbuf library
  *****************************************/
 
-void *ogs_malloc_debug(size_t size, const char *file_line, bool abort)
+void *ogs_malloc_debug(size_t size, const char *file_line)
 {
     size_t headroom = 0;
     ogs_pkbuf_t *pkbuf = NULL;
@@ -128,11 +127,7 @@ void *ogs_malloc_debug(size_t size, const char *file_line, bool abort)
 
     headroom = sizeof(ogs_pkbuf_t *);
     pkbuf = ogs_pkbuf_alloc_debug(NULL, headroom + size, file_line);
-
-    if (abort == true)
-        ogs_assert(pkbuf);
-    else
-        ogs_expect_or_return_val(pkbuf, NULL);
+    ogs_expect_or_return_val(pkbuf, NULL);
 
     ogs_pkbuf_reserve(pkbuf, headroom);
     memcpy(pkbuf->head, &pkbuf, headroom);
@@ -158,23 +153,18 @@ int ogs_free_debug(void *ptr)
     return OGS_OK;
 }
 
-void *ogs_calloc_debug(
-        size_t nmemb, size_t size, const char *file_line, bool abort)
+void *ogs_calloc_debug(size_t nmemb, size_t size, const char *file_line)
 {
     void *ptr = NULL;
 
-    ptr = ogs_malloc_debug(nmemb * size, file_line, abort);
-    if (abort == true)
-        ogs_assert(ptr);
-    else
-        ogs_expect_or_return_val(ptr, NULL);
+    ptr = ogs_malloc_debug(nmemb * size, file_line);
+    ogs_expect_or_return_val(ptr, NULL);
 
     memset(ptr, 0, nmemb * size);
     return ptr;
 }
 
-void *ogs_realloc_debug(
-        void *ptr, size_t size, const char *file_line, bool abort)
+void *ogs_realloc_debug(void *ptr, size_t size, const char *file_line)
 {
     size_t headroom = 0;
     ogs_pkbuf_t *pkbuf = NULL;
@@ -187,16 +177,10 @@ void *ogs_realloc_debug(
 
     memcpy(&pkbuf, (unsigned char*)ptr - headroom, headroom);
 
-    if (abort == true)
-        ogs_assert(pkbuf);
-    else
-        ogs_expect_or_return_val(pkbuf, NULL);
+    ogs_expect_or_return_val(pkbuf, NULL);
 
     cluster = pkbuf->cluster;
-    if (abort == true)
-        ogs_assert(cluster);
-    else
-        ogs_expect_or_return_val(cluster, NULL);
+    ogs_expect_or_return_val(cluster, NULL);
 
     if (!size) {
         ogs_pkbuf_free(pkbuf);
@@ -206,12 +190,8 @@ void *ogs_realloc_debug(
     if (size > (cluster->size - headroom)) {
         void *new = NULL;
 
-        new = ogs_malloc_debug(size, file_line, abort);
-
-        if (abort == true)
-            ogs_assert(new);
-        else
-            ogs_expect_or_return_val(new, NULL);
+        new = ogs_malloc_debug(size, file_line);
+        ogs_expect_or_return_val(new, NULL);
 
         memcpy(new, ptr, pkbuf->len);
 
