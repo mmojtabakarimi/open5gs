@@ -127,13 +127,12 @@ char *ogs_mstrcatf_debug(
     ogs_talloc_strndup(__ogs_talloc_core, p, n)
 #define ogs_memdup(p, size) \
     ogs_talloc_memdup(__ogs_talloc_core, p, size)
-#if 0
 #define ogs_msprintf(...) \
     ogs_talloc_asprintf(__ogs_talloc_core, __VA_ARGS__)
+#if 0
 #define ogs_mstrcatf(source, ...) \
     ogs_talloc_asprintf_append(source, __VA_ARGS__)
 #else
-#define ogs_msprintf(...) ogs_msprintf_debug(OGS_FILE_LINE, __VA_ARGS__)
 #define ogs_mstrcatf(source, ...) \
     ogs_mstrcatf_debug(source, OGS_FILE_LINE, __VA_ARGS__)
 #endif
