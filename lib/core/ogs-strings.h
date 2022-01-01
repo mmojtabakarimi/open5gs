@@ -93,10 +93,8 @@ char *ogs_talloc_asprintf_append(char *s, const char *fmt, ...)
     OGS_GNUC_PRINTF(2, 3);
 
 char *ogs_strdup_debug(const char *s, const char *file_line);
-char *ogs_strndup_debug
-    (const char *s, size_t n, const char *file_line);
-void *ogs_memdup_debug
-    (const void *m, size_t n, const char *file_line);
+char *ogs_strndup_debug(const char *s, size_t n, const char *file_line);
+void *ogs_memdup_debug(const void *m, size_t n, const char *file_line);
 
 /*
  * char *ogs_msprintf(const char *message, ...)
@@ -108,11 +106,10 @@ void *ogs_memdup_debug
  *
  * https://github.com/babelouest/orcania.git
  */
-char *ogs_msprintf_debug
-    (const char *file_line, const char *message, ...)
+char *ogs_msprintf_debug(const char *file_line, const char *message, ...)
     OGS_GNUC_PRINTF(2, 3);
 char *ogs_mstrcatf_debug(
-        char *source, const char *file_line, const char *message, ...)
+    char *source, const char *file_line, const char *message, ...)
     OGS_GNUC_PRINTF(3, 4);
 
 #if OGS_USE_TALLOC
@@ -129,13 +126,8 @@ char *ogs_mstrcatf_debug(
     ogs_talloc_memdup(__ogs_talloc_core, p, size)
 #define ogs_msprintf(...) \
     ogs_talloc_asprintf(__ogs_talloc_core, __VA_ARGS__)
-#if 0
-#define ogs_mstrcatf(source, ...) \
-    ogs_talloc_asprintf_append(source, __VA_ARGS__)
-#else
-#define ogs_mstrcatf(source, ...) \
-    ogs_mstrcatf_debug(source, OGS_FILE_LINE, __VA_ARGS__)
-#endif
+#define ogs_mstrcatf(s, ...) \
+    ogs_talloc_asprintf_append(s, __VA_ARGS__)
 
 #else
 

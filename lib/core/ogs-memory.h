@@ -28,8 +28,6 @@
 extern "C" {
 #endif
 
-#define OGS_USE_TALLOC 1
-
 void ogs_mem_init(void);
 void ogs_mem_final(void);
 
