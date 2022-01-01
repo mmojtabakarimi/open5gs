@@ -82,13 +82,21 @@ char *ogs_slprintf(char *str, char *last, const char *format, ...)
         ogs_assert(__dST); \
     } while(0)
 
+char *ogs_cpystrn(char *dst, const char *src, size_t dst_size);
+
+char *ogs_talloc_strdup(const void *t, const char *p);
+char *ogs_talloc_strndup(const void *t, const char *p, size_t n);
+void *ogs_talloc_memdup(const void *t, const void *p, size_t size);
+char *ogs_talloc_asprintf(const void *t, const char *fmt, ...)
+    OGS_GNUC_PRINTF(2, 3);
+char *ogs_talloc_asprintf_append(char *s, const char *fmt, ...)
+    OGS_GNUC_PRINTF(2, 3);
+
 char *ogs_strdup_debug(const char *s, const char *file_line);
 char *ogs_strndup_debug
     (const char *s, size_t n, const char *file_line);
 void *ogs_memdup_debug
     (const void *m, size_t n, const char *file_line);
-
-char *ogs_cpystrn(char *dst, const char *src, size_t dst_size);
 
 /*
  * char *ogs_msprintf(const char *message, ...)
@@ -107,10 +115,6 @@ char *ogs_mstrcatf_debug(
         char *source, const char *file_line, const char *message, ...)
     OGS_GNUC_PRINTF(3, 4);
 
-char *ogs_talloc_strdup(const void *t, const char *p);
-char *ogs_talloc_strndup(const void *t, const char *p, size_t n);
-void *ogs_talloc_memdup(const void *t, const void *p, size_t size);
-
 #if OGS_USE_TALLOC
 
 /*****************************************
@@ -118,14 +122,21 @@ void *ogs_talloc_memdup(const void *t, const void *p, size_t size);
  *****************************************/
 
 #define ogs_strdup(p) \
-    ogs_talloc_strdup(__ogs_talloc_core, p, __location__)
+    ogs_talloc_strdup(__ogs_talloc_core, p)
 #define ogs_strndup(p, n) \
-    ogs_talloc_strndup(__ogs_talloc_core, p, n, __location__)
+    ogs_talloc_strndup(__ogs_talloc_core, p, n)
 #define ogs_memdup(p, size) \
-    ogs_talloc_memdup(__ogs_talloc_core, p, size, __location__)
+    ogs_talloc_memdup(__ogs_talloc_core, p, size)
+#if 0
+#define ogs_msprintf(...) \
+    ogs_talloc_asprintf(__ogs_talloc_core, __VA_ARGS__)
+#define ogs_mstrcatf(source, ...) \
+    ogs_talloc_asprintf_append(source, __VA_ARGS__)
+#else
 #define ogs_msprintf(...) ogs_msprintf_debug(OGS_FILE_LINE, __VA_ARGS__)
 #define ogs_mstrcatf(source, ...) \
     ogs_mstrcatf_debug(source, OGS_FILE_LINE, __VA_ARGS__)
+#endif
 
 #else
 

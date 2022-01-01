@@ -120,6 +120,29 @@ char *ogs_slprintf(char *str, char *last, const char *format, ...)
     return r;
 }
 
+char *ogs_cpystrn(char *dst, const char *src, size_t dst_size)
+{
+    char *d = dst, *end;
+
+    if (dst_size == 0) {
+        return (dst);
+    }
+
+    if (src) {
+        end = dst + dst_size - 1;
+
+        for (; d < end; ++d, ++src) {
+            if (!(*d = *src)) {
+                return (d);
+            }
+        }
+    }
+
+    *d = '\0';	/* always null terminate */
+
+    return (d);
+}
+
 /*****************************************
  * Memory Pool - Use talloc library
  *****************************************/
@@ -164,6 +187,39 @@ void *ogs_talloc_memdup(const void *t, const void *p, size_t size)
     ogs_thread_mutex_unlock(ogs_mem_get_mutex());
 
     return ptr;
+}
+
+char *ogs_talloc_asprintf(const void *t, const char *fmt, ...)
+{
+    va_list ap;
+    char *ret;
+
+    ogs_thread_mutex_lock(ogs_mem_get_mutex());
+
+    va_start(ap, fmt);
+    ret = talloc_vasprintf(t, fmt, ap);
+    ogs_expect(ret);
+    va_end(ap);
+
+    ogs_thread_mutex_unlock(ogs_mem_get_mutex());
+
+    return ret;
+}
+
+char *ogs_talloc_asprintf_append(char *s, const char *fmt, ...)
+{
+    va_list ap;
+
+    ogs_thread_mutex_lock(ogs_mem_get_mutex());
+
+    va_start(ap, fmt);
+    s = talloc_vasprintf_append(s, fmt, ap);
+    ogs_expect(s);
+    va_end(ap);
+
+    ogs_thread_mutex_unlock(ogs_mem_get_mutex());
+
+    return s;
 }
 
 /*****************************************
@@ -223,29 +279,6 @@ void *ogs_memdup_debug(
     ogs_expect_or_return_val(res, res);
     memcpy(res, m, n);
     return res;
-}
-
-char *ogs_cpystrn(char *dst, const char *src, size_t dst_size)
-{
-    char *d = dst, *end;
-
-    if (dst_size == 0) {
-        return (dst);
-    }
-
-    if (src) {
-        end = dst + dst_size - 1;
-
-        for (; d < end; ++d, ++src) {
-            if (!(*d = *src)) {
-                return (d);
-            }
-        }
-    }
-
-    *d = '\0';	/* always null terminate */
-
-    return (d);
 }
 
 /*
