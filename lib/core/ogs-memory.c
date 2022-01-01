@@ -37,22 +37,18 @@ void ogs_mem_init(void)
 
 #if 0 /* TODO */
     talloc_enable_leak_report_full();
-    talloc_enable_null_tracking();
 #endif
+    talloc_enable_null_tracking();
 
 #define TALLOC_MEMSIZE 1
     __ogs_talloc_core = talloc_named_const(NULL, TALLOC_MEMSIZE, "core");
-    __ogs_talloc_asn1c = talloc_named_const(NULL, TALLOC_MEMSIZE, "asn1c");
 }
 
 void ogs_mem_final(void)
 {
-    if (talloc_total_size(__ogs_talloc_asn1c) != TALLOC_MEMSIZE)
-        talloc_report_full(__ogs_talloc_asn1c, stderr);
     if (talloc_total_size(__ogs_talloc_core) != TALLOC_MEMSIZE)
         talloc_report_full(__ogs_talloc_core, stderr);
 
-    talloc_free(__ogs_talloc_asn1c);
     talloc_free(__ogs_talloc_core);
 
     ogs_thread_mutex_destroy(&mutex);
