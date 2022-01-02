@@ -315,14 +315,15 @@ static void sbi_message_test3(abts_case *tc, void *data)
     OpenAPI_map_free(served_pcf_info2);
     ogs_free(pcf_info1);
     ogs_free(pcf_info2);
-    OpenAPI_list_free(nrf_info1->served_pcf_info);
-    ogs_free(nrf_info1);
 
 	nrf_info2 = OpenAPI_nrf_info_parseFromJSON(item);
     ABTS_PTR_NOTNULL(tc, nrf_info2);
 
     ABTS_INT_EQUAL(tc, nrf_info1->served_pcf_info->count,
                         nrf_info2->served_pcf_info->count);
+
+    OpenAPI_list_free(nrf_info1->served_pcf_info);
+    ogs_free(nrf_info1);
 
     entry = nrf_info2->served_pcf_info->first;
     ABTS_PTR_NOTNULL(tc, entry);
