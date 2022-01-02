@@ -177,8 +177,8 @@ static int epoll_remove(ogs_poll_t *poll)
         op = EPOLL_CTL_DEL;
         ee.data.ptr = NULL;
 
-        ogs_free(map);
         ogs_hash_set(context->map_hash, &poll->fd, sizeof(poll->fd), NULL);
+        ogs_free(map);
     }
 
     rv = epoll_ctl(context->epfd, op, poll->fd, &ee);
@@ -243,9 +243,9 @@ static int epoll_process(ogs_pollset_t *pollset, ogs_time_t timeout)
         if (map->read && map->write && map->read == map->write) {
             map->read->handler(when, map->read->fd, map->read->data);
         } else {
-            if (map->read && (when & OGS_POLLIN))
+            if ((when & OGS_POLLIN) && map->read)
                 map->read->handler(when, map->read->fd, map->read->data);
-            if (map->write && (when & OGS_POLLOUT))
+            if ((when & OGS_POLLOUT) && map->write)
                 map->write->handler(when, map->write->fd, map->write->data);
         }
     }
