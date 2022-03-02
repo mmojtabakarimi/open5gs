@@ -379,7 +379,7 @@ int ogs_gtp_context_parse_config(const char *local, const char *remote)
                         /* Find first IPv4/IPv6 address in the list.
                          *
                          * In the following configuration,
-                         * 127.0.0.4, 127.0.0.5 and 2001:230:cafe::1 are ignored
+                         * 127.0.0.4, 127.0.0.5 and 2001:db8:cafe::1 are ignored
                          * on PFCP Assocation Response message's
                          * user plane IP resource information.
                          *
@@ -389,7 +389,7 @@ int ogs_gtp_context_parse_config(const char *local, const char *remote)
                          *     - ::1
                          *     - 127.0.0.4
                          *     - 127.0.0.5
-                         *     - 2001:230:cafe::1
+                         *     - 2001:db8:cafe::1
                          *
                          * To include all user plane IP resource information,
                          * configure as below:
@@ -401,7 +401,7 @@ int ogs_gtp_context_parse_config(const char *local, const char *remote)
                          *   - addr: 127.0.0.4
                          *   - addr
                          *     - 127.0.0.5
-                         *     - 2001:230:cafe::1
+                         *     - 2001:db8:cafe::1
                          */
                         node = ogs_list_first(&list);
                         node6 = ogs_list_first(&list6);
@@ -517,9 +517,6 @@ void ogs_gtp_node_free(ogs_gtp_node_t *node)
 {
     ogs_assert(node);
 
-    if (node->sock)
-        ogs_sock_destroy(node->sock);
-
     ogs_gtp_xact_delete_all(node);
 
     ogs_freeaddrinfo(node->sa_list);
@@ -592,7 +589,7 @@ void ogs_gtp_node_remove(ogs_list_t *list, ogs_gtp_node_t *node)
 void ogs_gtp_node_remove_all(ogs_list_t *list)
 {
     ogs_gtp_node_t *node = NULL, *next_node = NULL;
-    
+
     ogs_list_for_each_safe(list, next_node, node)
         ogs_gtp_node_remove(list, node);
 }

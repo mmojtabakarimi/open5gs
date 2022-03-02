@@ -390,6 +390,7 @@ struct mme_ue_s {
 
     /* HSS Info */
     ogs_bitrate_t   ambr; /* UE-AMBR */
+    uint32_t        network_access_mode; /* Permitted EPS Attach Type */
 
     uint32_t        context_identifier; /* default APN */
 
@@ -703,6 +704,7 @@ void mme_ue_new_guti(mme_ue_t *mme_ue);
 void mme_ue_confirm_guti(mme_ue_t *mme_ue);
 
 mme_ue_t *mme_ue_add(enb_ue_t *enb_ue);
+void mme_ue_hash_remove(mme_ue_t *mme_ue);
 void mme_ue_remove(mme_ue_t *mme_ue);
 void mme_ue_remove_all(void);
 

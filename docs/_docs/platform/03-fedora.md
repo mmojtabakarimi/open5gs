@@ -39,7 +39,7 @@ Then, to support IPv6-enabled UEs, you must configure your TUN device to support
 $ sysctl -n net.ipv6.conf.ogstun.disable_ipv6
 1
 
-$ sudo -w net.ipv6.conf.ogstun.disable_ipv6=0
+$ sudo -w sysctl net.ipv6.conf.ogstun.disable_ipv6=0
 
 $ sysctl -n net.ipv6.conf.ogstun.disable_ipv6
 0
@@ -52,7 +52,7 @@ You are now ready to set the IP address on TUN device.
 
 ```bash
 $ sudo ip addr add 10.45.0.1/16 dev ogstun
-$ sudo ip addr add 2001:230:cafe::1/48 dev ogstun
+$ sudo ip addr add 2001:db8:cafe::1/48 dev ogstun
 ```
 
 Make sure it is set up properly.

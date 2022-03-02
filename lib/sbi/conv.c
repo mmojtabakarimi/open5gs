@@ -118,8 +118,9 @@ static char *url_decode(const char *str)
 {
     if (str != NULL) {
         char *pstr = (char*)str;
-        char *buf = ogs_malloc_or_assert(strlen(str) + 1);
+        char *buf = ogs_malloc(strlen(str) + 1);
         char *pbuf = buf;
+        ogs_assert(buf);
         while (*pstr) {
             if (*pstr == '%') {
                 if (pstr[1] && pstr[2]) {
@@ -267,13 +268,11 @@ int ogs_strftimezone(char *str, size_t size, int tm_gmtoff)
     }
 
     len = ogs_snprintf(str, size, "%c%02d:%02d",
-            off_sign, off / 3600, off % 3600);
-
+            off_sign, off / 3600, (off % 3600) / 60);
     if (len != 6) {
-        ogs_warn("Unknown tm_gmtoff[%d:%d]", tm_gmtoff, off);
-
-        len = ogs_snprintf(str, size, "%c%02d:%02d",
-                off_sign, (off / 3600) % 100, (off % 3600) % 100);
+        ogs_fatal("Unknown tm_gmtoff[%d:%d], len[%d], str[%s]",
+                tm_gmtoff, off, len, str);
+        ogs_assert_if_reached();
     }
 
     return len;

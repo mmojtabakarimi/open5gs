@@ -40,11 +40,6 @@ pcrf:
 #  o Prefer IPv4 instead of IPv6 for estabishing new GTP connections.
 #      prefer_ipv4: true
 #
-#  o Legacy support for pre-release LTE 11 devices to do calling
-#    - Replace IPv4/v6 local addr field in AAR Media-Subcomponent AVP
-#      by 'any local port'
-#      no_ipv4v6_local_addr_in_packet_filter: true
-#
 parameter:
 
 #
@@ -53,7 +48,7 @@ parameter:
 # o Maximum Number of UE per AMF/MME
 #    ue: 1024
 # o Maximum Number of gNB/eNB per AMF/MME
-#    gnb: 32
+#    gnb: 64
 #
 max:
 

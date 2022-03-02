@@ -697,22 +697,22 @@ int amf_context_parse_config(void)
 
                                 v = ogs_yaml_iter_value(&integrity_order_iter);
                                 if (v) {
-                                    int integrity_index = 
+                                    int integrity_index =
                                         self.num_of_integrity_order;
                                     if (strcmp(v, "NIA0") == 0) {
-                                        self.integrity_order[integrity_index] = 
+                                        self.integrity_order[integrity_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_NIA0;
                                         self.num_of_integrity_order++;
                                     } else if (strcmp(v, "NIA1") == 0) {
-                                        self.integrity_order[integrity_index] = 
+                                        self.integrity_order[integrity_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NIA1;
                                         self.num_of_integrity_order++;
                                     } else if (strcmp(v, "NIA2") == 0) {
-                                        self.integrity_order[integrity_index] = 
+                                        self.integrity_order[integrity_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NIA2;
                                         self.num_of_integrity_order++;
                                     } else if (strcmp(v, "NIA3") == 0) {
-                                        self.integrity_order[integrity_index] = 
+                                        self.integrity_order[integrity_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NIA3;
                                         self.num_of_integrity_order++;
                                     }
@@ -739,22 +739,22 @@ int amf_context_parse_config(void)
 
                                 v = ogs_yaml_iter_value(&ciphering_order_iter);
                                 if (v) {
-                                    int ciphering_index = 
+                                    int ciphering_index =
                                         self.num_of_ciphering_order;
                                     if (strcmp(v, "NEA0") == 0) {
-                                        self.ciphering_order[ciphering_index] = 
+                                        self.ciphering_order[ciphering_index] =
                                             OGS_NAS_SECURITY_ALGORITHMS_NEA0;
                                         self.num_of_ciphering_order++;
                                     } else if (strcmp(v, "NEA1") == 0) {
-                                        self.ciphering_order[ciphering_index] = 
+                                        self.ciphering_order[ciphering_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NEA1;
                                         self.num_of_ciphering_order++;
                                     } else if (strcmp(v, "NEA2") == 0) {
-                                        self.ciphering_order[ciphering_index] = 
+                                        self.ciphering_order[ciphering_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NEA2;
                                         self.num_of_ciphering_order++;
                                     } else if (strcmp(v, "NEA3") == 0) {
-                                        self.ciphering_order[ciphering_index] = 
+                                        self.ciphering_order[ciphering_index] =
                                         OGS_NAS_SECURITY_ALGORITHMS_128_NEA3;
                                         self.num_of_ciphering_order++;
                                     }
@@ -772,7 +772,7 @@ int amf_context_parse_config(void)
                         const char *network_name_key =
                         ogs_yaml_iter_key(&network_name_iter);
                         ogs_assert(network_name_key);
-                        if (!strcmp(network_name_key, "full")) {  
+                        if (!strcmp(network_name_key, "full")) {
                             ogs_nas_network_name_t *network_full_name =
                                 &self.full_name;
                             const char *c_network_name =
@@ -924,6 +924,8 @@ int amf_gnb_set_gnb_id(amf_gnb_t *gnb, uint32_t gnb_id)
 {
     ogs_assert(gnb);
 
+    ogs_hash_set(self.gnb_id_hash, &gnb_id, sizeof(gnb_id), NULL);
+
     gnb->gnb_id = gnb_id;
     ogs_hash_set(self.gnb_id_hash, &gnb->gnb_id, sizeof(gnb->gnb_id), gnb);
 
@@ -966,7 +968,7 @@ ran_ue_t *ran_ue_add(amf_gnb_t *gnb, uint32_t ran_ue_ngap_id)
      * SCTP output stream identification
      * Default ogs_app()->parameter.sctp_streams : 30
      *   0 : Non UE signalling
-     *   1-29 : UE specific association 
+     *   1-29 : UE specific association
      */
     ran_ue->gnb_ostream_id =
         OGS_NEXT_ID(gnb->ostream_id, 1, gnb->max_num_of_ostreams-1);
@@ -1019,7 +1021,7 @@ ran_ue_t *ran_ue_find_by_ran_ue_ngap_id(
         amf_gnb_t *gnb, uint32_t ran_ue_ngap_id)
 {
     ran_ue_t *ran_ue = NULL;
-    
+
     ogs_list_for_each(&gnb->ran_ue_list, ran_ue) {
         if (ran_ue_ngap_id == ran_ue->ran_ue_ngap_id)
             break;
@@ -1508,6 +1510,7 @@ void amf_ue_set_suci(amf_ue_t *amf_ue,
         ogs_nas_5gs_mobile_identity_t *mobile_identity)
 {
     amf_ue_t *old_amf_ue = NULL;
+    amf_sess_t *old_sess = NULL;
     char *suci = NULL;
 
     ogs_assert(amf_ue);
@@ -1531,6 +1534,31 @@ void amf_ue_set_suci(amf_ue_t *amf_ue,
                         (long long)old_amf_ue->ran_ue->amf_ue_ngap_id);
                 ran_ue_remove(old_amf_ue->ran_ue);
             }
+
+    /*
+     * We should delete the AMF-Session Context in the AMF-UE Context.
+     * Otherwise, all unnecessary SESSIONs remain in SMF/UPF.
+     *
+     * In order to do this, AMF-Session Context should be moved
+     * from OLD AMF-UE Context to NEW AMF-UE Context.
+     *
+     * If needed, The Session deletion process in NEW-AMF UE context will work.
+     *
+     * Note that we should not send Session-Release to the SMF at this point.
+     * Another SBI Transaction can cause fatal errors.
+     */
+
+            /* Phase-1 : Change AMF-UE Context in Session Context */
+            ogs_list_for_each(&old_amf_ue->sess_list, old_sess)
+                old_sess->amf_ue = amf_ue;
+
+            /* Phase-2 : Move Session Context from OLD to NEW AMF-UE Context */
+            memcpy(&amf_ue->sess_list,
+                    &old_amf_ue->sess_list, sizeof(amf_ue->sess_list));
+
+            /* Phase-3 : Clear Session Context in OLD AMF-UE Context */
+            memset(&old_amf_ue->sess_list, 0, sizeof(old_amf_ue->sess_list));
+
             amf_ue_remove(old_amf_ue);
         }
     }

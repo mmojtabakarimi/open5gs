@@ -104,14 +104,14 @@ static void test1_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -666,7 +666,7 @@ static void test1_func(abts_case *tc, void *data)
     test_bearer_remove(qos_flow);
 
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
@@ -786,14 +786,14 @@ static void test2_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -1260,14 +1260,14 @@ static void test3_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -1575,8 +1575,26 @@ static void test3_func(abts_case *tc, void *data)
     rv = testgnb_ngap_send(ngap, sendbuf);
     ABTS_INT_EQUAL(tc, OGS_OK, rv);
 
+    /* In ./tests/vonr/af-test/test3_func()
+     *
+     * 1. Send PDU session establishment request
+     * 2. Receive PDU session establishment accept
+     * 3. Send PDUSessionResourceSetupResponse
+     * 4. Send De-registration request
+     * 5. SMF->AMF : RESPONSE /nsmf-pdusession/v1/sm-contexts/3/release
+     * 6. SMF->AMF : RESPONSE /nsmf-pdusession/v1/sm-contexts/1/modify
+     *
+     * 01/01 23:28:53.736: [sbi] ERROR: SBI running [1]
+     * (../lib/sbi/context.c:1161)
+     * 01/01 23:28:53.736: [amf] ERROR: Session has already been removed
+     * (../src/amf/amf-sm.c:424)
+     *
+     * We need the following sleep to avoid the above situation.
+     */
+    ogs_msleep(100);
+
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
@@ -1696,14 +1714,14 @@ static void test4_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -2085,14 +2103,14 @@ static void test4_func(abts_case *tc, void *data)
     memset(&test_ue->registration_request_param, 0,
             sizeof(test_ue->registration_request_param));
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -2201,7 +2219,7 @@ static void test4_func(abts_case *tc, void *data)
 
 
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
@@ -2321,14 +2339,14 @@ static void test5_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -2570,18 +2588,18 @@ static void test5_func(abts_case *tc, void *data)
      *  - Type: Mobile terminated services(2)
      *  - PDU Session Status
      */
-    test_ue->service_request_param.integrity_protected = 0;
     test_ue->service_request_param.pdu_session_status = 1;
     test_ue->service_request_param.
             psimask.pdu_session_status = (1 << 5 | 1 << 6);
     nasbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, NULL);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
-    test_ue->service_request_param.integrity_protected = 1;
     test_ue->service_request_param.pdu_session_status = 0;
     gmmbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, nasbuf);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            nasbuf, true, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, true, true);
@@ -2701,18 +2719,18 @@ static void test5_func(abts_case *tc, void *data)
      *  - Type: Mobile terminated services(2)
      *  - PDU Session Status
      */
-    test_ue->service_request_param.integrity_protected = 0;
     test_ue->service_request_param.pdu_session_status = 1;
     test_ue->service_request_param.
             psimask.pdu_session_status = (1 << 5 | 1 << 6);
     nasbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, NULL);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
-    test_ue->service_request_param.integrity_protected = 1;
     test_ue->service_request_param.pdu_session_status = 0;
     gmmbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, nasbuf);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            nasbuf, true, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, true, true);
@@ -2827,18 +2845,18 @@ static void test5_func(abts_case *tc, void *data)
      *  - Type: Mobile terminated services(2)
      *  - PDU Session Status
      */
-    test_ue->service_request_param.integrity_protected = 0;
     test_ue->service_request_param.pdu_session_status = 1;
     test_ue->service_request_param.
             psimask.pdu_session_status = (1 << 5 | 1 << 6);
     nasbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, NULL);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
-    test_ue->service_request_param.integrity_protected = 1;
     test_ue->service_request_param.pdu_session_status = 0;
     gmmbuf = testgmm_build_service_request(
-            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES, nasbuf);
+            test_ue, OGS_NAS_SERVICE_TYPE_MOBILE_TERMINATED_SERVICES,
+            nasbuf, true, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, true, true);
@@ -2917,7 +2935,7 @@ static void test5_func(abts_case *tc, void *data)
     ABTS_INT_EQUAL(tc, OGS_OK, rv);
 
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
@@ -3037,14 +3055,14 @@ static void test6_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -3454,7 +3472,7 @@ static void test6_func(abts_case *tc, void *data)
     test_bearer_remove(qos_flow);
 
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
@@ -3574,14 +3592,14 @@ static void test7_func(abts_case *tc, void *data)
 
     /* Send Registration request */
     test_ue->registration_request_param.guti = 1;
-    gmmbuf = testgmm_build_registration_request(test_ue, NULL);
+    gmmbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
 
     test_ue->registration_request_param.gmm_capability = 1;
     test_ue->registration_request_param.requested_nssai = 1;
     test_ue->registration_request_param.last_visited_registered_tai = 1;
     test_ue->registration_request_param.ue_usage_setting = 1;
-    nasbuf = testgmm_build_registration_request(test_ue, NULL);
+    nasbuf = testgmm_build_registration_request(test_ue, NULL, false, false);
     ABTS_PTR_NOTNULL(tc, nasbuf);
 
     sendbuf = testngap_build_initial_ue_message(test_ue, gmmbuf, false, true);
@@ -3912,7 +3930,7 @@ static void test7_func(abts_case *tc, void *data)
     ogs_msleep(100);
 
     /* Send De-registration request */
-    gmmbuf = testgmm_build_de_registration_request(test_ue, 1);
+    gmmbuf = testgmm_build_de_registration_request(test_ue, 1, true, true);
     ABTS_PTR_NOTNULL(tc, gmmbuf);
     sendbuf = testngap_build_uplink_nas_transport(test_ue, gmmbuf);
     ABTS_PTR_NOTNULL(tc, sendbuf);
